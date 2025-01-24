@@ -1,4 +1,3 @@
-import { apiQuery } from "next-dato-utils/api";
 import { MetadataRoute } from 'next'
 
 const staticRoutes: MetadataRoute.Sitemap = [

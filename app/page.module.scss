@@ -1,4 +1,29 @@
 .page {
-  display: block;
-  margin-bottom: 2em;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  h1 {
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1;
+    font-size: 100px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    text-align: center;
+    color: var(--white);
+  }
+
+  .video {
+    --margin: calc(-1 * var(--outer-margin));
+    position: relative;
+    height: 100vh;
+    margin-top: var(--margin);
+    margin-left: var(--margin);
+    margin-right: var(--margin);
+    object-fit: cover;
+  }
 }
