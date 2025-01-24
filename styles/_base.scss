@@ -27,9 +27,6 @@ body {
 	-webkit-font-smoothing: antialiased;
 	font-feature-settings: "liga", "kern";
 
-	@include mq($from: desktop) {
-		background-color: pink;
-	}
 }
 
 html {
