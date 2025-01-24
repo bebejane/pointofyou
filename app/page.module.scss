@@ -1,0 +1,8 @@
+.page {
+  display: block;
+  margin-bottom: 2em;
+
+  @include mq($from: desktop) {
+    background-color: red;
+  }
+}
