@@ -1,0 +1,45 @@
+query AllPresses($first: IntType = 100, $skip: IntType = 0) {
+	allPresses(first: $first, skip: $skip) {
+		...PressFragment
+	}
+	_allPressesMeta {
+		count
+	}
+}
+
+query Press($id: ItemId) {
+	press(filter: { id: { eq: $id } }) {
+		...PressFragment
+	}
+}
+
+fragment PressFragment on PressRecord {
+	id
+	title
+	slug
+	intro {
+		blocks
+		links
+		value
+	}
+}
+
+query AllNews($first: IntType = 100, $skip: IntType = 0) {
+	allNews(first: $first, skip: $skip) {
+		...NewsFragment
+	}
+	_allNewsMeta {
+		count
+	}
+}
+
+query News($id: ItemId) {
+	news(filter: { id: { eq: $id } }) {
+		...NewsFragment
+	}
+}
+
+fragment NewsFragment on NewsRecord {
+	id
+	slug
+}

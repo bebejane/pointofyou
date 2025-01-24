@@ -1,0 +1,102 @@
+query AllResearchs($first: IntType = 100, $skip: IntType = 0) {
+	allResearches(first: $first, skip: $skip) {
+		...ResearchFragment
+	}
+	_allResearchesMeta {
+		count
+	}
+}
+
+query Research($id: ItemId) {
+	research(filter: { id: { eq: $id } }) {
+		...ResearchFragment
+	}
+}
+
+query ResearchAbout {
+	researchAbout {
+		id
+		intro {
+			blocks
+			links
+			value
+		}
+		contentWrapper {
+			id
+			content {
+				__typename
+				blocks {
+					__typename
+					... on ButtonRecord {
+						id
+						text
+						url
+					}
+					... on ExpandableListRecord {
+						id
+						item {
+							__typename
+							... on ExpandableListItemRecord {
+								id
+								title
+								text {
+									blocks
+									links
+									value
+								}
+							}
+						}
+					}
+					... on ImageRecord {
+						id
+						image {
+							...ImageFragment
+						}
+					}
+					... on VideoExternRecord {
+						id
+						caption
+						video {
+							height
+							width
+							url
+							provider
+							providerUid
+							title
+							thumbnailUrl
+						}
+					}
+					... on VideoFileRecord {
+						id
+						file {
+							...VideoFragment
+						}
+					}
+				}
+				links
+				value
+			}
+		}
+		title
+	}
+}
+
+fragment ResearchFragment on ResearchRecord {
+	id
+	title
+	slug
+	category {
+		id
+		plural
+		title
+	}
+	file {
+		...MediaFragment
+	}
+	text {
+		blocks
+		links
+		value
+	}
+	url
+}

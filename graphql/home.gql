@@ -1,0 +1,50 @@
+query Home {
+	home {
+		id
+		movieStart {
+			...MediaFragment
+		}
+		content {
+			__typename
+			... on ShortcutImageRecord {
+				id
+				image {
+					...ImageFragment
+				}
+				title
+				text {
+					blocks
+					links
+					value
+				}
+			}
+			... on ShortcutMovieRecord {
+				id
+				movie {
+					...VideoFragment
+				}
+				text {
+					blocks
+					links
+					value
+				}
+				textLink
+			}
+			... on ShortcutNewsRecord {
+				id
+			}
+			... on ShortcutProjectRecord {
+				id
+			}
+			... on ShortcutTextRecord {
+				id
+				text {
+					blocks
+					links
+					value
+				}
+				textLink
+			}
+		}
+	}
+}

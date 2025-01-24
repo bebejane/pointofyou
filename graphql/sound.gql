@@ -1,0 +1,22 @@
+query AllSounds($first: IntType = 100, $skip: IntType = 0) {
+	allSounds(first: $first, skip: $skip) {
+		...SoundFragment
+	}
+	_allSoundsMeta {
+		count
+	}
+}
+
+query Sound($id: ItemId) {
+	sound(filter: { id: { eq: $id } }) {
+		...SoundFragment
+	}
+}
+
+fragment SoundFragment on SoundRecord {
+	id
+	file {
+		...MediaFragment
+	}
+	text
+}

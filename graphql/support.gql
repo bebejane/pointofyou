@@ -1,0 +1,11 @@
+query Support {
+	support {
+		id
+		title
+		text {
+			blocks
+			links
+			value
+		}
+	}
+}

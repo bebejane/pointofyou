@@ -1,0 +1,80 @@
+query AllEducations($first: IntType = 100, $skip: IntType = 0) {
+	allEducations(first: $first, skip: $skip) {
+		...EducationFragment
+	}
+	_allEducationsMeta {
+		count
+	}
+}
+
+query Education($id: ItemId) {
+	education(filter: { id: { eq: $id } }) {
+		...EducationFragment
+	}
+}
+
+fragment EducationFragment on EducationRecord {
+	id
+	title
+	intro {
+		blocks
+		links
+		value
+	}
+	contentWrapper {
+		id
+		content {
+			__typename
+			blocks {
+				__typename
+				... on ButtonRecord {
+					id
+					text
+					url
+				}
+				... on ExpandableListRecord {
+					id
+					item {
+						__typename
+						... on ExpandableListItemRecord {
+							id
+							title
+							text {
+								blocks
+								links
+								value
+							}
+						}
+					}
+				}
+				... on ImageRecord {
+					id
+					image {
+						...ImageFragment
+					}
+				}
+				... on VideoExternRecord {
+					id
+					caption
+					video {
+						height
+						width
+						url
+						provider
+						providerUid
+						title
+						thumbnailUrl
+					}
+				}
+				... on VideoFileRecord {
+					id
+					file {
+						...VideoFragment
+					}
+				}
+			}
+			links
+			value
+		}
+	}
+}
