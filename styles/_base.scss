@@ -5,6 +5,8 @@
 	--black: #161616;
 	--white: #fcfcfc;
 	--red: #bf0000;
+	--blue: #2B1E9B;
+
 	--outer-margin: 1em;
 	--navbar-height: calc(1em + calc(2 * var(--outer-margin)));
 	--background: var(--white);
@@ -13,9 +15,6 @@
 	--body-font: Arial, Helvetica, Sans-Serif;
 	--headline-font: Arial, Helvetica, Sans-Serif;
 
-	@include mediaqueries.mq($from: tablet) {}
-
-	@include mediaqueries.mq($until: tablet) {}
 }
 
 body {
@@ -28,8 +27,8 @@ body {
 	-webkit-font-smoothing: antialiased;
 	font-feature-settings: "liga", "kern";
 
-	@include mediaqueries.mq($from: desktop) {
-		//background-color: pink;
+	@include mq($from: desktop) {
+		background-color: pink;
 	}
 }
 
