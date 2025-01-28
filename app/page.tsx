@@ -1,9 +1,9 @@
 import s from "./page.module.scss";
-import Link from "next/link";
-import { Image } from "react-datocms";
 import { HomeDocument } from "@/graphql";
 import { apiQuery } from "next-dato-utils/api";
 import { DraftMode, VideoPlayer } from "next-dato-utils/components";
+import { Block } from "@/components/blocks";
+import * as StartBlocks from "@/components/blocks/start";
 
 export default async function Home() {
 	const { home, draftUrl } = await apiQuery<HomeQuery, HomeQueryVariables>(HomeDocument);
@@ -11,14 +11,23 @@ export default async function Home() {
 	return (
 		<>
 			<article className={s.page}>
-				<h1>Point of You</h1>
-				{home.movieStart && (
-					<VideoPlayer
-						className={s.video}
-						autoPlay={false}
-						data={home.movieStart}
+				<section className={s.header}>
+					<h1>Point of You</h1>
+					{home?.movieStart && (
+						<VideoPlayer
+							className={s.video}
+							autoPlay={false}
+							data={home.movieStart}
+						/>
+					)}
+				</section>
+				{home?.content.map((section, i) => (
+					<Block
+						key={i}
+						data={section}
+						components={StartBlocks}
 					/>
-				)}
+				))}
 			</article>
 			<DraftMode url={draftUrl} />
 		</>

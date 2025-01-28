@@ -20,6 +20,8 @@ h2,
 h3,
 h4,
 h5 {
+  color: var(--blue);
+
   strong {
     //font-weight: normal;
   }
@@ -87,7 +89,7 @@ nav,
 button,
 .mid input,
 .mid select {
-  font-family: var(--headline-font);
+
   font-size: 0.75rem;
 }
 
