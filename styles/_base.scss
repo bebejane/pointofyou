@@ -9,7 +9,9 @@
 	--background: var(--white);
 	--foreground: var(--black);
 
+
 	--outer-margin: 1em;
+	--full-width: calc(100% + calc(var(--outer-margin) * 2));
 	--space: 2rem;
 	--space-small: 1rem;
 	--gutter: 1.5rem;

@@ -1,17 +1,43 @@
 import s from "./ShortcutNews.module.scss";
 import cn from "classnames";
 import { Image } from "react-datocms";
-import { VideoPlayer } from "next-dato-utils/components";
+import { apiQuery } from "next-dato-utils/api";
+import { AllNewsDocument } from "@/graphql";
+import Link from "@node_modules/next/link";
+import Content from "../../common/Content";
 
 type Props = {
 	data: ShortcutNewsRecord;
 };
 
 export default async function ShortcutNews({ data: { id } }: Props) {
+	const { allNews } = await apiQuery<AllNewsQuery, AllNewsQueryVariables>(AllNewsDocument, {
+		variables: {
+			first: 3,
+		},
+	});
+
+	console.log(allNews.length);
 	return (
 		<section
 			id={id}
 			className={s.container}
-		></section>
+		>
+			<div className={s.header}>
+				<h2>Nyheter</h2>
+				<Link href='/nyheter'>Visa alla</Link>
+			</div>
+			<ul className={s.news}>
+				{allNews.map(({ id, title, slug, intro }) => (
+					<Link
+						key={id}
+						href={`/nyheter/${slug}`}
+					>
+						<h3>{title}</h3>
+						<Content content={intro} />
+					</Link>
+				))}
+			</ul>
+		</section>
 	);
 }

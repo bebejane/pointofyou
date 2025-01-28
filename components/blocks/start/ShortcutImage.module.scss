@@ -1,0 +1,32 @@
+.container {
+  position: relative;
+  width: var(--full-width);
+  margin-left: calc(-1 * var(--outer-margin));
+  margin-right: calc(-1 * var(--outer-margin));
+  height: 100vh;
+
+  figure {
+    position: relative;
+
+    .image {
+      height: 100vh;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    figcaption {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      color: var(--white);
+
+      a {
+        color: var(--white);
+      }
+    }
+  }
+}

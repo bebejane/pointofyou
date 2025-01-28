@@ -101,8 +101,8 @@ b {
 // För Article
 article {
   ul {
-    padding-left: 1em;
-    list-style-type: square;
+
+
 
     p:last-of-type {
       margin-bottom: 0.7em;
@@ -118,8 +118,6 @@ article {
   h2,
   .structured h3,
   ul {
-    padding-left: var(--outer-margin);
-    padding-right: var(--outer-margin);
     text-align: left;
   }
 

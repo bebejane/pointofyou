@@ -1,0 +1,67 @@
+.container {
+  width: var(--full-width);
+  margin-left: calc(-1 * var(--outer-margin));
+  margin-right: calc(-1 * var(--outer-margin));
+  overflow: hidden;
+
+  .header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+
+    h2 {
+      flex: 1 1 100%
+    }
+
+    a {
+      white-space: nowrap;
+      color: var(--blue);
+    }
+
+    .nav {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      button {
+        all: unset;
+        cursor: pointer;
+
+      }
+
+      .back {
+        transform: rotate(180deg);
+      }
+
+      .forward {}
+    }
+
+
+  }
+
+  ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+
+    figure {
+      position: relative;
+      flex: 0 0 33.3%;
+
+      .image {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+
+      figcaption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        color: var(--white);
+        padding: var(--outer-margin);
+      }
+    }
+  }
+}
