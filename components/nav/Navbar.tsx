@@ -21,11 +21,14 @@ export default function Navbar({ menu }: NavbarProps) {
 		<>
 			<nav className={s.navbar}>
 				<figure className={s.logo}>
-					<img
-						src='/images/logo.svg'
-						alt='Logo'
-					/>
+					<Link href={"/"}>
+						<img
+							src='/images/logo.svg'
+							alt='Logo'
+						/>
+					</Link>
 				</figure>
+
 				<ul className={s.menu}>
 					{menu
 						.filter(({ id }) => id !== "contact")

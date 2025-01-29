@@ -9,7 +9,7 @@
 	--background: var(--white);
 	--foreground: var(--black);
 
-	--outer-margin: 1em;
+	--outer-margin: 1rem;
 	--gutter: 0.6rem;
 	--grid-unit: calc(100vw / 10);
 	--space: 2rem;
@@ -40,6 +40,7 @@ body {
 	font-family: var(--body-font);
 	-webkit-font-smoothing: antialiased;
 	font-feature-settings: "liga", "kern";
+	padding-top: var(--navbar-height);
 }
 
 html {
@@ -50,6 +51,7 @@ main {
 	display: block;
 	padding-left: var(--outer-margin);
 	padding-right: var(--outer-margin);
+	min-height: calc(100vh - var(--navbar-height));
 }
 
 article {
@@ -103,14 +105,18 @@ article p a {
 }
 
 button {
-	color: var(--foreground);
-	border: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--blue);
+	border: 1px solid var(--blue);
+	padding: 0.5em;
+	border-radius: 2rem;
+	cursor: pointer;
 
-	@include mediaqueries.mq($from: tablet) {}
-
-	&.back {
-
-		@include mediaqueries.mq($from: tablet) {}
+	&[data-selected="true"] {
+		color: var(--white);
+		background-color: var(--blue);
 	}
 
 }
