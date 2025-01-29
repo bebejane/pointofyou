@@ -30,7 +30,7 @@
         padding-right: 0;
       }
 
-      &.active {
+      &.active>* {
         color: var(--blue) !important;
       }
     }
@@ -44,24 +44,26 @@
         margin-left: 0.1rem;
       }
 
-      &:hover,
-      &.active {
-        color: var(--blue);
-
+      &.dropdown:hover {
         &::after {
           content: "▾";
         }
       }
+
+      &:hover,
+      &.active {
+        color: var(--blue);
+      }
     }
   }
+}
 
-  .contact {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-end;
-    flex: 0 0 var(--margin);
-  }
+.contact {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 0 0 var(--margin);
 }
 
 .sub {

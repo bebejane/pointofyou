@@ -35,10 +35,10 @@ export default function Navbar({ menu }: NavbarProps) {
 						.map(({ id, title, href, slug, sub }) => (
 							<li
 								key={id}
-								className={cn(s.item, pathname.startsWith(slug) && s.active)}
+								className={cn(s.item, sub && s.dropdown, pathname.startsWith(slug) && s.active)}
 								onMouseEnter={() => setSelected(id)}
 							>
-								{sub && title}
+								{sub && <span>{title}</span>}
 								{!sub && <Link href={slug ?? href}>{title}</Link>}
 							</li>
 						))}
