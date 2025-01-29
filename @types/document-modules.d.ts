@@ -30,6 +30,15 @@ export const EducationFragment: DocumentNode;
 }
     
 
+declare module '*/english.gql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const English: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
 declare module '*/ImageFragment.gql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
@@ -156,10 +165,11 @@ export const ProjectFragment: DocumentNode;
 declare module '*/research.gql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
-  export const AllResearchs: DocumentNode;
+  export const AllResearches: DocumentNode;
 export const Research: DocumentNode;
 export const ResearchAbout: DocumentNode;
 export const ResearchFragment: DocumentNode;
+export const ResearchCategoryFragment: DocumentNode;
 
   export default defaultDocument;
 }

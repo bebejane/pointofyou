@@ -38,7 +38,8 @@ export default function Navbar({ menu }: NavbarProps) {
 								className={cn(s.item, pathname.startsWith(slug) && s.active)}
 								onMouseEnter={() => setSelected(id)}
 							>
-								{title}
+								{sub && title}
+								{!sub && <Link href={slug ?? href}>{title}</Link>}
 							</li>
 						))}
 				</ul>

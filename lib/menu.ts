@@ -14,7 +14,7 @@ export type MenuItem = {
 export type Menu = MenuItem[]
 
 export const buildMenu = async (): Promise<Menu> => {
-  const { allAbouts, allEducations, allProjects, allResearches } = await apiQuery<MenuQuery, MenuQueryVariables>(MenuDocument, {
+  const { allAbouts, allEducations } = await apiQuery<MenuQuery, MenuQueryVariables>(MenuDocument, {
     all: true,
     variables: {
       first: 100,
@@ -33,15 +33,6 @@ export const buildMenu = async (): Promise<Menu> => {
       slug: `/om/${slug}`,
     })),
   }, {
-    id: 'education',
-    title: 'Utbildning',
-    slug: '/utbildning',
-    sub: allEducations.map(({ id, slug, title }) => ({
-      id,
-      title,
-      slug: `/utbildning/${slug}`,
-    })),
-  }, {
     id: 'projects',
     title: 'Projekt',
     slug: '/projekt',
@@ -54,6 +45,19 @@ export const buildMenu = async (): Promise<Menu> => {
       title: 'Avslutade',
       slug: `/projekt?filter=finished`,
     }],
+  }, {
+    id: 'education',
+    title: 'Utbildning',
+    slug: '/utbildning',
+    sub: allEducations.map(({ id, slug, title }) => ({
+      id,
+      title,
+      slug: `/utbildning/${slug}`,
+    })),
+  }, {
+    id: 'research',
+    title: 'Forskning',
+    slug: '/forskning',
   }, {
     id: 'news',
     title: 'Nyheter',
