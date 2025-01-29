@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  font-family: var(--label-font);
 
   .show {
     margin-right: 1rem;
@@ -14,6 +15,7 @@
 
     li {
       margin-right: 0.5rem;
+
 
       &:last-child {
         margin-right: 0;

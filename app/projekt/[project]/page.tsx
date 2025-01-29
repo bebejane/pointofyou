@@ -1,5 +1,5 @@
 import { apiQuery } from "next-dato-utils/api";
-import { ProjectDocument } from "@/graphql";
+import { AllProjectsDocument, ProjectDocument } from "@/graphql";
 import { notFound } from "@node_modules/next/navigation";
 import Article from "@/components/common/Article";
 import { DraftMode } from "next-dato-utils/components";
@@ -38,4 +38,15 @@ export default async function ProjectPage({ params }: ProjectProps) {
 			<DraftMode url={draftUrl} />
 		</>
 	);
+}
+
+export async function generateStaticParams() {
+	const { allProjects } = await apiQuery<AllProjectsQuery, AllProjectsQueryVariables>(
+		AllProjectsDocument,
+		{
+			all: true,
+		}
+	);
+
+	return allProjects.map(({ slug }) => ({ slug }));
 }

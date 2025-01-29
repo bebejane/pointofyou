@@ -15,9 +15,9 @@ export default function Footer({ menu }: { menu: Menu }) {
 							<div>{title}</div>
 							{sub && (
 								<ul>
-									{sub.map(({ id, title, slug }) => (
+									{sub.map(({ id, title, slug, href }) => (
 										<li key={id}>
-											<Link href={`${slug}`}>{title}</Link>
+											<Link href={slug ?? href}>{title}</Link>
 										</li>
 									))}
 								</ul>

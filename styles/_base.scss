@@ -28,7 +28,8 @@
 	--z-hamburger: 1200;
 
 	--body-font: "OceanicText", Times, Serif;
-	--headline-font: "BuzzBlack", Arial, Helvetica, Sans-Serif
+	--headline-font: "BuzzBlack", Arial, Helvetica, Sans-Serif;
+	--label-font: "Jazz-Medium", Times, Serif;
 }
 
 body {
@@ -113,8 +114,9 @@ button {
 	border: 2px solid var(--blue);
 	padding: 0.5em;
 	border-radius: 2rem;
-	font-family: var(--body-font);
+	font-family: var(--label-font);
 	cursor: pointer;
+
 
 	&[data-selected="true"] {
 		color: var(--white);

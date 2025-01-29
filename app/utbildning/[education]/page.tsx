@@ -1,5 +1,5 @@
 import { apiQuery } from "next-dato-utils/api";
-import { EducationDocument } from "@/graphql";
+import { AllEducationsDocument, EducationDocument } from "@/graphql";
 import { notFound } from "@node_modules/next/navigation";
 import Article from "@/components/common/Article";
 import { DraftMode } from "next-dato-utils/components";
@@ -33,4 +33,15 @@ export default async function EducationPage({ params }: EducationProps) {
 			<DraftMode url={draftUrl} />
 		</>
 	);
+}
+
+export async function generateStaticParams() {
+	const { allEducations } = await apiQuery<AllEducationsQuery, AllEducationsQueryVariables>(
+		AllEducationsDocument,
+		{
+			all: true,
+		}
+	);
+
+	return allEducations.map(({ slug }) => ({ slug }));
 }

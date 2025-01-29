@@ -1,5 +1,5 @@
 import { apiQuery } from "next-dato-utils/api";
-import { NewsDocument } from "@/graphql";
+import { AllNewsDocument, NewsDocument } from "@/graphql";
 import { notFound } from "@node_modules/next/navigation";
 import Article from "@/components/common/Article";
 import { DraftMode } from "next-dato-utils/components";
@@ -34,4 +34,12 @@ export default async function NewsPage({ params }: NewsProps) {
 			<DraftMode url={draftUrl} />
 		</>
 	);
+}
+
+export async function generateStaticParams() {
+	const { allNews } = await apiQuery<AllNewsQuery, AllNewsQueryVariables>(AllNewsDocument, {
+		all: true,
+	});
+
+	return allNews.map(({ slug }) => ({ slug }));
 }

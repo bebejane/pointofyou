@@ -1,5 +1,5 @@
 import { apiQuery } from "next-dato-utils/api";
-import { AboutDocument } from "@/graphql";
+import { AboutDocument, AllAboutsDocument } from "@/graphql";
 import { notFound } from "@node_modules/next/navigation";
 import Article from "@/components/common/Article";
 import { DraftMode } from "next-dato-utils/components";
@@ -31,4 +31,12 @@ export default async function AboutPage({ params }: AboutProps) {
 			<DraftMode url={draftUrl} />
 		</>
 	);
+}
+
+export async function generateStaticParams() {
+	const { allAbouts } = await apiQuery<AllAboutsQuery, AllAboutsQueryVariables>(AllAboutsDocument, {
+		all: true,
+	});
+
+	return allAbouts.map(({ slug }) => ({ slug }));
 }
