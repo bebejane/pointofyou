@@ -1,6 +1,6 @@
 // simple footer
 
-import { Menu } from "../../lib/menu";
+import { Menu } from "@/lib/menu";
 import s from "./Footer.module.scss";
 import Link from "next/link";
 

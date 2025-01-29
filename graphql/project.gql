@@ -7,8 +7,8 @@ query AllProjects($first: IntType = 100, $skip: IntType = 0) {
 	}
 }
 
-query Project($id: ItemId) {
-	project(filter: { id: { eq: $id } }) {
+query Project($slug: String!) {
+	project(filter: { slug: { eq: $slug } }) {
 		...ProjectFragment
 	}
 }

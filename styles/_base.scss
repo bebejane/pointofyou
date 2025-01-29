@@ -109,21 +109,17 @@ button {
 	align-items: center;
 	justify-content: center;
 	color: var(--blue);
-	border: 1px solid var(--blue);
+	background-color: var(--white);
+	border: 2px solid var(--blue);
 	padding: 0.5em;
 	border-radius: 2rem;
+	font-family: var(--body-font);
 	cursor: pointer;
 
 	&[data-selected="true"] {
 		color: var(--white);
 		background-color: var(--blue);
 	}
-
-}
-
-figcaption {
-	line-height: 1;
-
 }
 
 hr {}

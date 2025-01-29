@@ -1,0 +1,23 @@
+.filter {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  .show {
+    margin-right: 1rem;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+
+    li {
+      margin-right: 0.5rem;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}

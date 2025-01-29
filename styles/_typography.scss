@@ -66,10 +66,7 @@ p.intro,
   font-size: 0.75rem;
 
   strong {
-    font-family: var(--headline-font);
     font-weight: bold !important;
-    font-size: 0.65rem;
-    padding-right: 0.5em;
   }
 
   >p {
@@ -139,7 +136,7 @@ article {
   p strong,
   p b {
     font-weight: normal !important;
-    font-family: var(--headline-font);
+
   }
 
   p.center {

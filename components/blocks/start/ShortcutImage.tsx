@@ -2,7 +2,7 @@ import s from "./ShortcutImage.module.scss";
 import cn from "classnames";
 import { Image } from "react-datocms";
 import { VideoPlayer } from "next-dato-utils/components";
-import Content from "../../common/Content";
+import Content from "@/components/common/Content";
 import Link from "@node_modules/next/link";
 
 type Props = {
