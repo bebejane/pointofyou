@@ -43,13 +43,13 @@ export const buildMenu = async (): Promise<Menu> => {
     id: 'projects',
     title: 'Projekt',
     sub: [{
-      id: 'current',
+      id: 'active',
       title: 'Pågående',
-      slug: `/projekt`,
+      slug: `/projekt?filter=active`,
     }, {
       id: 'finished',
       title: 'Avslutade',
-      slug: `/projekt`,
+      slug: `/projekt?filter=finished`,
     }],
   }, {
     id: 'news',

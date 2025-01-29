@@ -19,6 +19,7 @@ export default async function Page({ params }: ProjectProps) {
 	);
 
 	if (!project) return notFound();
+
 	const { title, intro, image, contentWrapper } = project;
 
 	return (

@@ -16,6 +16,11 @@ export default async function Page({ searchParams }) {
 		AllProjectsDocument
 	);
 
+	const projects = allProjects.filter(
+		({ active }) =>
+			filter === "all" || (filter === "active" && active) || (filter === "finished" && !active)
+	);
+
 	return (
 		<article className={s.projects}>
 			<header>
@@ -32,29 +37,26 @@ export default async function Page({ searchParams }) {
 					/>
 				</div>
 			</header>
-
 			<ul>
-				{allProjects
-					.filter(({ active }) => filter === "all" || filter === "active")
-					.map(({ id, title, slug, image, intro, active }) => (
-						<li key={id}>
-							<Link href={`/projekt/${slug}`}>
-								<figure>
-									<Image
-										data={image.responsiveImage}
-										pictureClassName={s.picture}
+				{projects.map(({ id, title, slug, image, intro, active }) => (
+					<li key={id}>
+						<Link href={`/projekt/${slug}`}>
+							<figure>
+								<Image
+									data={image.responsiveImage}
+									pictureClassName={s.picture}
+								/>
+								<figcaption>
+									<h2>{title}</h2>
+									<Content
+										content={intro}
+										className={s.intro}
 									/>
-									<figcaption>
-										<h2>{title}</h2>
-										<Content
-											content={intro}
-											className={s.intro}
-										/>
-									</figcaption>
-								</figure>
-							</Link>
-						</li>
-					))}
+								</figcaption>
+							</figure>
+						</Link>
+					</li>
+				))}
 			</ul>
 		</article>
 	);
