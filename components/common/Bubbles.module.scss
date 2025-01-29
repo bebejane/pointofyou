@@ -1,0 +1,87 @@
+.bubbles {
+  position: relative;
+  height: calc(100vh - var(--navbar-height));
+  width: 100%;
+  background-color: var(--blue);
+  width: 100%;
+  overflow: hidden;
+}
+
+.bubble {
+  --size: 30px;
+  --scale: 3;
+  --text-margin: 0.5em;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  .image {
+    width: var(--size);
+    height: var(--size);
+    transition: transform 0.2s ease-in-out;
+    transform: rotate(0deg);
+    cursor: pointer;
+  }
+
+  .text {
+    position: absolute;
+    bottom: calc(-1 * calc(calc(var(--scale) * var(--size)) /2) - var(--text-margin));
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: var(--white);
+    pointer-events: none;
+    white-space: nowrap;
+    font-size: 0.7rem;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+  }
+
+  &.hover {
+    .image {
+      transform: scale(var(--scale)) rotate(0deg);
+    }
+
+    &:nth-child(odd) {
+      .image {
+        transform: scale(var(--scale)) rotate(90deg);
+      }
+    }
+
+
+    .text {
+      opacity: 1;
+    }
+  }
+
+  &:nth-child(odd) {
+    .image {
+      transform: rotate(90deg);
+    }
+  }
+
+  .icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    fill: var(--white);
+
+    &.show {
+      opacity: 1;
+    }
+  }
+
+  audio {
+    display: none;
+  }
+}
