@@ -26,6 +26,7 @@ export const buildMenu = async (): Promise<Menu> => {
   const menu: Menu = [{
     id: 'about',
     title: 'Om',
+    slug: '/om',
     sub: allAbouts.map(({ id, slug, title }) => ({
       id,
       title,
@@ -34,6 +35,7 @@ export const buildMenu = async (): Promise<Menu> => {
   }, {
     id: 'education',
     title: 'Utbildning',
+    slug: '/utbildning',
     sub: allEducations.map(({ id, slug, title }) => ({
       id,
       title,
@@ -42,6 +44,7 @@ export const buildMenu = async (): Promise<Menu> => {
   }, {
     id: 'projects',
     title: 'Projekt',
+    slug: '/projekt',
     sub: [{
       id: 'active',
       title: 'Pågående',
@@ -54,18 +57,20 @@ export const buildMenu = async (): Promise<Menu> => {
   }, {
     id: 'news',
     title: 'Nyheter',
+    slug: '/nyheter',
     sub: [{
       id: 'current',
       title: 'Aktuellt',
-      slug: `/nyheter`,
+      slug: `/nyheter/aktuellt`,
     }, {
       id: 'press',
       title: 'Press',
-      slug: `/nyheter`,
+      slug: `/nyheter/press`,
     }],
   }, {
     id: 'contact',
     title: 'Kontakt',
+    slug: '/kontakt',
     sub: [
       { id: 'contact-us', title: 'Kontakta oss', slug: '/kontakt' },
       { id: 'instagram', title: 'Instagram', href: 'https://www.instagram.com/pointofyou' },

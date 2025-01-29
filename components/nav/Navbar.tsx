@@ -2,7 +2,7 @@
 
 import s from "./Navbar.module.scss";
 import cn from "classnames";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Menu, MenuItem } from "@/lib/menu";
@@ -12,7 +12,7 @@ export type NavbarProps = {
 };
 
 export default function Navbar({ menu }: NavbarProps) {
-	const router = useRouter();
+	const pathname = usePathname();
 	const [selected, setSelected] = useState<string | null>(null);
 	const sub = menu.find(({ id }) => id === selected)?.sub;
 	const contact = menu.find(({ id }) => id === "contact");
@@ -35,7 +35,7 @@ export default function Navbar({ menu }: NavbarProps) {
 						.map(({ id, title, href, slug, sub }) => (
 							<li
 								key={id}
-								className={cn(s.item, selected === id && s.active)}
+								className={cn(s.item, pathname.startsWith(slug) && s.active)}
 								onMouseEnter={() => setSelected(id)}
 							>
 								{title}

@@ -7,18 +7,28 @@ import Content from "@/components/common/Content";
 export type ArticleProps = {
 	title: string;
 	image?: FileField;
-	intro: any;
-	content: any;
+	intro?: any;
+	content?: any;
 	link?: {
 		href: string;
 		text: string;
 	};
+	className?: string;
+	children?: React.ReactNode | React.ReactNode[];
 };
 
-export default function Article({ title, image, intro, content, link }: ArticleProps) {
+export default function Article({
+	title,
+	image,
+	intro,
+	content,
+	link,
+	className,
+	children,
+}: ArticleProps) {
 	return (
-		<article className={s.article}>
-			<header>
+		<article className={cn(s.article, className)}>
+			<header className={!image ? s.noImage : undefined}>
 				<h1>{title}</h1>
 				{image && (
 					<figure>
@@ -30,14 +40,19 @@ export default function Article({ title, image, intro, content, link }: ArticleP
 					</figure>
 				)}
 			</header>
-			<Content
-				content={intro}
-				className={s.intro}
-			/>
-			<Content
-				content={content}
-				className={s.content}
-			/>
+			{intro && (
+				<Content
+					content={intro}
+					className={s.intro}
+				/>
+			)}
+			{content && (
+				<Content
+					content={content}
+					className={s.content}
+				/>
+			)}
+			{children}
 			{link && (
 				<Link href={link.href}>
 					<button>{link.text}</button>

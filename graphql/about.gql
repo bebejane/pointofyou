@@ -7,8 +7,8 @@ query AllAbouts($first: IntType = 100, $skip: IntType = 0) {
 	}
 }
 
-query About($id: ItemId) {
-	about(filter: { id: { eq: $id } }) {
+query About($slug: String!) {
+	about(filter: { slug: { eq: $slug } }) {
 		...AboutFragment
 	}
 }

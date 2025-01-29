@@ -2,12 +2,13 @@ import { apiQuery } from "next-dato-utils/api";
 import { ProjectDocument } from "@/graphql";
 import { notFound } from "@node_modules/next/navigation";
 import Article from "@/components/common/Article";
+import { DraftMode } from "next-dato-utils/components";
 
 export type ProjectProps = {
 	params: Promise<{ project: string }>;
 };
 
-export default async function Page({ params }: ProjectProps) {
+export default async function ProjectPage({ params }: ProjectProps) {
 	const { project: slug } = await params;
 	const { project, draftUrl } = await apiQuery<ProjectQuery, ProjectQueryVariables>(
 		ProjectDocument,
@@ -23,15 +24,18 @@ export default async function Page({ params }: ProjectProps) {
 	const { title, intro, image, contentWrapper } = project;
 
 	return (
-		<Article
-			title={title}
-			image={image as FileField}
-			intro={intro}
-			content={contentWrapper.content}
-			link={{
-				href: "/projekt",
-				text: "Visa alla projekt",
-			}}
-		/>
+		<>
+			<Article
+				title={title}
+				image={image as FileField}
+				intro={intro}
+				content={contentWrapper.content}
+				link={{
+					href: "/projekt",
+					text: "Visa alla projekt",
+				}}
+			/>
+			<DraftMode url={draftUrl} />
+		</>
 	);
 }

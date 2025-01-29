@@ -7,12 +7,13 @@ import { Image } from "react-datocms";
 import Content from "@/components/common/Content";
 import FilterBar from "@/components/common/FilterBar";
 import { parseAsString } from "nuqs/server";
+import { DraftMode } from "next-dato-utils/components";
 
 const filterParser = parseAsString.withDefault("all");
 
-export default async function Page({ searchParams }) {
+export default async function ProjectsPage({ searchParams }) {
 	const filter = filterParser.parseServerSide((await searchParams).filter);
-	const { allProjects } = await apiQuery<AllProjectsQuery, AllProjectsQueryVariables>(
+	const { allProjects, draftUrl } = await apiQuery<AllProjectsQuery, AllProjectsQueryVariables>(
 		AllProjectsDocument
 	);
 
@@ -22,42 +23,45 @@ export default async function Page({ searchParams }) {
 	);
 
 	return (
-		<article className={s.projects}>
-			<header>
-				<h1>Projekt</h1>
-				<div className={s.filter}>
-					<FilterBar
-						href='/projekt'
-						value={filter}
-						options={[
-							{ id: "all", label: "Alla" },
-							{ id: "active", label: "Pågående" },
-							{ id: "finished", label: "Avslutade" },
-						]}
-					/>
-				</div>
-			</header>
-			<ul>
-				{projects.map(({ id, title, slug, image, intro, active }) => (
-					<li key={id}>
-						<Link href={`/projekt/${slug}`}>
-							<figure>
-								<Image
-									data={image.responsiveImage}
-									pictureClassName={s.picture}
-								/>
-								<figcaption>
-									<h2>{title}</h2>
-									<Content
-										content={intro}
-										className={s.intro}
+		<>
+			<article className={s.projects}>
+				<header>
+					<h1>Projekt</h1>
+					<div className={s.filter}>
+						<FilterBar
+							href='/projekt'
+							value={filter}
+							options={[
+								{ id: "all", label: "Alla" },
+								{ id: "active", label: "Pågående" },
+								{ id: "finished", label: "Avslutade" },
+							]}
+						/>
+					</div>
+				</header>
+				<ul>
+					{projects.map(({ id, title, slug, image, intro, active }) => (
+						<li key={id}>
+							<Link href={`/projekt/${slug}`}>
+								<figure>
+									<Image
+										data={image.responsiveImage}
+										pictureClassName={s.picture}
 									/>
-								</figcaption>
-							</figure>
-						</Link>
-					</li>
-				))}
-			</ul>
-		</article>
+									<figcaption>
+										<h2>{title}</h2>
+										<Content
+											content={intro}
+											className={s.intro}
+										/>
+									</figcaption>
+								</figure>
+							</Link>
+						</li>
+					))}
+				</ul>
+			</article>
+			<DraftMode url={draftUrl} />
+		</>
 	);
 }

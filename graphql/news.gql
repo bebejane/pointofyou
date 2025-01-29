@@ -1,31 +1,5 @@
-query AllPresses($first: IntType = 100, $skip: IntType = 0) {
-	allPresses(first: $first, skip: $skip) {
-		...PressFragment
-	}
-	_allPressesMeta {
-		count
-	}
-}
-
-query Press($id: ItemId) {
-	press(filter: { id: { eq: $id } }) {
-		...PressFragment
-	}
-}
-
-fragment PressFragment on PressRecord {
-	id
-	title
-	slug
-	intro {
-		blocks
-		links
-		value
-	}
-}
-
 query AllNews($first: IntType = 100, $skip: IntType = 0) {
-	allNews(first: $first, skip: $skip) {
+	allNews(first: $first, skip: $skip, orderBy: [_firstPublishedAt_DESC]) {
 		...NewsFragment
 	}
 	_allNewsMeta {
@@ -33,8 +7,8 @@ query AllNews($first: IntType = 100, $skip: IntType = 0) {
 	}
 }
 
-query News($id: ItemId) {
-	news(filter: { id: { eq: $id } }) {
+query News($slug: String) {
+	news(filter: { slug: { eq: $slug } }) {
 		...NewsFragment
 	}
 }
@@ -43,9 +17,13 @@ fragment NewsFragment on NewsRecord {
 	id
 	slug
 	title
+	image {
+		...ImageFragment
+	}
 	intro {
 		blocks
 		links
 		value
 	}
+	_firstPublishedAt
 }
