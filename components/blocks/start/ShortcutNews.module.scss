@@ -1,6 +1,8 @@
 .container {
   display: flex;
   flex-direction: column;
+  margin-left: var(--full-margin);
+  margin-right: var(--full-margin);
 
   .header {
     display: flex;
@@ -14,7 +16,6 @@
     a {
       white-space: nowrap;
     }
-
   }
 
   .news {

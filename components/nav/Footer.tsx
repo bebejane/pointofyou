@@ -12,7 +12,7 @@ export default function Footer({ menu }: { menu: Menu }) {
 				<ul>
 					{menu.map(({ id, title, sub }) => (
 						<li key={id}>
-							<Link href={`#${id}`}>{title}</Link>
+							<div>{title}</div>
 							{sub && (
 								<ul>
 									{sub.map(({ id, title, slug }) => (

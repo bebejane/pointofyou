@@ -3,26 +3,32 @@
 
 :root {
 	--black: #161616;
-	--white: #fcfcfc;
+	--white: #FFFFE4;
 	--red: #bf0000;
 	--blue: #2B1E9B;
 	--background: var(--white);
 	--foreground: var(--black);
 
-
 	--outer-margin: 1em;
-	--full-width: calc(100% + calc(var(--outer-margin) * 2));
+	--gutter: 0.6rem;
+	--grid-unit: calc(100vw / 10);
 	--space: 2rem;
+	--space-big: 2.5rem;
 	--space-small: 1rem;
-	--gutter: 1.5rem;
-	--navbar-height: 3rem;
+
+	--margin: calc(calc(2 * var(--grid-unit)) + calc(2 * var(--gutter)));
+	--full-margin: calc(-1 * var(--margin));
+	--full-bleed-margin: calc(calc(-1 * var(--margin)) - var(--outer-margin));
+
+	--navbar-height: 4rem;
 	--line-height: 1.35em;
+
 	--z-navbar: 1000;
 	--z-logo: 1100;
 	--z-hamburger: 1200;
 
 	--body-font: "OceanicText", Times, Serif;
-	--headline-font: "BuzzBlack", Arial, Helvetica, Sans-Serif;
+	--headline-font: "BuzzBlack", Arial, Helvetica, Sans-Serif
 }
 
 body {
@@ -42,8 +48,15 @@ html {
 
 main {
 	display: block;
-	padding: var(--outer-margin);
-	padding-top: 0;
+	padding-left: var(--outer-margin);
+	padding-right: var(--outer-margin);
+}
+
+article {
+	@include mq($from: tablet) {
+		margin-right: var(--margin);
+		margin-left: var(--margin);
+	}
 }
 
 ::-webkit-scrollbar {
@@ -72,7 +85,6 @@ main {
 a {
 	text-decoration: none;
 	color: var(--foreground);
-
 }
 
 article p a {
@@ -105,8 +117,7 @@ button {
 
 figcaption {
 	line-height: 1;
-	font-size: 0.7em;
-	margin-bottom: 1em;
+
 }
 
 hr {}

@@ -43,9 +43,6 @@ fragment NewsFragment on NewsRecord {
 	id
 	slug
 	title
-	image {
-		...ImageFragment
-	}
 	intro {
 		blocks
 		links

@@ -1,8 +1,7 @@
 .container {
   position: relative;
-  width: var(--full-width);
-  margin-left: calc(-1 * var(--outer-margin));
-  margin-right: calc(-1 * var(--outer-margin));
+  margin-left: var(--full-bleed-margin);
+  margin-right: var(--full-bleed-margin);
   height: 100vh;
 
   figure {
@@ -15,14 +14,18 @@
     }
 
     figcaption {
+      position: absolute;
       display: flex;
       flex-direction: column;
       align-items: center;
-      position: absolute;
+      padding-left: var(--margin);
+      padding-right: var(--margin);
+      padding-bottom: var(--space);
       bottom: 0;
       left: 0;
       width: 100%;
       color: var(--white);
+      z-index: 1;
 
       a {
         color: var(--white);
