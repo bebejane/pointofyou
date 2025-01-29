@@ -15,10 +15,38 @@ type Route = {
 }
 
 const routes: Routes = {
-  "start": {
-    typeName: "StartRecord",
+  "home": {
+    typeName: "HomeRecord",
     path: async (item) => '/'
   },
+  "about": {
+    typeName: "AboutRecord",
+    path: async (item) => `/om/${item.slug}`
+  },
+  "education": {
+    typeName: "EducationRecord",
+    path: async (item) => `/utbildning/${item.slug}`
+  },
+  "project": {
+    typeName: "ProjectRecord",
+    path: async (item) => `/projekt/${item.slug}`
+  },
+  "research": {
+    typeName: "ResearchRecord",
+    path: async (item) => `/forskning`
+  },
+  "press": {
+    typeName: "PressRecord",
+    path: async (item) => `/nyheter/press/${item.slug}`
+  },
+  "news": {
+    typeName: "NewsRecord",
+    path: async (item) => `/nyheter/aktuellt/${item.slug}`
+  },
+  "contact": {
+    typeName: "ContactRecord",
+    path: async (item) => `/kontakt`
+  }
 }
 
 export const buildRoute = async (model: string, item?: any): Promise<string> => {

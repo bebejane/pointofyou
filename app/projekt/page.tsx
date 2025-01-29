@@ -1,7 +1,6 @@
 import { apiQuery } from "next-dato-utils/api";
 import { AllProjectsDocument } from "@/graphql";
 import s from "./page.module.scss";
-import cn from "classnames";
 import Link from "next/link";
 import { Image } from "react-datocms";
 import Content from "@/components/common/Content";
@@ -14,7 +13,8 @@ const filterParser = parseAsString.withDefault("all");
 export default async function ProjectsPage({ searchParams }) {
 	const filter = filterParser.parseServerSide((await searchParams).filter);
 	const { allProjects, draftUrl } = await apiQuery<AllProjectsQuery, AllProjectsQueryVariables>(
-		AllProjectsDocument
+		AllProjectsDocument,
+		{ all: true, tags: ["project"] }
 	);
 
 	const projects = allProjects.filter(

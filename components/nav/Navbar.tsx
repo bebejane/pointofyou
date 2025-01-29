@@ -59,7 +59,12 @@ export default function Navbar({ menu }: NavbarProps) {
 				<ul>
 					{sub?.map(({ id, title, href, slug }) => (
 						<li key={id}>
-							<Link href={slug ?? href}>{title}</Link>
+							<Link
+								href={slug ?? href}
+								onClick={() => setSelected(null)}
+							>
+								{title}
+							</Link>
 						</li>
 					))}
 				</ul>

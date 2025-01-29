@@ -8,7 +8,7 @@ export default function Footer({ menu }: { menu: Menu }) {
 	return (
 		<footer className={s.footer}>
 			<nav>
-				<h3>Point of You</h3>
+				<h2>Point of You</h2>
 				<ul>
 					{menu.map(({ id, title, sub }) => (
 						<li key={id}>
