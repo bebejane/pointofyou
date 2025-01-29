@@ -1,6 +1,5 @@
 import s from "./ShortcutNews.module.scss";
 import cn from "classnames";
-import { Image } from "react-datocms";
 import { apiQuery } from "next-dato-utils/api";
 import { AllNewsDocument } from "@/graphql";
 import Link from "@node_modules/next/link";
@@ -17,7 +16,6 @@ export default async function ShortcutNews({ data: { id } }: Props) {
 		},
 	});
 
-	console.log(allNews.length);
 	return (
 		<section
 			id={id}
@@ -25,13 +23,13 @@ export default async function ShortcutNews({ data: { id } }: Props) {
 		>
 			<div className={s.header}>
 				<h2>Nyheter</h2>
-				<Link href='/nyheter'>Visa alla</Link>
+				<Link href='/nyheter/aktuellt'>Visa alla</Link>
 			</div>
 			<ul className={s.news}>
 				{allNews.map(({ id, title, slug, intro }) => (
 					<Link
 						key={id}
-						href={`/nyheter/${slug}`}
+						href={`/nyheter/aktuellt/${slug}`}
 					>
 						<h3>{title}</h3>
 						<Content content={intro} />

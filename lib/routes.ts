@@ -46,6 +46,10 @@ const routes: Routes = {
   "contact": {
     typeName: "ContactRecord",
     path: async (item) => `/kontakt`
+  },
+  "english": {
+    typeName: "EnglishRecord",
+    path: async (item) => `/english`
   }
 }
 

@@ -17,7 +17,7 @@ export default function Footer({ menu }: { menu: Menu }) {
 								<ul>
 									{sub.map(({ id, title, slug }) => (
 										<li key={id}>
-											<Link href={`#${slug}`}>{title}</Link>
+											<Link href={`${slug}`}>{title}</Link>
 										</li>
 									))}
 								</ul>
