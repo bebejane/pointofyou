@@ -187,8 +187,7 @@ function Bubble({
 				ref={audio}
 				src={file.url}
 				controls={false}
-				autoPlay
-				loop
+				autoPlay={false}
 			/>
 		</div>
 	);
