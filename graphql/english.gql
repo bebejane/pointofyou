@@ -25,7 +25,7 @@ fragment EnglishFragment on EnglishRecord {
 				}
 				... on ExpandableListRecord {
 					id
-					item {
+					items {
 						__typename
 						... on ExpandableListItemRecord {
 							id

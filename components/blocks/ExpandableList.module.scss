@@ -1,0 +1,39 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+
+  font-family: var(--label-font);
+
+  li {
+    display: flex;
+    flex-direction: column;
+
+    border-top: 1px solid var(--blue);
+    border-bottom: 1px solid var(--blue);
+    padding: 1rem;
+    padding-left: 0;
+    cursor: pointer;
+
+    .item {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      justify-content: center;
+      color: var(--blue);
+
+      .title {
+        flex: 1 1 100%;
+      }
+    }
+
+    .text {
+      display: none;
+      margin: 0 !important;
+
+      &.open {
+        display: block;
+      }
+    }
+  }
+}

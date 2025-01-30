@@ -20,7 +20,7 @@ fragment ContactFragment on ContactRecord {
 				}
 				... on ExpandableListRecord {
 					id
-					item {
+					items {
 						__typename
 						... on ExpandableListItemRecord {
 							id

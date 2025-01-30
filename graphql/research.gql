@@ -40,7 +40,7 @@ query ResearchAbout {
 					}
 					... on ExpandableListRecord {
 						id
-						item {
+						items {
 							__typename
 							... on ExpandableListItemRecord {
 								id

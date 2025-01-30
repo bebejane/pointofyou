@@ -39,7 +39,7 @@ fragment ProjectFragment on ProjectRecord {
 				}
 				... on ExpandableListRecord {
 					id
-					item {
+					items {
 						__typename
 						... on ExpandableListItemRecord {
 							id
