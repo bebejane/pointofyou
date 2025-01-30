@@ -8,7 +8,7 @@ export async function POST(req: NextRequest) {
   return await webPreviews(req, async ({ item, itemType, locale }) => {
 
     const { api_key } = itemType.attributes;
-    const paths = [await buildRoute(api_key, item.attributes)]
+    const paths = [buildRoute(api_key, item.attributes)]
     return paths?.[0]
   })
 }

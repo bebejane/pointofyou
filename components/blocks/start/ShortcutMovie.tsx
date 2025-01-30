@@ -4,18 +4,19 @@ import { Image, isSeoLinkTag } from "react-datocms";
 import { VideoPlayer } from "next-dato-utils/components";
 import Content from "@/components/common/Content";
 import Link from "next/link";
+import DatoLink from "../../nav/DatoLink";
 
 type Props = {
 	data: ShortcutMovieRecord;
 };
 
-export default async function ShortcutMovie({ data: { id, text, movie, textLink } }: Props) {
+export default async function ShortcutMovie({ data: { id, text, movie, link } }: Props) {
 	return (
 		<section
 			id={id}
 			className={s.container}
 		>
-			<Link href='/'>
+			<DatoLink link={link}>
 				<VideoPlayer
 					data={movie}
 					className={s.video}
@@ -25,9 +26,9 @@ export default async function ShortcutMovie({ data: { id, text, movie, textLink 
 						content={text}
 						className={s.text}
 					/>
-					<span>{textLink}</span>
+					<span>{link.title}</span>
 				</div>
-			</Link>
+			</DatoLink>
 		</section>
 	);
 }

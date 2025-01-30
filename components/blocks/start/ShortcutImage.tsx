@@ -1,21 +1,20 @@
 import s from "./ShortcutImage.module.scss";
 import cn from "classnames";
 import { Image } from "react-datocms";
-import { VideoPlayer } from "next-dato-utils/components";
 import Content from "@/components/common/Content";
-import Link from "@node_modules/next/link";
+import DatoLink from "@/components/nav/DatoLink";
 
 type Props = {
 	data: ShortcutImageRecord;
 };
 
-export default async function ShortcutImage({ data: { id, text, image, title } }: Props) {
+export default async function ShortcutImage({ data: { id, text, image, title, link } }: Props) {
 	return (
 		<section
 			id={id}
 			className={s.container}
 		>
-			<Link href={"/"}>
+			<DatoLink link={link}>
 				<figure>
 					{image.responsiveImage && (
 						<Image
@@ -27,10 +26,10 @@ export default async function ShortcutImage({ data: { id, text, image, title } }
 					)}
 					<figcaption>
 						<Content content={text} />
-						<span>Läs mer</span>
+						<span>{title}</span>
 					</figcaption>
 				</figure>
-			</Link>
+			</DatoLink>
 		</section>
 	);
 }

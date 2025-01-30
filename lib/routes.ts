@@ -10,59 +10,59 @@ type Routes = {
 }
 
 type Route = {
-  path: ((item?: any) => Promise<string | null>)
+  path: ((item?: any) => string | null)
   typeName: string
 }
 
 const routes: Routes = {
   "home": {
     typeName: "HomeRecord",
-    path: async (item) => '/'
+    path: (item) => '/'
   },
   "about": {
     typeName: "AboutRecord",
-    path: async (item) => `/om/${item.slug}`
+    path: (item) => `/om/${item.slug}`
   },
   "education": {
     typeName: "EducationRecord",
-    path: async (item) => `/utbildning/${item.slug}`
+    path: (item) => `/utbildning/${item.slug}`
   },
   "project": {
     typeName: "ProjectRecord",
-    path: async (item) => `/projekt/${item.slug}`
+    path: (item) => `/projekt/${item.slug}`
   },
   "research": {
     typeName: "ResearchRecord",
-    path: async (item) => `/forskning`
+    path: (item) => `/forskning`
   },
   "press": {
     typeName: "PressRecord",
-    path: async (item) => `/nyheter/press/${item.slug}`
+    path: (item) => `/nyheter/press/${item.slug}`
   },
   "news": {
     typeName: "NewsRecord",
-    path: async (item) => `/nyheter/aktuellt/${item.slug}`
+    path: (item) => `/nyheter/aktuellt/${item.slug}`
   },
   "contact": {
     typeName: "ContactRecord",
-    path: async (item) => `/kontakt`
+    path: (item) => `/kontakt`
   },
   "english": {
     typeName: "EnglishRecord",
-    path: async (item) => `/english`
+    path: (item) => `/english`
   }
 }
 
-export const buildRoute = async (model: string, item?: any): Promise<string> => {
+export const buildRoute = (model: string, item?: any): string => {
   if (!routes[model]) throw new Error(`Invalid model: ${model}`)
-  return await routes[model].path(item)
+  return routes[model].path(item)
 }
 
-export const recordToRoute = async (record: any): Promise<string> => {
+export const recordToRoute = (record: any): string => {
   const { __typename } = record
   const model = Object.keys(routes).find(key => routes[key].typeName === __typename)
   if (!model) throw new Error(`Invalid record: ${__typename}`)
-  return await buildRoute(model, record)
+  return buildRoute(model, record)
 }
 
 export default routes

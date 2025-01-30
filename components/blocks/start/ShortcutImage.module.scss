@@ -7,7 +7,7 @@
   figure {
     position: relative;
 
-    .image {
+    img {
       height: 100vh;
       width: 100%;
       object-fit: cover;
@@ -17,7 +17,7 @@
       position: absolute;
       display: flex;
       flex-direction: column;
-      align-items: center;
+
       padding-left: var(--margin);
       padding-right: var(--margin);
       padding-bottom: var(--space);
@@ -26,6 +26,7 @@
       width: 100%;
       color: var(--white);
       z-index: 1;
+      background-color: pink;
 
       a {
         color: var(--white);

@@ -9,7 +9,7 @@ export async function POST(req: Request) {
   return await revalidate(req, async (payload, revalidate) => {
 
     const { api_key, entity, entity: { id } } = payload;
-    const paths = [await buildRoute(api_key, entity)]
+    const paths = [buildRoute(api_key, entity)]
     const tags: string[] = [api_key, id].filter(t => t)
     return await revalidate(paths, tags)
   })

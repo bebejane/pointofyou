@@ -14,6 +14,7 @@ declare module '*/contact.gql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
   export const Contact: DocumentNode;
+export const ContactFragment: DocumentNode;
 
   export default defaultDocument;
 }
@@ -34,6 +35,7 @@ declare module '*/english.gql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
   export const English: DocumentNode;
+export const EnglishFragment: DocumentNode;
 
   export default defaultDocument;
 }

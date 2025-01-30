@@ -17,6 +17,42 @@ query Home {
 					links
 					value
 				}
+				link {
+					__typename
+					... on ExternalLinkRecord {
+						id
+						title
+						url
+					}
+					... on InternalLinkRecord {
+						id
+						title
+						link {
+							__typename
+							... on AboutRecord {
+								...AboutFragment
+							}
+							... on ContactRecord {
+								...ContactFragment
+							}
+							... on EducationRecord {
+								...EducationFragment
+							}
+							... on NewsRecord {
+								...NewsFragment
+							}
+							... on ProjectRecord {
+								...ProjectFragment
+							}
+							... on EnglishRecord {
+								...EnglishFragment
+							}
+							... on PressRecord {
+								...PressFragment
+							}
+						}
+					}
+				}
 			}
 			... on ShortcutMovieRecord {
 				id
@@ -28,7 +64,42 @@ query Home {
 					links
 					value
 				}
-				textLink
+				link {
+					__typename
+					... on ExternalLinkRecord {
+						id
+						title
+						url
+					}
+					... on InternalLinkRecord {
+						id
+						title
+						link {
+							__typename
+							... on AboutRecord {
+								...AboutFragment
+							}
+							... on ContactRecord {
+								...ContactFragment
+							}
+							... on EducationRecord {
+								...EducationFragment
+							}
+							... on NewsRecord {
+								...NewsFragment
+							}
+							... on ProjectRecord {
+								...ProjectFragment
+							}
+							... on EnglishRecord {
+								...EnglishFragment
+							}
+							... on PressRecord {
+								...PressFragment
+							}
+						}
+					}
+				}
 			}
 			... on ShortcutNewsRecord {
 				id
@@ -43,7 +114,42 @@ query Home {
 					links
 					value
 				}
-				textLink
+				link {
+					__typename
+					... on ExternalLinkRecord {
+						id
+						title
+						url
+					}
+					... on InternalLinkRecord {
+						id
+						title
+						link {
+							__typename
+							... on AboutRecord {
+								...AboutFragment
+							}
+							... on ContactRecord {
+								...ContactFragment
+							}
+							... on EducationRecord {
+								...EducationFragment
+							}
+							... on NewsRecord {
+								...NewsFragment
+							}
+							... on ProjectRecord {
+								...ProjectFragment
+							}
+							... on EnglishRecord {
+								...EnglishFragment
+							}
+							... on PressRecord {
+								...PressFragment
+							}
+						}
+					}
+				}
 			}
 		}
 	}
