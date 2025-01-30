@@ -31,6 +31,10 @@
 	--body-font: "OceanicText", Times, Serif;
 	--headline-font: "BuzzBlack", Arial, Helvetica, Sans-Serif;
 	--label-font: "Jazz-Medium", Times, Serif;
+
+	@include mq($until: desktop) {
+		--margin: var(--outer-margin);
+	}
 }
 
 body {
