@@ -1,4 +1,4 @@
-import s from "./ButtonBlock.module.scss";
+import s from "./Button.module.scss";
 import cn from "classnames";
 import Link from "next/link";
 
@@ -13,7 +13,7 @@ export default async function ButtonBlock({ data: { text, url } }: Props) {
 				href={url}
 				className={s.button}
 			>
-				<button className={s.button}>{text}</button>
+				<button>{text}</button>
 			</Link>
 		</p>
 	);

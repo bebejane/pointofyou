@@ -25,9 +25,8 @@ export default async function ShortcutProject({ data: { id } }: Props) {
 			id={id}
 			className={s.container}
 		>
-			<div className={s.header}>
+			<header>
 				<h2>Aktuella projekt</h2>
-
 				<div className={s.nav}>
 					<Link href='/projekt'>Visa alla</Link>
 					<button disabled={true}>
@@ -45,7 +44,7 @@ export default async function ShortcutProject({ data: { id } }: Props) {
 						/>
 					</button>
 				</div>
-			</div>
+			</header>
 			<ul className={s.projects}>
 				{allProjects.map(({ id, title, image, slug }) => (
 					<Link

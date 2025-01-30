@@ -1,10 +1,11 @@
 "use client";
 
-import { use, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import s from "./Bubbles.module.scss";
 import cn from "classnames";
 import { IoPlaySharp, IoPauseSharp } from "react-icons/io5";
 import { useAudioStore } from "@/lib/audio-store";
+import { usePathname } from "next/navigation";
 
 export type BubblesProps = {};
 
@@ -67,6 +68,7 @@ const mockBubbles: any[] = [
 ];
 
 export default function Bubbles({}: BubblesProps) {
+	const pathname = usePathname();
 	const [dimensions, setDimensions] = useState<{ width: number; height: number } | null>(null);
 	const [bubbles, setBubbles] = useState(mockBubbles);
 
@@ -97,7 +99,7 @@ export default function Bubbles({}: BubblesProps) {
 				},
 			}))
 		);
-	}, [dimensions]);
+	}, [dimensions, pathname]);
 
 	return (
 		<section className={s.bubbles}>

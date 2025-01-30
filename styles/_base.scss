@@ -19,6 +19,7 @@
 	--margin: calc(calc(2 * var(--grid-unit)) + calc(2 * var(--gutter)));
 	--full-margin: calc(-1 * var(--margin));
 	--full-bleed-margin: calc(calc(-1 * var(--margin)) - var(--outer-margin));
+	--content-width: calc(calc(var(--grid-unit) * 5) + calc(var(--gutter) *5));
 
 	--navbar-height: 4rem;
 	--line-height: 1.35em;
@@ -90,21 +91,6 @@ a {
 	color: var(--foreground);
 }
 
-article p a {
-	text-decoration: underline 1px !important;
-	text-underline-offset: 0.15em;
-	text-decoration-thickness: 1px;
-
-	&:hover {
-		color: var(--beige-dark);
-	}
-}
-
-.intro {
-	margin-bottom: var(--small-space);
-	margin-top: -0.2em;
-}
-
 button {
 	display: flex;
 	align-items: center;
@@ -117,12 +103,12 @@ button {
 	font-family: var(--label-font);
 	cursor: pointer;
 
-
 	&[data-selected="true"] {
 		color: var(--white);
 		background-color: var(--blue);
 	}
 }
+
 
 hr {}
 

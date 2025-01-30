@@ -1,0 +1,53 @@
+.gallery {
+  position: relative;
+  margin-right: var(--full-bleed-margin);
+
+  figcaption {
+    position: absolute;
+    top: 0;
+    left: calc(calc(-1 * var(--margin)) + var(--outer-margin));
+    width: calc(var(--margin) - var(--outer-margin) - var(--gutter));
+    color: var(--blue);
+    z-index: 1;
+    font-family: var(--label-font);
+    font-size: 0.7rem;
+  }
+
+  .swiper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    overflow: hidden;
+    user-select: none;
+    cursor: pointer;
+
+    >div {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-end;
+
+      .slide {
+        position: relative;
+        flex: 0 0 var(--content-width);
+        padding-right: var(--gutter);
+
+        >figure {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: flex-start;
+          overflow: visible;
+          cursor: pointer;
+
+          img {
+            width: 100%;
+
+          }
+        }
+      }
+    }
+  }
+}

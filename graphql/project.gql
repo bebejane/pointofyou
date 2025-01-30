@@ -58,7 +58,7 @@ fragment ProjectFragment on ProjectRecord {
 						...ImageFragment
 					}
 				}
-				... on VideoExternRecord {
+				... on VideoExternalRecord {
 					id
 					caption
 					video {
@@ -71,11 +71,12 @@ fragment ProjectFragment on ProjectRecord {
 						thumbnailUrl
 					}
 				}
-				... on VideoFileRecord {
+				... on VideoInternalRecord {
 					id
 					file {
 						...VideoFragment
 					}
+					caption
 				}
 			}
 			links

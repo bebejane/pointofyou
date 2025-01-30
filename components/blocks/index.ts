@@ -1,3 +1,5 @@
 export { default as Block } from "./Block";
-export { default as ImageBlock } from "./ImageBlock";
-export { default as ButtonBlock } from "./ButtonBlock";
+export { default as Image } from "./Image";
+export { default as Button } from "./Button";
+export { default as VideoExternal } from "./VideoExternal";
+export { default as VideoInternal } from "./VideoInternal";

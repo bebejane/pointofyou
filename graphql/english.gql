@@ -44,7 +44,7 @@ fragment EnglishFragment on EnglishRecord {
 						...ImageFragment
 					}
 				}
-				... on VideoExternRecord {
+				... on VideoExternalRecord {
 					id
 					caption
 					video {
@@ -57,11 +57,12 @@ fragment EnglishFragment on EnglishRecord {
 						thumbnailUrl
 					}
 				}
-				... on VideoFileRecord {
+				... on VideoInternalRecord {
 					id
 					file {
 						...VideoFragment
 					}
+					caption
 				}
 			}
 			links

@@ -54,7 +54,7 @@ fragment EducationFragment on EducationRecord {
 						...ImageFragment
 					}
 				}
-				... on VideoExternRecord {
+				... on VideoExternalRecord {
 					id
 					caption
 					video {
@@ -67,11 +67,12 @@ fragment EducationFragment on EducationRecord {
 						thumbnailUrl
 					}
 				}
-				... on VideoFileRecord {
+				... on VideoInternalRecord {
 					id
 					file {
 						...VideoFragment
 					}
+					caption
 				}
 			}
 			links

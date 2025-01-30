@@ -1,0 +1,13 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+
+  .video {
+    display: block;
+    height: auto;
+    width: 100%;
+    flex: 0 0;
+
+    figcaption {}
+  }
+}

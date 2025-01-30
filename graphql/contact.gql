@@ -39,7 +39,7 @@ fragment ContactFragment on ContactRecord {
 						...ImageFragment
 					}
 				}
-				... on VideoExternRecord {
+				... on VideoExternalRecord {
 					id
 					caption
 					video {
@@ -52,11 +52,12 @@ fragment ContactFragment on ContactRecord {
 						thumbnailUrl
 					}
 				}
-				... on VideoFileRecord {
+				... on VideoInternalRecord {
 					id
 					file {
 						...VideoFragment
 					}
+					caption
 				}
 			}
 			links

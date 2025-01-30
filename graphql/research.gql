@@ -59,7 +59,7 @@ query ResearchAbout {
 							...ImageFragment
 						}
 					}
-					... on VideoExternRecord {
+					... on VideoExternalRecord {
 						id
 						caption
 						video {
@@ -72,11 +72,12 @@ query ResearchAbout {
 							thumbnailUrl
 						}
 					}
-					... on VideoFileRecord {
+					... on VideoInternalRecord {
 						id
 						file {
 							...VideoFragment
 						}
+						caption
 					}
 				}
 				links

@@ -17,16 +17,14 @@
       position: absolute;
       display: flex;
       flex-direction: column;
-
-      padding-left: var(--margin);
-      padding-right: var(--margin);
+      padding-left: calc(var(--margin) + var(--outer-margin));
+      padding-right: calc(var(--margin) + var(--outer-margin));
       padding-bottom: var(--space);
       bottom: 0;
       left: 0;
       width: 100%;
       color: var(--white);
       z-index: 1;
-      background-color: pink;
 
       a {
         color: var(--white);
