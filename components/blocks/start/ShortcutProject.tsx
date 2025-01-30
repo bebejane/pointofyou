@@ -4,7 +4,6 @@ import { Image } from "react-datocms";
 import { apiQuery } from "next-dato-utils/api";
 import { AllProjectsDocument } from "@/graphql";
 import Link from "@node_modules/next/link";
-import Content from "@/components/common/Content";
 
 type Props = {
 	data: ShortcutProjectRecord;

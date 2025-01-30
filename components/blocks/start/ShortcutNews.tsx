@@ -15,7 +15,7 @@ export default async function ShortcutNews({ data: { id } }: Props) {
 			first: 3,
 		},
 	});
-
+	return null;
 	return (
 		<section
 			id={id}

@@ -2,7 +2,10 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  margin-top: calc(-1 * var(--navbar-height));
+
+  @include mq($from: desktop) {
+    margin-top: calc(-1 * var(--navbar-height));
+  }
 
   .header {
     position: relative;
@@ -16,10 +19,14 @@
       top: 50%;
       transform: translate(-50%, -50%);
       line-height: 1;
-      font-size: 100px;
       text-transform: uppercase;
       white-space: nowrap;
       text-align: center;
+      font-size: 100px;
+
+      @include mq($until: desktop) {
+        font-size: 30px;
+      }
     }
 
     .video {

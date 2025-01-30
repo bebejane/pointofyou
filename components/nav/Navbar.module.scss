@@ -1,5 +1,9 @@
 .navbar,
 .sub {
+  @include mq($until: desktop) {
+    display: none;
+  }
+
   position: fixed;
   top: 0;
   left: 0;
@@ -64,6 +68,12 @@
   align-items: center;
   justify-content: flex-end;
   flex: 0 0 var(--margin);
+
+  a:hover {
+
+    color: var(--blue);
+  }
+
 }
 
 .sub {

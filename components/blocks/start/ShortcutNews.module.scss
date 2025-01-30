@@ -23,10 +23,17 @@
     display: flex;
     flex-direction: row;
     list-style: none;
-    width: 100%;
 
     a {
       flex: 0 0 33.3%;
+    }
+
+    @include mq($until: desktop) {
+      flex-direction: column;
+
+      a {
+        flex: 0 0 100%;
+      }
     }
   }
 }
