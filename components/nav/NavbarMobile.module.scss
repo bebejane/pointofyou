@@ -11,6 +11,7 @@
   align-items: center;
   margin-bottom: var(--space);
   width: 100vw;
+  height: var(--navbar-height);
   padding: var(--outer-margin);
   z-index: var(--z-hamburger);
 
@@ -90,7 +91,14 @@
         flex-direction: column;
         margin-left: 0.5rem;
 
-        li {}
+        li {
+          &.active {
+            a {
+              color: pink;
+            }
+
+          }
+        }
       }
     }
   }

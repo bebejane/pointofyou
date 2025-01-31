@@ -1,0 +1,88 @@
+.container {
+  width: var(--full-width);
+  margin-left: var(--full-bleed-margin);
+  margin-right: var(--full-bleed-margin);
+  overflow: hidden;
+
+  header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+
+    h2 {
+      flex: 1 1 100%
+    }
+
+    a {
+      white-space: nowrap;
+      color: var(--blue);
+    }
+
+    .nav {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      button {
+        all: unset;
+        cursor: pointer;
+
+      }
+
+      .back {
+        transform: rotate(180deg);
+      }
+
+      .forward {}
+    }
+
+
+  }
+
+  .swiper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    overflow: hidden;
+    user-select: none;
+    cursor: pointer;
+
+    >div {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-end;
+
+      .slide {
+        position: relative;
+        flex: 0 0 50%;
+
+        @include mq($until: desktop) {
+          overflow: hidden;
+          flex: 0 0 100%;
+        }
+
+        figure {
+          position: relative;
+          flex: 0 0 33.3%;
+
+          .image {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+          }
+
+          figcaption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            color: var(--white);
+            padding: var(--outer-margin);
+          }
+        }
+      }
+    }
+  }
+}

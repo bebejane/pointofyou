@@ -46,10 +46,12 @@ export default function Footer({ menu }: { menu: Menu }) {
 					</span>
 					<span className={s.about}>
 						Ett projekt av Institutet för Framtidsstudier. &nbsp;
-						<img
-							src='/images/framtidsstudier.svg'
-							alt='framtidsstudier'
-						/>
+						<figure>
+							<img
+								src='/images/framtidsstudier.svg'
+								alt='framtidsstudier'
+							/>
+						</figure>
 					</span>
 				</div>
 			</footer>

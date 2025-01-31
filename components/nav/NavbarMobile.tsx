@@ -2,7 +2,7 @@
 
 import s from "./NavbarMobile.module.scss";
 import cn from "classnames";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Menu, MenuItem } from "@/lib/menu";
@@ -13,13 +13,21 @@ export type NavbarMobileProps = {
 };
 
 export default function NavbarMobile({ menu }: NavbarMobileProps) {
-	const pathname = usePathname();
-	const [selected, setSelected] = useState<string | null>(null);
+	const path = usePathname();
+	const qs = useSearchParams();
+	const pathname = `${path}${qs.size > 0 ? `?${qs.toString()}` : ""}`;
+	const selectedSubFromPathname = menu
+		.map(({ sub }) => sub)
+		.flat()
+		.find(({ slug }) => pathname === slug)?.id;
+	const defaultSelected =
+		menu.find(({ sub }) => sub?.find(({ id }) => id === selectedSubFromPathname))?.id ?? null;
+	const [selected, setSelected] = useState<string | null>(defaultSelected ?? null);
 	const [open, setOpen] = useState(false);
-	const sub = menu.find(({ id }) => id === selected)?.sub;
 
 	useEffect(() => {
 		setOpen(false);
+		setSelected(defaultSelected ?? null);
 	}, [pathname]);
 
 	return (
@@ -53,15 +61,13 @@ export default function NavbarMobile({ menu }: NavbarMobileProps) {
 								<>
 									<span>{title}</span>
 									{selected === id && (
-										<ul>
+										<ul onClick={(e) => e.stopPropagation()}>
 											{sub.map(({ id, title, href, slug }) => (
-												<li key={id}>
-													<Link
-														href={slug ?? href}
-														onClick={() => setSelected(null)}
-													>
-														{title}
-													</Link>
+												<li
+													key={id}
+													className={cn(pathname.startsWith(slug) && s.active)}
+												>
+													<Link href={slug ?? href}>{title}</Link>
 												</li>
 											))}
 										</ul>
@@ -74,23 +80,6 @@ export default function NavbarMobile({ menu }: NavbarMobileProps) {
 					<li>
 						<Link href={"/english"}>EN</Link>
 					</li>
-				</ul>
-			</nav>
-			<nav
-				className={cn(s.sub, sub && s.open)}
-				onMouseLeave={() => setSelected(null)}
-			>
-				<ul>
-					{sub?.map(({ id, title, href, slug }) => (
-						<li key={id}>
-							<Link
-								href={slug ?? href}
-								onClick={() => setSelected(null)}
-							>
-								{title}
-							</Link>
-						</li>
-					))}
 				</ul>
 			</nav>
 		</>

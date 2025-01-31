@@ -15,10 +15,15 @@
     flex-direction: column;
     flex: 0 0 70%;
 
+
     h2 {
       margin: 0;
       padding: 0;
       font-size: 4rem;
+
+      @include mq($until: desktop) {
+        font-size: 3rem;
+      }
     }
 
     ul {
@@ -30,6 +35,9 @@
       flex-direction: row;
       justify-content: space-between;
 
+      @include mq($until: desktop) {
+        flex-direction: column;
+      }
 
       ul {
         display: flex;
@@ -96,11 +104,26 @@
       flex: 0 0 70%;
     }
 
+    @include mq($until: desktop) {
+      flex-direction: column;
+      align-items: center;
+
+      .text {
+        flex: 0 0;
+
+      }
+    }
+
     .about {
       display: flex;
       justify-content: flex-end;
       flex: 1 1 auto;
       white-space: nowrap;
+
+      @include mq($until: desktop) {
+        flex-direction: column;
+        align-items: center;
+      }
     }
   }
 }
