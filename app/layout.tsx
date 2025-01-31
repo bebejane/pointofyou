@@ -8,6 +8,7 @@ import Footer from "../components/nav/Footer";
 import { buildMenu } from "../lib/menu";
 import Navbar from "../components/nav/Navbar";
 import NavbarMobile from "../components/nav/NavbarMobile";
+import { Suspense } from "react";
 
 export type LayoutProps = {
 	children: React.ReactNode;
@@ -20,8 +21,10 @@ export default async function RootLayout({ children }: LayoutProps) {
 		<>
 			<html lang='en'>
 				<body id='root'>
-					<Navbar menu={menu} />
-					<NavbarMobile menu={menu} />
+					<Suspense fallback={null}>
+						<Navbar menu={menu} />
+						<NavbarMobile menu={menu} />
+					</Suspense>
 					<main className={s.main}>{children}</main>
 					<Footer menu={menu} />
 				</body>
