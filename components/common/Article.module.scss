@@ -3,19 +3,18 @@
 
   header {
     position: relative;
-    margin-left: var(--full-bleed-margin);
-    margin-right: var(--full-bleed-margin);
 
     h1 {
       position: absolute;
       top: 0;
       left: 0;
       z-index: 1;
-      margin-left: var(--margin);
-      padding: var(--outer-margin);
     }
 
     figure {
+      margin-left: var(--full-bleed-margin);
+      margin-right: var(--full-bleed-margin);
+
       img {
         height: 80vh;
         width: 100%;

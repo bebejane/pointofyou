@@ -3,8 +3,6 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-right: var(--full-bleed-margin);
-    margin-left: var(--full-bleed-margin);
 
     h1 {
       flex: 1 1 auto;
@@ -29,6 +27,7 @@
     margin-right: var(--full-bleed-margin);
     list-style: none;
 
+
     @include mq($until: desktop) {
       flex-direction: column;
     }
@@ -36,6 +35,7 @@
     li {
       position: relative;
       flex: 0 0 50%;
+
 
       @include mq($until: desktop) {
         flex: 0 0 100%;
@@ -46,6 +46,8 @@
         display: block;
         width: 100%;
         height: 100%;
+
+
 
         .picture {
           object-fit: cover;
@@ -59,7 +61,7 @@
           z-index: 1;
           display: flex;
           flex-direction: column;
-          padding: var(--outer-margin);
+
 
           h2 {
             flex: 1 1 auto;
