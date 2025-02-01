@@ -1,8 +1,5 @@
 .navbar,
 .sub {
-  @include mq($until: desktop) {
-    display: none;
-  }
 
   position: fixed;
   top: 0;
@@ -38,6 +35,11 @@
         color: var(--blue) !important;
       }
     }
+
+    @include mq($until: desktop) {
+      display: none;
+    }
+
   }
 
   .menu {

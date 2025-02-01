@@ -9,6 +9,7 @@ import { buildMenu } from "../lib/menu";
 import Navbar from "../components/nav/Navbar";
 import NavbarMobile from "../components/nav/NavbarMobile";
 import { Suspense } from "react";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
 
 export type LayoutProps = {
 	children: React.ReactNode;
@@ -25,7 +26,9 @@ export default async function RootLayout({ children }: LayoutProps) {
 						<Navbar menu={menu} />
 						<NavbarMobile menu={menu} />
 					</Suspense>
-					<main className={s.main}>{children}</main>
+					<main className={s.main}>
+						<NuqsAdapter>{children}</NuqsAdapter>
+					</main>
 					<Footer menu={menu} />
 				</body>
 			</html>

@@ -2,8 +2,8 @@
 
 import s from "./FilterBar.module.scss";
 import cn from "classnames";
-import { useOptimistic } from "react";
 import Link from "next/link";
+import { useQueryState } from "nuqs";
 
 type Props = {
 	value: string;
@@ -21,8 +21,12 @@ export default function FilterBar({ options, href, value }: Props) {
 			<ul>
 				{options.map(({ id, label }, idx) => (
 					<li key={idx}>
-						<Link href={`${href}?filter=${id}`}>
-							<button data-selected={value === id}>{label}</button>
+						<Link
+							href={`${href}?filter=${id}`}
+							shallow={true}
+							prefetch={true}
+						>
+							<button aria-selected={value === id}>{label}</button>
 						</Link>
 					</li>
 				))}

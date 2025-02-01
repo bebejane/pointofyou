@@ -1,8 +1,4 @@
 .topbar {
-  @include mq($from: desktop) {
-    display: none;
-  }
-
   position: fixed;
   top: 0;
   left: 0;
@@ -29,12 +25,15 @@
       color: var(--white);
     }
   }
-}
 
-.navbar {
   @include mq($from: desktop) {
     display: none;
   }
+
+}
+
+.navbar {
+
 
   position: fixed;
   top: 0;
@@ -101,5 +100,9 @@
         }
       }
     }
+  }
+
+  @include mq($from: desktop) {
+    display: none;
   }
 }

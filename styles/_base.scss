@@ -109,7 +109,7 @@ button {
 	font-family: var(--label-font);
 	cursor: pointer;
 
-	&[data-selected="true"] {
+	&[aria-selected="true"] {
 		color: var(--white);
 		background-color: var(--blue);
 	}
