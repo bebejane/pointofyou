@@ -21,6 +21,7 @@ export default async function ProjectsPage({ searchParams }) {
 		({ active }) =>
 			filter === "all" || (filter === "active" && active) || (filter === "finished" && !active)
 	);
+	console.log("filter", filter);
 
 	return (
 		<>
@@ -48,6 +49,7 @@ export default async function ProjectsPage({ searchParams }) {
 										data={image.responsiveImage}
 										pictureClassName={s.picture}
 									/>
+
 									<figcaption>
 										<h2>{title}</h2>
 										<Content

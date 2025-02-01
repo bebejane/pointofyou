@@ -23,13 +23,17 @@
     list-style: none;
     flex: 1 1 auto;
 
+
+
     li {
       cursor: pointer;
       padding-right: 1rem;
 
+
       &:last-child {
         padding-right: 0;
       }
+
 
       &.active>* {
         color: var(--blue) !important;
@@ -94,6 +98,8 @@
   }
 
   ul {
-    li {}
+    li.active>a {
+      color: pink !important
+    }
   }
 }

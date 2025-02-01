@@ -2,10 +2,10 @@
 
 import s from "./NavbarMobile.module.scss";
 import cn from "classnames";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Menu, MenuItem } from "@/lib/menu";
+import { Menu, getSelectedMenuItem } from "@/lib/menu";
 import Hamburger from "hamburger-react";
 
 export type NavbarMobileProps = {
@@ -14,21 +14,17 @@ export type NavbarMobileProps = {
 
 export default function NavbarMobile({ menu }: NavbarMobileProps) {
 	const path = usePathname();
-	const qs = useSearchParams();
-	const pathname = `${path}${qs.size > 0 ? `?${qs.toString()}` : ""}`;
-	const selectedSubFromPathname = menu
-		.map(({ sub }) => sub)
-		.flat()
-		.find(({ slug }) => pathname === slug)?.id;
-	const defaultSelected =
-		menu.find(({ sub }) => sub?.find(({ id }) => id === selectedSubFromPathname))?.id ?? null;
-	const [selected, setSelected] = useState<string | null>(defaultSelected ?? null);
+	const qs = useSearchParams().toString();
+	const pathname = `${path}${qs.length > 0 ? `?${qs}` : ""}`;
+	const [selected, setSelected] = useState<string | null>(
+		getSelectedMenuItem(menu, path, qs)?.id ?? null
+	);
 	const [open, setOpen] = useState(false);
 
 	useEffect(() => {
 		setOpen(false);
-		setSelected(defaultSelected ?? null);
-	}, [pathname]);
+		setSelected(getSelectedMenuItem(menu, path, qs)?.id ?? null);
+	}, [path, qs]);
 
 	return (
 		<>
