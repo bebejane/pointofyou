@@ -37,15 +37,16 @@ export default function NavbarMobile({ menu }: NavbarMobileProps) {
 						/>
 					</Link>
 				</figure>
-				<div className={s.close}>
+				<div className={s.hamburger}>
 					<Hamburger
 						toggled={open}
 						color={open ? "white" : "black"}
+						size={36}
 						onToggle={(state) => setOpen(state)}
 					/>
 				</div>
 			</div>
-			<nav className={cn(s.navbar, open && s.open)}>
+			<nav className={cn(s.navbarMobile, open && s.open)}>
 				<ul className={s.menu}>
 					{menu.map(({ id, title, href, slug, sub }) => (
 						<li
@@ -61,7 +62,7 @@ export default function NavbarMobile({ menu }: NavbarMobileProps) {
 											{sub.map(({ id, title, href, slug }) => (
 												<li
 													key={id}
-													className={cn(pathname.startsWith(slug) && s.active)}
+													className={cn(pathname === slug && s.active)}
 												>
 													<Link href={slug ?? href}>{title}</Link>
 												</li>
@@ -73,7 +74,7 @@ export default function NavbarMobile({ menu }: NavbarMobileProps) {
 							{!sub && <Link href={slug ?? href}>{title}</Link>}
 						</li>
 					))}
-					<li>
+					<li className={cn(pathname === "/english" && s.active)}>
 						<Link href={"/english"}>EN</Link>
 					</li>
 				</ul>

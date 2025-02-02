@@ -2,10 +2,9 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  height: 100vh;
   margin-left: var(--full-bleed-margin);
   margin-right: var(--full-bleed-margin);
-  height: 100vh;
-
 
   .content {
     position: absolute;

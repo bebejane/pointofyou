@@ -34,7 +34,7 @@
 
 	@include mq($until: desktop) {
 		--margin: var(--outer-margin);
-		--navbar-height: 3rem;
+		--navbar-height: calc(48px + var(--outer-margin));
 	}
 }
 
@@ -63,10 +63,10 @@ main {
 }
 
 article {
-	@include mq($from: desktop) {
-		margin-right: var(--margin);
-		margin-left: var(--margin);
-	}
+	//@include mq($from: desktop) {
+	margin-right: var(--margin);
+	margin-left: var(--margin);
+	//}
 }
 
 ::-webkit-scrollbar {

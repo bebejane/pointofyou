@@ -92,6 +92,6 @@ export const getSelectedMenuItem = (menu: Menu, pathname: string, qs: string): M
   const selectedSubFromPathname = menu
     .map(({ sub }) => sub)
     .flat()
-    .find(({ slug }) => pathname === slug)?.id;
+    .find(({ slug }) => fullPath === slug)?.id;
   return menu.find(({ sub }) => sub?.find(({ id }) => id === selectedSubFromPathname)) ?? null;
 }
