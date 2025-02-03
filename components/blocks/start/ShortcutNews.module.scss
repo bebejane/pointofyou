@@ -30,6 +30,11 @@
       padding-right: 2rem;
     }
 
+    .content {
+      display: inline;
+    }
+
+
     @include mq($until: desktop) {
       flex-direction: column;
 

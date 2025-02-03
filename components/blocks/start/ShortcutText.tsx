@@ -13,8 +13,13 @@ export default async function ShortcutText({ data: { id, text, link } }: Props) 
 			id={id}
 			className={s.container}
 		>
-			<Content content={text} className="intro" />
-			<DatoLink link={link} />
+			<Content
+				content={text}
+				className='intro'
+			/>
+			<DatoLink link={link}>
+				<span>{link.title}</span>
+			</DatoLink>
 		</section>
 	);
 }

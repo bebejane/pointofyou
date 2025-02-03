@@ -8,28 +8,30 @@ type Props = {
 	data: ShortcutImageRecord;
 };
 
-export default async function ShortcutImage({ data: { id, text, image, title, link } }: Props) {
+export default async function ShortcutImage({ data: { id, images } }: Props) {
 	return (
 		<section
 			id={id}
 			className={s.container}
 		>
-			<DatoLink link={link}>
-				<figure>
-					{image.responsiveImage && (
-						<Image
-							data={image.responsiveImage}
-							className={s.image}
-							imgClassName={s.picture}
-							intersectionMargin={`0px 0px 100% 0px`}
-						/>
-					)}
-					<figcaption>
-						<Content content={text} />
-						<span>{title}</span>
-					</figcaption>
-				</figure>
-			</DatoLink>
+			{images.map(({ id, image, link, title, text }) => (
+				<DatoLink link={link}>
+					<figure>
+						{image.responsiveImage && (
+							<Image
+								data={image.responsiveImage}
+								className={s.image}
+								imgClassName={s.picture}
+								intersectionMargin={`0px 0px 100% 0px`}
+							/>
+						)}
+						<figcaption>
+							<Content content={text} />
+							<span>{title}</span>
+						</figcaption>
+					</figure>
+				</DatoLink>
+			))}
 		</section>
 	);
 }

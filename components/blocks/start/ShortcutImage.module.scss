@@ -4,32 +4,49 @@
   margin-right: var(--full-bleed-margin);
   margin-top: var(--space);
   display: flex;
+  flex-direction: row;
 
-  figure {
-    position: relative;
+  a {
+    flex: 0 0 50%;
 
-    img {
-      height: 50vh;
-      width: 50vw;
-      object-fit: cover;
-    }
 
-    figcaption {
-      position: absolute;
-      display: flex;
-      flex-direction: column;
-      padding-left: calc(var(--margin) + var(--outer-margin));
-      padding-right: calc(var(--margin) + var(--outer-margin));
-      padding-bottom: var(--space);
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      color: var(--white);
-      z-index: 1;
+    figure {
+      position: relative;
 
-      a {
+      img {
+        height: 50vh;
+        width: 50vw;
+        object-fit: cover;
+      }
+
+      figcaption {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        padding-left: calc(var(--margin) + var(--outer-margin));
+        padding-right: calc(var(--margin) + var(--outer-margin));
+        padding-bottom: var(--space);
+        bottom: 0;
+        left: 0;
+        width: 100%;
         color: var(--white);
+        z-index: 1;
+
+        a {
+          color: var(--white);
+        }
       }
     }
   }
+
+  @include mq($until: desktop) {
+    flex-direction: column;
+
+    a {
+      flex: 0 0 100%;
+    }
+
+
+  }
+
 }

@@ -8,47 +8,49 @@ query Home {
 			__typename
 			... on ShortcutImageRecord {
 				id
-				image {
-					...ImageFragment
-				}
-				title
-				text {
-					blocks
-					links
-					value
-				}
-				link {
-					__typename
-					... on ExternalLinkRecord {
-						id
-						title
-						url
+				images {
+					image {
+						...ImageFragment
 					}
-					... on InternalLinkRecord {
-						id
-						title
-						link {
-							__typename
-							... on AboutRecord {
-								...AboutFragment
-							}
-							... on ContactRecord {
-								...ContactFragment
-							}
-							... on EducationRecord {
-								...EducationFragment
-							}
-							... on NewsRecord {
-								...NewsFragment
-							}
-							... on ProjectRecord {
-								...ProjectFragment
-							}
-							... on EnglishRecord {
-								...EnglishFragment
-							}
-							... on PressRecord {
-								...PressFragment
+					title
+					text {
+						blocks
+						links
+						value
+					}
+					link {
+						__typename
+						... on ExternalLinkRecord {
+							id
+							title
+							url
+						}
+						... on InternalLinkRecord {
+							id
+							title
+							link {
+								__typename
+								... on AboutRecord {
+									...AboutFragment
+								}
+								... on ContactRecord {
+									...ContactFragment
+								}
+								... on EducationRecord {
+									...EducationFragment
+								}
+								... on NewsRecord {
+									...NewsFragment
+								}
+								... on ProjectRecord {
+									...ProjectFragment
+								}
+								... on EnglishRecord {
+									...EnglishFragment
+								}
+								... on PressRecord {
+									...PressFragment
+								}
 							}
 						}
 					}

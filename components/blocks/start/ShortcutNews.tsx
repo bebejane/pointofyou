@@ -4,6 +4,7 @@ import { apiQuery } from "next-dato-utils/api";
 import { AllNewsDocument } from "@/graphql";
 import Link from "@node_modules/next/link";
 import Content from "@/components/common/Content";
+import { format } from "date-fns";
 
 type Props = {
 	data: ShortcutNewsRecord;
@@ -26,13 +27,17 @@ export default async function ShortcutNews({ data: { id } }: Props) {
 				<Link href='/nyheter/aktuellt'>Visa alla</Link>
 			</div>
 			<ul className={s.news}>
-				{allNews.map(({ id, title, slug, intro }) => (
+				{allNews.map(({ id, title, slug, intro, _firstPublishedAt }) => (
 					<Link
 						key={id}
 						href={`/nyheter/aktuellt/${slug}`}
 					>
 						<h3>{title}</h3>
-						<Content content={intro} className="small" />
+						<span className={s.date}>{format(new Date(_firstPublishedAt), "MM/dd yyyy")} · </span>
+						<Content
+							content={intro}
+							className={cn("small", s.content)}
+						/>
 					</Link>
 				))}
 			</ul>
