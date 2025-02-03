@@ -1,14 +1,29 @@
 .press {
   ul {
     list-style: none;
+    margin-right: calc(var(--full-bleed-margin) + var(--outer-margin));
+
+
     li {
+      display: flex;
+      flex-direction: row;
       border-top: 1px solid var(--blue);
       padding-top: var(--space);
+      padding-bottom: var(--space);
 
       span {
         display: block;
-        padding-bottom: 1em;
+        padding-bottom: var(--space-small);
       }
+
+      figure {
+        flex: 0 0 200px;
+
+        img {
+          object-fit: cover;
+        }
+      }
+
     }
   }
 }

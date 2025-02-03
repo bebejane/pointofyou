@@ -7,6 +7,7 @@ export type MenuItem = {
   slug?: string,
   href?: string,
   sub?: MenuItem[],
+  hideSub?: boolean
 }
 
 export type Menu = MenuItem[]
@@ -34,6 +35,7 @@ export const buildMenu = async (): Promise<Menu> => {
     id: 'projects',
     title: 'Projekt',
     slug: '/projekt',
+    hideSub: true,
     sub: [{
       id: 'active',
       title: 'Pågående',
@@ -56,11 +58,15 @@ export const buildMenu = async (): Promise<Menu> => {
     id: 'research',
     title: 'Forskning',
     slug: '/forskning',
-    sub: allResearchCategories.map(({ id, slug, title }) => ({
+    sub: [{
+      id: 'about-research',
+      title: 'Om Forskning',
+      slug: '/forskning/om'
+    }].concat(allResearchCategories.map(({ id, slug, title }) => ({
       id,
       title,
       slug: `/forskning?filter=${slug}`,
-    })),
+    }))),
   }, {
     id: 'news',
     title: 'Nyheter',

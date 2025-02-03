@@ -11,7 +11,7 @@ import { DraftMode } from "next-dato-utils/components";
 import Article from "@/components/common/Article";
 import { format } from "date-fns";
 
-export default async function NewsPage({ searchParams }) {
+export default async function NewsPage() {
 	const { allNews, draftUrl } = await apiQuery<AllNewsQuery, AllNewsQueryVariables>(
 		AllNewsDocument,
 		{ all: true }
@@ -24,13 +24,16 @@ export default async function NewsPage({ searchParams }) {
 				className={s.news}
 			>
 				<ul>
-					{allNews.map(({ id, title, slug, intro, _firstPublishedAt }) => (
+					{allNews.map(({ id, title, slug, image, intro, _firstPublishedAt }) => (
 						<li key={id}>
-							<span className="meta">{format(new Date(_firstPublishedAt), "MM/dd yyyy")}</span>
-							<Link href={`/nyheter/aktuellt/${slug}`}>
-								<h2>{title}</h2>
-								<Content content={intro} />
-							</Link>
+							<div>
+								<span className='meta'>{format(new Date(_firstPublishedAt), "MM/dd yyyy")}</span>
+								<Link href={`/nyheter/aktuellt/${slug}`}>
+									<h2>{title}</h2>
+									<Content content={intro} />
+								</Link>
+							</div>
+							<figure>{image && <Image data={image.responsiveImage} />}</figure>
 						</li>
 					))}
 				</ul>
