@@ -68,11 +68,24 @@
 
           }
 
+          .status {
+            display: inline;
+            text-transform: uppercase;
+            padding-right: 1em;
+          }
+
           .intro {
+            display: inline;
             flex: 0 1;
             margin: 0;
+          }
+
+          .intro,
+          .status {
             color: var(--white);
           }
+
+
         }
       }
     }

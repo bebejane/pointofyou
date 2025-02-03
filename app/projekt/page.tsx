@@ -53,10 +53,13 @@ export default async function ProjectsPage({ searchParams }) {
 
 									<figcaption>
 										<h2>{title}</h2>
-										<Content
-											content={intro}
-											className={classNames(s.intro, "small", "sans")}
-										/>
+										<div>
+											<span className={s.status}>{active ? "Pågående" : "Avslutad"}</span>
+											<Content
+												content={intro}
+												className={classNames(s.intro, "small", "sans")}
+											/>
+										</div>
 									</figcaption>
 								</figure>
 							</Link>

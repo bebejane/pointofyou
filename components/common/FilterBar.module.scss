@@ -1,8 +1,11 @@
 .filter {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
   font-family: var(--label-font);
+
+  .wrap {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
 
   .show {
     margin-right: 1rem;
@@ -19,6 +22,10 @@
 
       &:last-child {
         margin-right: 0;
+      }
+
+      button {
+        margin-top: 0;
       }
     }
   }
