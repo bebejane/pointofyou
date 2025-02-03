@@ -1,5 +1,14 @@
 .press {
   ul {
     list-style: none;
+    li {
+      border-top: 1px solid var(--blue);
+      padding-top: var(--space);
+
+      span {
+        display: block;
+        padding-bottom: 1em;
+      }
+    }
   }
 }

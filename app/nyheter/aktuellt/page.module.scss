@@ -1,5 +1,15 @@
 .news {
   ul {
     list-style: none;
+    li {
+      border-top: 1px solid var(--blue);
+      padding-top: var(--space);
+      padding-bottom: var(--space);
+
+      span {
+        display: block;
+        padding-bottom: var(--space-small);
+      }
+    }
   }
 }

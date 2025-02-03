@@ -24,7 +24,7 @@ export default async function ShortcutMovie({ data: { id, text, movie, link } }:
 				<div className={s.content}>
 					<Content
 						content={text}
-						className={s.text}
+						className={cn(s.text, "intro")}
 					/>
 					<span>{link.title}</span>
 				</div>

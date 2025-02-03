@@ -15,7 +15,6 @@
     flex-direction: column;
     flex: 0 0 70%;
 
-
     h2 {
       margin: 0;
       padding: 0;
@@ -30,10 +29,11 @@
       list-style: none;
     }
 
-    >ul {
+    > ul {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
+      margin-top: var(--space-small);
 
       @include mq($until: desktop) {
         flex-direction: column;
@@ -42,16 +42,17 @@
       ul {
         display: flex;
         flex-direction: column;
+        padding-top: 0.2rem;
 
         li {
           text-overflow: ellipsis;
           overflow: hidden;
           white-space: nowrap;
-          font-family: var(--label-font);
+          font-family: var(--sans-font);
+          font-size: 0.6rem;
         }
       }
     }
-
   }
 
   .bubble {
@@ -110,7 +111,6 @@
 
       .text {
         flex: 0 0;
-
       }
     }
 

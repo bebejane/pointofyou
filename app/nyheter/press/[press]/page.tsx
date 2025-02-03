@@ -28,7 +28,7 @@ export default async function PressPage({ params }: PressProps) {
 				intro={intro}
 				link={{
 					href: "/nyheter/press",
-					text: "Visa alla press nyheter",
+					text: "Visa alla",
 				}}
 			/>
 			<DraftMode url={draftUrl} />

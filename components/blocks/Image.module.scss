@@ -1,12 +1,15 @@
 .image {
   position: relative;
-  margin-left: var(--full-bleed-margin);
-  margin-right: var(--full-bleed-margin);
+  //margin-left: var(--full-bleed-margin);
+  //margin-right: var(--full-bleed-margin);
+  margin-bottom: var(--space-big);
+  margin-top: var(--space);
 
-  figcaption {}
+  figcaption {
+    padding-top: var(--space-small);
+  }
 
   img {
     width: 100%;
   }
-
 }

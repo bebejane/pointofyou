@@ -9,14 +9,16 @@
       top: 0;
       left: 0;
       z-index: 1;
+      padding-top: 1.2em;
     }
 
     figure {
       margin-left: var(--full-bleed-margin);
       margin-right: var(--full-bleed-margin);
+      margin-bottom: var(--space);
 
       img {
-        height: 80vh;
+        height: calc(100vh - var(--navbar-height));
         width: 100%;
         object-fit: cover;
       }

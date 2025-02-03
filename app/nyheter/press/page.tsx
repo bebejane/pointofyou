@@ -23,11 +23,10 @@ export default async function PressPage({ searchParams }) {
 				title='Press'
 				className={s.press}
 			>
-				<hr />
 				<ul>
 					{allPresses.map(({ id, title, slug, intro, _firstPublishedAt }) => (
 						<li key={id}>
-							<span>{format(new Date(_firstPublishedAt), "MM/dd yyyy")}</span>
+							<span className="meta">{format(new Date(_firstPublishedAt), "MM/dd yyyy")}</span>
 							<Link href={`/nyheter/press/${slug}`}>
 								<h2>{title}</h2>
 								<Content content={intro} />

@@ -43,7 +43,7 @@ export default function Article({
 			{intro && (
 				<Content
 					content={intro}
-					className={s.intro}
+					className={"intro"}
 				/>
 			)}
 			{content && (

@@ -1,6 +1,5 @@
 .navbar,
 .sub {
-
   position: fixed;
   top: 0;
   left: 0;
@@ -12,9 +11,15 @@
   padding: var(--outer-margin);
   background-color: var(--white);
   z-index: var(--z-navbar);
+  border-bottom: 1px solid var(--blue);
 
   .logo {
     flex: 0 0 calc(var(--margin));
+    &:hover {
+      img {
+        transform: scaleX(-1);
+      }
+    }
   }
 
   ul {
@@ -23,19 +28,15 @@
     list-style: none;
     flex: 1 1 auto;
 
-
-
     li {
       cursor: pointer;
-      padding-right: 1rem;
-
+      padding-right: 1.5rem;
 
       &:last-child {
         padding-right: 0;
       }
 
-
-      &.active>* {
+      &.active > * {
         color: var(--blue) !important;
       }
     }
@@ -43,7 +44,6 @@
     @include mq($until: desktop) {
       display: none;
     }
-
   }
 
   .menu {
@@ -76,10 +76,8 @@
   flex: 0 0 var(--margin);
 
   a:hover {
-
     color: var(--blue);
   }
-
 }
 
 .sub {
@@ -98,8 +96,8 @@
   }
 
   ul {
-    li.active>a {
-      color: pink !important
+    li.active > a {
+      color: pink !important;
     }
   }
 }

@@ -32,7 +32,7 @@ export default async function ShortcutNews({ data: { id } }: Props) {
 						href={`/nyheter/aktuellt/${slug}`}
 					>
 						<h3>{title}</h3>
-						<Content content={intro} />
+						<Content content={intro} className="small" />
 					</Link>
 				))}
 			</ul>

@@ -2,16 +2,16 @@
   position: relative;
   margin-left: var(--full-bleed-margin);
   margin-right: var(--full-bleed-margin);
-  height: 100vh;
+  margin-top: var(--space);
+  display: flex;
 
   figure {
     position: relative;
 
     img {
-      height: 100vh;
-      width: 100%;
+      height: 50vh;
+      width: 50vw;
       object-fit: cover;
-
     }
 
     figcaption {

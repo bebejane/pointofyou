@@ -1,6 +1,7 @@
 .video {
   display: block;
   height: auto;
+  margin-bottom: var(--space-big);
 
   .player {
     width: 100%;
@@ -11,5 +12,7 @@
     }
   }
 
-  .caption {}
+  .caption {
+    padding-top: var(--space-small);
+  }
 }

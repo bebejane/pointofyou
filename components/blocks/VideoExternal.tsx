@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { useWindowSize } from "rooks";
 import Youtube from "react-youtube";
 import Vimeo from "@u-wave/react-vimeo";
+import classNames from "classnames";
 
 export default function VideoExternal({ data, editable }) {
 	const ref = useRef<HTMLDivElement | null>(null);
@@ -47,7 +48,7 @@ export default function VideoExternal({ data, editable }) {
 				/>
 			) : null}
 			{title && (
-				<div className={s.caption}>
+				<div className={classNames(s.caption, "small", "sans")}>
 					<figcaption>{title}</figcaption>
 				</div>
 			)}

@@ -23,11 +23,10 @@ export default async function NewsPage({ searchParams }) {
 				title='Aktuellt'
 				className={s.news}
 			>
-				<hr />
 				<ul>
 					{allNews.map(({ id, title, slug, intro, _firstPublishedAt }) => (
 						<li key={id}>
-							<span>{format(new Date(_firstPublishedAt), "MM/dd yyyy")}</span>
+							<span className="meta">{format(new Date(_firstPublishedAt), "MM/dd yyyy")}</span>
 							<Link href={`/nyheter/aktuellt/${slug}`}>
 								<h2>{title}</h2>
 								<Content content={intro} />

@@ -3,6 +3,7 @@
   flex-direction: column;
   margin-left: var(--full-margin);
   margin-right: var(--full-margin);
+  margin-top: var(--space);
 
   .header {
     display: flex;
@@ -10,7 +11,7 @@
     width: 100%;
 
     h2 {
-      flex: 1 1 100%
+      flex: 1 1 100%;
     }
 
     a {
@@ -26,6 +27,7 @@
 
     a {
       flex: 0 0 33.3%;
+      padding-right: 2rem;
     }
 
     @include mq($until: desktop) {

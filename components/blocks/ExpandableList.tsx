@@ -24,8 +24,8 @@ export default function ExpandableList({ data }: ExpandableListProps) {
 					onClick={() => toggle(item.id)}
 				>
 					<div className={s.item}>
-						<div className={s.title}>{item.title}</div>
-						<div className={s.icon}>+</div>
+						<div className={s.title}><p><strong>{item.title}</strong></p></div>
+						<div className={s.icon}><p><strong>+</strong></p></div>
 					</div>
 
 					<Content

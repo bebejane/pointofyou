@@ -3,13 +3,13 @@
 
 :root {
 	--black: #161616;
-	--white: #FFFFE4;
+	--white: #ffffe4;
 	--red: #bf0000;
-	--blue: #2B1E9B;
+	--blue: #2b1e9b;
 	--background: var(--white);
 	--foreground: var(--black);
 
-	--outer-margin: 1rem;
+	--outer-margin: 2rem;
 	--gutter: 0.6rem;
 	--grid-unit: calc(100vw / 10);
 	--space: 2rem;
@@ -19,7 +19,7 @@
 	--margin: calc(calc(2 * var(--grid-unit)) + calc(2 * var(--gutter)));
 	--full-margin: calc(-1 * var(--margin));
 	--full-bleed-margin: calc(calc(-1 * var(--margin)) - var(--outer-margin));
-	--content-width: calc(calc(var(--grid-unit) * 5) + calc(var(--gutter) *5));
+	--content-width: calc(calc(var(--grid-unit) * 5) + calc(var(--gutter) * 5));
 
 	--navbar-height: 4rem;
 	--line-height: 1.35em;
@@ -30,7 +30,8 @@
 
 	--body-font: "OceanicText", Times, Serif;
 	--headline-font: "BuzzBlack", Arial, Helvetica, Sans-Serif;
-	--label-font: "Jazz-Medium", Times, Serif;
+	--label-font: "Jazz-Medium", Arial, Sans-serif;
+	--sans-font: "Jazz", Arial, Sans-serif;
 
 	@include mq($until: desktop) {
 		--margin: var(--outer-margin);
@@ -59,7 +60,6 @@ main {
 	padding-left: var(--outer-margin);
 	padding-right: var(--outer-margin);
 	min-height: calc(100vh - var(--navbar-height));
-
 }
 
 article {
@@ -67,6 +67,11 @@ article {
 	margin-right: var(--margin);
 	margin-left: var(--margin);
 	//}
+
+	hr {
+		margin-top: var(--space-big);
+		border: 0px;
+	}
 }
 
 ::-webkit-scrollbar {
@@ -103,24 +108,32 @@ button {
 	justify-content: center;
 	color: var(--blue);
 	background-color: var(--white);
-	border: 2px solid var(--blue);
-	padding: 0.5em;
+	border: 1px solid var(--blue);
+	padding: 1em;
 	border-radius: 2rem;
 	font-family: var(--label-font);
 	cursor: pointer;
+	margin-top: 2rem;
+	text-decoration: none !important;
 
 	&[aria-selected="true"] {
 		color: var(--white);
 		background-color: var(--blue);
 	}
+
+	&:hover {
+		background-color: var(--blue);
+		color: var(--white);
+	}
 }
 
-
-hr {}
+hr {
+}
 
 input,
 textarea,
-select {}
+select {
+}
 
 select {
 	-webkit-appearance: none;

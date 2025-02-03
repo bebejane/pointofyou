@@ -7,6 +7,7 @@ import Content from "@/components/common/Content";
 import FilterBar from "@/components/common/FilterBar";
 import { parseAsString } from "nuqs/server";
 import { DraftMode } from "next-dato-utils/components";
+import classNames from "classnames";
 
 const filterParser = parseAsString.withDefault("all");
 
@@ -54,7 +55,7 @@ export default async function ProjectsPage({ searchParams }) {
 										<h2>{title}</h2>
 										<Content
 											content={intro}
-											className={s.intro}
+											className={classNames(s.intro, "small", "sans")}
 										/>
 									</figcaption>
 								</figure>
