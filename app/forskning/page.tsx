@@ -36,7 +36,7 @@ export default async function ResearchsPage({ searchParams }) {
 					href='/forskning'
 					value={filter}
 					options={[{ id: "all", label: "Alla" }].concat(
-						allResearchCategories.map(({ slug, title }) => ({ id: slug, label: title }))
+						allResearchCategories.map(({ slug, plural }) => ({ id: slug, label: plural }))
 					)}
 				/>
 				{researchs.length === 0 && <p className={s.empty}>Det finns inga fartiklar ännu.</p>}

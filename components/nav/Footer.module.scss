@@ -29,7 +29,7 @@
       list-style: none;
     }
 
-    > ul {
+    >ul {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
@@ -50,46 +50,6 @@
           white-space: nowrap;
           font-family: var(--sans-font);
           font-size: 0.6rem;
-        }
-      }
-    }
-  }
-
-  .bubble {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    flex: 1 1 auto;
-    font-family: var(--label-font);
-
-    .wrap {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      text-align: center;
-      align-items: center;
-
-      img {
-        position: relative;
-        height: 200px;
-      }
-
-      .text {
-        position: absolute;
-        top: 0;
-        left: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100%;
-        width: 100%;
-        z-index: 1;
-
-        a {
-          text-transform: uppercase;
         }
       }
     }

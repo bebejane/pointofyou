@@ -9,10 +9,7 @@ type Props = {
 export default async function ButtonBlock({ data: { text, url } }: Props) {
 	return (
 		<p className={s.wrapper}>
-			<Link
-				href={url}
-				className={s.button}
-			>
+			<Link href={url}>
 				<button>{text}</button>
 			</Link>
 		</p>

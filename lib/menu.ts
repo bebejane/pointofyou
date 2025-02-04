@@ -62,9 +62,9 @@ export const buildMenu = async (): Promise<Menu> => {
       id: 'about-research',
       title: 'Om Forskning',
       slug: '/forskning/om'
-    }].concat(allResearchCategories.map(({ id, slug, title }) => ({
+    }].concat(allResearchCategories.map(({ id, slug, plural }) => ({
       id,
-      title,
+      title: plural,
       slug: `/forskning?filter=${slug}`,
     }))),
   }, {

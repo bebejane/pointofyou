@@ -1,11 +1,14 @@
-// simple footer
-
 import { Menu } from "@/lib/menu";
 import s from "./Footer.module.scss";
 import Link from "next/link";
 import Bubbles from "@/components/common/Bubbles";
+import { SupportDocument } from "../../graphql";
+import { apiQuery } from "next-dato-utils/api";
+import FooterBubble from "../common/FooterBubble";
 
-export default function Footer({ menu }: { menu: Menu }) {
+export default async function Footer({ menu }: { menu: Menu }) {
+	const { support } = await apiQuery<SupportQuery, SupportQueryVariables>(SupportDocument);
+
 	return (
 		<>
 			<footer className={s.footer}>
@@ -28,18 +31,7 @@ export default function Footer({ menu }: { menu: Menu }) {
 						))}
 					</ul>
 				</nav>
-				<div className={s.bubble}>
-					<div className={s.wrap}>
-						<div className={s.text}>
-							<span>Vill du delta i vårt projekt?</span>
-							<Link href='/kontakt'>Kontakta oss</Link>
-						</div>
-						<img
-							src='/images/bubble.svg'
-							alt='bubble'
-						/>
-					</div>
-				</div>
+				<FooterBubble support={support} />
 				<div className={s.copyright}>
 					<span className={s.text}>
 						Copyright Point of You 2024. Läs vår policy hur vi hanterar Cookies & GDPR.

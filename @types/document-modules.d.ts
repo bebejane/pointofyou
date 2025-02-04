@@ -170,6 +170,7 @@ declare module '*/research.gql' {
   export const AllResearches: DocumentNode;
 export const Research: DocumentNode;
 export const ResearchAbout: DocumentNode;
+export const ResearchAboutFragment: DocumentNode;
 export const ResearchFragment: DocumentNode;
 export const ResearchCategoryFragment: DocumentNode;
 

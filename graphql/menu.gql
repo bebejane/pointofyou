@@ -35,6 +35,7 @@ query Menu($first: IntType = 100, $skip: IntType = 0) {
 		id
 		slug
 		title
+		plural
 	}
 	_allResearchCategoriesMeta {
 		count

@@ -21,70 +21,74 @@ query Research($slug: String!) {
 
 query ResearchAbout {
 	researchAbout {
+		...ResearchAboutFragment
+	}
+}
+
+fragment ResearchAboutFragment on ResearchAboutRecord {
+	id
+	title
+	intro {
+		blocks
+		links
+		value
+	}
+	contentWrapper {
 		id
-		intro {
-			blocks
-			links
-			value
-		}
-		contentWrapper {
-			id
-			content {
+		content {
+			__typename
+			blocks {
 				__typename
-				blocks {
-					__typename
-					... on ButtonRecord {
-						id
-						text
-						url
-					}
-					... on ExpandableListRecord {
-						id
-						items {
-							__typename
-							... on ExpandableListItemRecord {
-								id
-								title
-								text {
-									blocks
-									links
-									value
-								}
+				... on ButtonRecord {
+					id
+					text
+					url
+				}
+				... on ExpandableListRecord {
+					id
+					items {
+						__typename
+						... on ExpandableListItemRecord {
+							id
+							title
+							text {
+								blocks
+								links
+								value
 							}
 						}
 					}
-					... on ImageRecord {
-						id
-						image {
-							...ImageFragment
-						}
-					}
-					... on VideoExternalRecord {
-						id
-						caption
-						video {
-							height
-							width
-							url
-							provider
-							providerUid
-							title
-							thumbnailUrl
-						}
-					}
-					... on VideoInternalRecord {
-						id
-						file {
-							...VideoFragment
-						}
-						caption
+				}
+				... on ImageRecord {
+					id
+					image {
+						...ImageFragment
 					}
 				}
-				links
-				value
+				... on VideoExternalRecord {
+					id
+					caption
+					video {
+						height
+						width
+						url
+						provider
+						providerUid
+						title
+						thumbnailUrl
+					}
+				}
+				... on VideoInternalRecord {
+					id
+					file {
+						...VideoFragment
+					}
+					caption
+				}
 			}
+			links
+			value
 		}
-		title
 	}
 }
 

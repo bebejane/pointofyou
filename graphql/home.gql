@@ -51,6 +51,9 @@ query Home {
 								... on PressRecord {
 									...PressFragment
 								}
+								... on ResearchAboutRecord {
+									...ResearchAboutFragment
+								}
 							}
 						}
 					}
