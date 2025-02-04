@@ -1,6 +1,6 @@
 query AllNews($first: IntType = 100, $skip: IntType = 0) {
 	allNews(first: $first, skip: $skip, orderBy: [_firstPublishedAt_DESC]) {
-		...NewsFragment
+		...NewsLightFragment
 	}
 	_allNewsMeta {
 		count
@@ -19,6 +19,21 @@ fragment NewsFragment on NewsRecord {
 	title
 	image {
 		...ImageFragment
+	}
+	intro {
+		blocks
+		links
+		value
+	}
+	_firstPublishedAt
+}
+
+fragment NewsLightFragment on NewsRecord {
+	id
+	slug
+	title
+	image {
+		...ImageThumbnailFragment
 	}
 	intro {
 		blocks

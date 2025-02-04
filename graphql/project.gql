@@ -1,6 +1,6 @@
 query AllProjects($first: IntType = 100, $skip: IntType = 0) {
 	allProjects(first: $first, skip: $skip) {
-		...ProjectFragment
+		...ProjectLightFragment
 	}
 	_allProjectsMeta {
 		count
@@ -82,5 +82,20 @@ fragment ProjectFragment on ProjectRecord {
 			links
 			value
 		}
+	}
+}
+
+fragment ProjectLightFragment on ProjectRecord {
+	id
+	title
+	slug
+	active
+	image {
+		...ImageFragment
+	}
+	intro {
+		blocks
+		links
+		value
 	}
 }

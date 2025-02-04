@@ -137,6 +137,7 @@ declare module '*/news.gql' {
   export const AllNews: DocumentNode;
 export const News: DocumentNode;
 export const NewsFragment: DocumentNode;
+export const NewsLightFragment: DocumentNode;
 
   export default defaultDocument;
 }
@@ -148,6 +149,7 @@ declare module '*/press.gql' {
   export const AllPresses: DocumentNode;
 export const Press: DocumentNode;
 export const PressFragment: DocumentNode;
+export const PressLightFragment: DocumentNode;
 
   export default defaultDocument;
 }
@@ -159,6 +161,7 @@ declare module '*/project.gql' {
   export const AllProjects: DocumentNode;
 export const Project: DocumentNode;
 export const ProjectFragment: DocumentNode;
+export const ProjectLightFragment: DocumentNode;
 
   export default defaultDocument;
 }

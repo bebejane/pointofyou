@@ -18,9 +18,24 @@
 
       figure {
         flex: 0 0 200px;
+        mask-repeat: no-repeat;
+        mask-size: contain;
 
         img {
           object-fit: cover;
+
+        }
+      }
+
+      &:nth-child(odd) {
+        figure {
+          mask-image: url("/images/bubble-mask.svg");
+        }
+      }
+
+      &:nth-child(even) {
+        figure {
+          mask-image: url("/images/bubble-mask-reverse.svg");
         }
       }
 
