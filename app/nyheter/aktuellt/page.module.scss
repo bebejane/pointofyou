@@ -29,13 +29,13 @@
 
       &:nth-child(odd) {
         figure {
-          mask-image: url("/images/bubble-mask.svg");
+          mask-image: url("/images/symbol-mask.svg");
         }
       }
 
       &:nth-child(even) {
         figure {
-          mask-image: url("/images/bubble-mask-reverse.svg");
+          mask-image: url("/images/symbol-mask-alt.svg");
         }
       }
 
