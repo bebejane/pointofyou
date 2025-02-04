@@ -3,6 +3,15 @@
     list-style: none;
   }
 
+  .list {
+    li {
+      margin-top: var(--space);
+      padding-top: var(--space);
+      border-top: 1px solid var(--blue);
+      margin-right: var(--full-margin);
+    }
+  }
+
   .empty {
     margin-top: var(--space);
   }

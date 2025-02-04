@@ -83,6 +83,10 @@
             left: 0;
             color: var(--white);
             padding: var(--outer-margin);
+
+            p {
+              margin: 0;
+            }
           }
         }
       }

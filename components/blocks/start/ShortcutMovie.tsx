@@ -26,7 +26,7 @@ export default async function ShortcutMovie({ data: { id, text, movie, link } }:
 						content={text}
 						className={cn(s.text, "intro")}
 					/>
-					<span>{link.title}</span>
+					<span className="shortcut">• {link.title}</span>
 				</div>
 			</DatoLink>
 		</section>

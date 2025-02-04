@@ -32,7 +32,6 @@ export default async function ResearchsPage({ searchParams }) {
 				title='Forskning'
 				className={s.research}
 			>
-				<hr />
 				<FilterBar
 					href='/forskning'
 					value={filter}
@@ -41,7 +40,7 @@ export default async function ResearchsPage({ searchParams }) {
 					)}
 				/>
 				{researchs.length === 0 && <p className={s.empty}>Det finns inga fartiklar ännu.</p>}
-				<ul>
+				<ul className={s.list}>
 					{researchs.map(({ id, title, file, url, slug, text, _firstPublishedAt }) => (
 						<li key={id}>
 							<span>{format(new Date(_firstPublishedAt), "MM/dd yyyy")}</span>

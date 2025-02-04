@@ -24,7 +24,7 @@ export default function ShortcutProjectSlideshow({ projects }: Props) {
 			<header>
 				<h2>Aktuella projekt</h2>
 				<div className={s.nav}>
-					<Link href='/projekt'>Visa alla</Link>
+					<Link href='/projekt' className="shortcut">Visa alla</Link>
 					<button disabled={true}>
 						<img
 							className={cn(s.arrow, s.back)}
@@ -68,7 +68,7 @@ export default function ShortcutProjectSlideshow({ projects }: Props) {
 									imgClassName={s.picture}
 									intersectionMargin={`0px 0px 100% 0px`}
 								/>
-								<figcaption>{title}</figcaption>
+								<figcaption><p><strong>{title}</strong></p></figcaption>
 							</figure>
 						</Link>
 					</SwiperSlide>

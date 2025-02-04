@@ -24,7 +24,7 @@ export default async function ShortcutNews({ data: { id } }: Props) {
 		>
 			<div className={s.header}>
 				<h2>Nyheter</h2>
-				<Link href='/nyheter/aktuellt'>Visa alla</Link>
+				<Link href='/nyheter/aktuellt' className="shortcut">Visa alla</Link>
 			</div>
 			<ul className={s.news}>
 				{allNews.map(({ id, title, slug, intro, _firstPublishedAt }) => (

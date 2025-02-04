@@ -61,6 +61,7 @@ export default async function ProjectsPage({ searchParams }) {
 											/>
 										</div>
 									</figcaption>
+									<div className={s.fade}></div>
 								</figure>
 							</Link>
 						</li>

@@ -19,6 +19,8 @@
 	--margin: calc(calc(2 * var(--grid-unit)) + calc(2 * var(--gutter)));
 	--full-margin: calc(-1 * var(--margin));
 	--full-bleed-margin: calc(calc(-1 * var(--margin)) - var(--outer-margin));
+	--ful-margin: calc(calc(-1 * var(--margin)));
+
 	--content-width: calc(calc(var(--grid-unit) * 5) + calc(var(--gutter) * 5));
 
 	--navbar-height: 4rem;
@@ -27,6 +29,8 @@
 	--z-navbar: 1000;
 	--z-logo: 1100;
 	--z-hamburger: 1200;
+
+	--gradient: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.6));
 
 	--body-font: "OceanicText", Times, Serif;
 	--headline-font: "BuzzBlack", Arial, Helvetica, Sans-Serif;
@@ -110,11 +114,14 @@ button {
 	background-color: var(--white);
 	border: 1px solid var(--blue);
 	padding: 1em;
+	padding-left: 1.5em;
+	padding-right: 1.5em;
 	border-radius: 2rem;
 	font-family: var(--label-font);
 	cursor: pointer;
 	margin-top: 2rem;
 	text-decoration: none !important;
+	font-size: 0.7rem;
 
 	&[aria-selected="true"] {
 		color: var(--white);
