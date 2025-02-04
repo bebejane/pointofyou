@@ -15,25 +15,37 @@ export default function ExpandableList({ data }: ExpandableListProps) {
 		setOpen((state) => ({ ...state, [id]: state[id] ? false : true }));
 	}
 
-	console.log(data.items);
 	return (
-		<ul className={s.list}>
+		<div
+			className={s.list}
+			role='list'
+		>
 			{data.items?.map((item) => (
-				<li
+				<div
+					role='listitem'
 					key={item.id}
+					className={s.wrap}
 					onClick={() => toggle(item.id)}
 				>
 					<div className={s.item}>
-						<div className={s.title}><p><strong>{item.title}</strong></p></div>
-						<div className={s.icon}><p><strong>+</strong></p></div>
+						<div className={s.title}>
+							<p>
+								<strong>{item.title}</strong>
+							</p>
+						</div>
+						<div className={s.icon}>
+							<p>
+								<strong>+</strong>
+							</p>
+						</div>
 					</div>
 
 					<Content
 						content={item.text}
 						className={cn(s.text, open[item.id] && s.open)}
 					/>
-				</li>
+				</div>
 			))}
-		</ul>
+		</div>
 	);
 }

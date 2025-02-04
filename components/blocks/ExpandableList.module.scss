@@ -4,7 +4,7 @@
   list-style: none;
   margin-top: var(--space);
 
-  li {
+  .wrap {
     display: flex;
     flex-direction: column;
 
@@ -20,6 +20,7 @@
       width: 100%;
       justify-content: center;
       color: var(--blue);
+
       p {
         margin: 0;
       }
