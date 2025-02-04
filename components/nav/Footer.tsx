@@ -4,7 +4,7 @@ import Link from "next/link";
 import Bubbles from "@/components/common/Bubbles";
 import { SupportDocument } from "../../graphql";
 import { apiQuery } from "next-dato-utils/api";
-import FooterBubble from "../common/FooterBubble";
+import SupportBubble from "./SupportBubble";
 
 export default async function Footer({ menu }: { menu: Menu }) {
 	const { support } = await apiQuery<SupportQuery, SupportQueryVariables>(SupportDocument);
@@ -31,7 +31,7 @@ export default async function Footer({ menu }: { menu: Menu }) {
 						))}
 					</ul>
 				</nav>
-				<FooterBubble support={support} />
+				<SupportBubble support={support} />
 				<div className={s.copyright}>
 					<span className={s.text}>
 						Copyright Point of You 2024. Läs vår policy hur vi hanterar Cookies & GDPR.
