@@ -15,7 +15,10 @@ export default async function ShortcutImage({ data: { id, images } }: Props) {
 			className={s.container}
 		>
 			{images.map(({ id, image, link, title, text }) => (
-				<DatoLink link={link}>
+				<DatoLink
+					key={id}
+					link={link}
+				>
 					<figure>
 						{image.responsiveImage && (
 							<Image
