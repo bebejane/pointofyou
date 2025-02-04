@@ -3,12 +3,13 @@
   flex-direction: column;
   margin-left: var(--full-margin);
   margin-right: var(--full-margin);
-  margin-top: var(--space);
+  margin-top: var(--space-big);
 
   .header {
     display: flex;
     flex-direction: row;
     width: 100%;
+    padding-bottom: 1rem;
 
     h2 {
       flex: 1 1 100%;
@@ -33,7 +34,6 @@
     .content {
       display: inline;
     }
-
 
     @include mq($until: desktop) {
       flex-direction: column;

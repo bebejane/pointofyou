@@ -26,8 +26,8 @@ export default async function ShortcutImage({ data: { id, images } }: Props) {
 							/>
 						)}
 						<figcaption>
+							<h2>{title}</h2>
 							<Content content={text} />
-							<span>{title}</span>
 						</figcaption>
 					</figure>
 				</DatoLink>

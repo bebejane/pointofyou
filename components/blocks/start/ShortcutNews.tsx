@@ -33,7 +33,7 @@ export default async function ShortcutNews({ data: { id } }: Props) {
 						href={`/nyheter/aktuellt/${slug}`}
 					>
 						<h3>{title}</h3>
-						<span className={s.date}>{format(new Date(_firstPublishedAt), "MM/dd yyyy")} · </span>
+						<span className={cn("meta", s.date)}>{format(new Date(_firstPublishedAt), "MM/dd yyyy")} · </span>
 						<Content
 							content={intro}
 							className={cn("small", s.content)}

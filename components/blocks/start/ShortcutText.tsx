@@ -18,7 +18,7 @@ export default async function ShortcutText({ data: { id, text, link } }: Props) 
 				className='intro'
 			/>
 			<DatoLink link={link}>
-				<span>{link.title}</span>
+				<span className="shortcut">• {link.title}</span>
 			</DatoLink>
 		</section>
 	);
