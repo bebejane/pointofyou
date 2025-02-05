@@ -35,6 +35,10 @@ const routes: Routes = {
     typeName: "ResearchRecord",
     path: (item) => `/forskning`
   },
+  "research_about": {
+    typeName: "ResearchAboutRecord",
+    path: (item) => `/forskning`
+  },
   "press": {
     typeName: "PressRecord",
     path: (item) => `/nyheter/press/${item.slug}`

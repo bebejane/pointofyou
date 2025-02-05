@@ -12,7 +12,7 @@ export default function DatoLink({ link, className, children }: Props) {
 
 	const slug = link.__typename === "ExternalLinkRecord" ? link.url : recordToRoute(link.link);
 	const title = link.__typename === "ExternalLinkRecord" ? link.title : link.link.title;
-	console.log(slug);
+
 	return link.__typename === "ExternalLinkRecord" ? (
 		<a
 			href={slug}
