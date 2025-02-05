@@ -50,7 +50,7 @@ export default function ImageGallery({
 				{images.map((item, idx) => (
 					<SwiperSlide
 						key={idx}
-						className={cn(s.slide)}
+						className={cn(s.slide, item.height > item.width && s.portrait)}
 					>
 						<figure
 							id={`${id}-${item.id}`}
