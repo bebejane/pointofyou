@@ -22,6 +22,9 @@ fragment EducationFragment on EducationRecord {
 		links
 		value
 	}
+	image {
+		...ImageFragment
+	}
 	contentWrapper {
 		id
 		content {

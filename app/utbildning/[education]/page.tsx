@@ -21,13 +21,14 @@ export default async function EducationPage({ params }: EducationProps) {
 
 	if (!education) return notFound();
 
-	const { title, intro, contentWrapper } = education;
+	const { title, intro, image, contentWrapper } = education;
 
 	return (
 		<>
 			<Article
 				title={title}
 				intro={intro}
+				image={image as FileField}
 				content={contentWrapper.content}
 			/>
 			<DraftMode url={draftUrl} />
