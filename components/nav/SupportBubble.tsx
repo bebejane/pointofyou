@@ -34,7 +34,7 @@ export default function SupportBubble({ support }: SupportBubbleProps) {
 					<div className={s.popup}>
 						<div className={s.box}>
 							<Content content={support.text} />
-							<button onClick={() => setShowPopup(false)}>Close</button>
+							<button onClick={() => setShowPopup(false)}>×</button>
 						</div>
 					</div>
 				</Modal>
