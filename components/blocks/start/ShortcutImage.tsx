@@ -28,13 +28,14 @@ export default async function ShortcutImage({ data: { id, images } }: Props) {
 								intersectionMargin={`0px 0px 100% 0px`}
 							/>
 						)}
-						<figcaption>
+						<div className={s.figcaption}>
 							<h2>{title}</h2>
-							<Content content={text} />
-						</figcaption>
+							<Content content={text} className="small sans" />
+						</div>
 					</figure>
 				</DatoLink>
-			))}
-		</section>
+			))
+			}
+		</section >
 	);
 }

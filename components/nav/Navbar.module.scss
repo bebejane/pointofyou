@@ -97,7 +97,7 @@
 
   ul {
     li.active > a {
-      color: pink !important;
+      color: var(--blue-light) !important;
     }
   }
 }

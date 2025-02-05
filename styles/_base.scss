@@ -6,6 +6,7 @@
 	--white: #ffffe4;
 	--red: #bf0000;
 	--blue: #2b1e9b;
+	--blue-light: #aba7d1;
 	--background: var(--white);
 	--foreground: var(--black);
 
@@ -135,11 +136,13 @@ button {
 	}
 }
 
-hr {}
+hr {
+}
 
 input,
 textarea,
-select {}
+select {
+}
 
 select {
 	-webkit-appearance: none;

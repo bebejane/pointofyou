@@ -12,7 +12,12 @@ export default async function Home() {
 		<>
 			<article className={s.page}>
 				<section className={s.header}>
-					<h1>Point of You</h1>
+					<figure>
+						<img
+							src='/images/logo-text-blue.svg'
+							alt='Point of You logo'
+						/>
+					</figure>
 					{home?.movieStart && (
 						<VideoPlayer
 							className={s.video}

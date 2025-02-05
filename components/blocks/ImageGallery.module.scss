@@ -6,7 +6,7 @@
 
   figcaption {
     position: absolute;
-    top: 0;
+    top: var(--space-big);
     left: calc(calc(-1 * var(--margin)) + var(--outer-margin));
     width: calc(var(--margin) - var(--outer-margin) - var(--gutter));
     color: var(--blue);
@@ -26,7 +26,7 @@
     user-select: none;
     cursor: pointer;
 
-    >div {
+    > div {
       display: flex;
       flex-direction: row;
       align-items: flex-end;
@@ -37,7 +37,7 @@
         padding-right: var(--gutter);
         height: 70vh;
 
-        >figure {
+        > figure {
           position: relative;
           display: flex;
           flex-direction: column;

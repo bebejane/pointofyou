@@ -1,9 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="461px" height="465px" viewBox="0 0 461 465" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Untitled</title>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="symbol-mask" transform="translate(230.5, 232.5) scale(-1, 1) translate(-230.5, -232.5)" fill="#000000" fill-rule="nonzero">
-            <path d="M393.579,393.347 C435.375,351.549 461,294.077 461,230.385 C461,103.25 357.754,0 230.376,0 C102.997,0 0,103.25 0,230.385 C0,357.52 103.246,460.77 230.376,460.77 C267.942,460.77 303.519,451.565 334.866,435.642 L401.043,465 L393.579,393.347 Z" id="Path"></path>
-        </g>
-    </g>
-</svg>
+<?xml version="1.0" encoding="UTF-8"?><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 461 460.77"><defs><style>.cls-1{fill:none;}</style></defs><path d="M62.33,460.77l63.81-25.13c31.35,15.92,66.92,25.13,104.49,25.13,127.13,0,230.38-103.25,230.38-230.38S358,0,230.62,0,0,103.25,0,230.38c0,63.69,25.63,121.16,67.42,162.96l-5.09,67.42Z"/><rect class="cls-1" x="0" y="0" width="460.77" height="460.77" transform="translate(460.77 460.77) rotate(180)"/></svg>

@@ -13,7 +13,12 @@ export default async function Footer({ menu }: { menu: Menu }) {
 		<>
 			<footer className={s.footer}>
 				<nav>
-					<h2>Point of You</h2>
+					<figure>
+						<img
+							src='/images/logo-text-white.svg'
+							alt='Point of You logo'
+						/>
+					</figure>
 					<ul>
 						{menu.map(({ id, title, sub }) => (
 							<li key={id}>
@@ -34,10 +39,10 @@ export default async function Footer({ menu }: { menu: Menu }) {
 				<SupportBubble support={support} />
 				<div className={s.copyright}>
 					<span className={s.text}>
-						Copyright Point of You 2024. Läs vår policy hur vi hanterar Cookies & GDPR.
+						Copyright Point of You 2024.
 					</span>
 					<span className={s.about}>
-						Ett projekt av Institutet för Framtidsstudier. &nbsp;
+						Ett projekt av Institutet för Framtidsstudier. &nbsp; &nbsp;
 						<figure>
 							<img
 								src='/images/framtidsstudier.svg'

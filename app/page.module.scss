@@ -12,7 +12,7 @@
     margin-left: var(--full-bleed-margin);
     margin-right: var(--full-bleed-margin);
 
-    h1 {
+    figure {
       position: absolute;
       z-index: 1;
       left: 50%;
@@ -23,9 +23,10 @@
       white-space: nowrap;
       text-align: center;
       font-size: 100px;
+      overflow: hidden;
 
-      @include mq($until: desktop) {
-        font-size: 30px;
+      img {
+        width: 100%;
       }
     }
 

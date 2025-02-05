@@ -1,5 +1,4 @@
 .news {
-
   ul {
     list-style: none;
     margin-right: calc(var(--full-bleed-margin) + var(--outer-margin));
@@ -17,13 +16,14 @@
       }
 
       figure {
-        flex: 0 0 200px;
+        margin-top: var(--space);
+        margin-left: var(--outer-margin);
+        flex: 0 0 16vw;
         mask-repeat: no-repeat;
         mask-size: contain;
 
         img {
           object-fit: cover;
-
         }
       }
 
@@ -38,7 +38,6 @@
           mask-image: url("/images/symbol-mask-alt.svg");
         }
       }
-
     }
   }
 }

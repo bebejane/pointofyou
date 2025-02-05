@@ -43,13 +43,13 @@ export default async function ResearchsPage({ searchParams }) {
 				<ul className={s.list}>
 					{researchs.map(({ id, title, file, url, slug, text, _firstPublishedAt }) => (
 						<li key={id}>
-							<span>{format(new Date(_firstPublishedAt), "MM/dd yyyy")}</span>
+							<span className="meta">{format(new Date(_firstPublishedAt), "MM/dd yyyy")}</span>
 							<h2>{title}</h2>
 							<Content
 								content={text}
 								className={s.intro}
 							/>
-							{url && <Link href={url}>Läs mer</Link>}
+							{url && <Link className="shortcut" href={url}>Läs mer</Link>}
 							{file && (
 								<a
 									href={file.url}
