@@ -2,7 +2,7 @@ import s from "./ShortcutNews.module.scss";
 import cn from "classnames";
 import { apiQuery } from "next-dato-utils/api";
 import { AllNewsDocument } from "@/graphql";
-import Link from "@node_modules/next/link";
+import Link from "next/link";
 import Content from "@/components/common/Content";
 import { format } from "date-fns";
 
@@ -24,7 +24,12 @@ export default async function ShortcutNews({ data: { id } }: Props) {
 		>
 			<div className={s.header}>
 				<h2>Nyheter</h2>
-				<Link href='/nyheter/aktuellt' className="shortcut">Visa alla</Link>
+				<Link
+					href='/nyheter/aktuellt'
+					className='shortcut'
+				>
+					Visa alla
+				</Link>
 			</div>
 			<ul className={s.news}>
 				{allNews.map(({ id, title, slug, intro, _firstPublishedAt }) => (
@@ -33,7 +38,9 @@ export default async function ShortcutNews({ data: { id } }: Props) {
 						href={`/nyheter/aktuellt/${slug}`}
 					>
 						<h3>{title}</h3>
-						<span className={cn("meta", s.date)}>{format(new Date(_firstPublishedAt), "MM/dd yyyy")} · </span>
+						<span className={cn("meta", s.date)}>
+							{format(new Date(_firstPublishedAt), "MM/dd yyyy")} ·{" "}
+						</span>
 						<Content
 							content={intro}
 							className={cn("small", s.content)}

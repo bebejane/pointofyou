@@ -4,68 +4,13 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import s from "./Bubbles.module.scss";
 import cn from "classnames";
 import { IoPlaySharp, IoPauseSharp } from "react-icons/io5";
-import { useAudioStore } from "@/lib/audio-store";
 import { usePathname } from "next/navigation";
 
 export type BubblesProps = {};
 
-const mockBubbles: any[] = [
-	{
-		id: "audio-bubble-1",
-		file: {
-			url: "https://www.datocms-assets.com/150385/1737726329-05-zum-wohl.mp3",
-		} as FileField,
-		text: "Bubbles",
-		position: {
-			left: 0,
-			top: 0,
-		},
-	},
-	{
-		id: "audio-bubble-2",
-		file: {
-			url: "https://www.datocms-assets.com/150385/1737726329-05-zum-wohl.mp3",
-		} as FileField,
-		text: "Bubbles 2",
-		position: {
-			left: 0,
-			top: 0,
-		},
-	},
-	{
-		id: "audio-bubble-3",
-		file: {
-			url: "https://www.datocms-assets.com/150385/1737726329-05-zum-wohl.mp3",
-		} as FileField,
-		text: "Bubbles 3",
-		position: {
-			left: 0,
-			top: 0,
-		},
-	},
-	{
-		id: "audio-bubble-4",
-		file: {
-			url: "https://www.datocms-assets.com/150385/1737726329-05-zum-wohl.mp3",
-		} as FileField,
-		text: "Bubbles 4",
-		position: {
-			left: 0,
-			top: 0,
-		},
-	},
-	{
-		id: "audio-bubble-5",
-		file: {
-			url: "https://www.datocms-assets.com/150385/1737726329-05-zum-wohl.mp3",
-		} as FileField,
-		text: "Bubbles 5",
-		position: {
-			left: 0,
-			top: 0,
-		},
-	},
-];
+const bubbleSize = 36;
+const bubbleScale = 2;
+const bubbleSizeScaled = bubbleSize * bubbleScale;
 
 export default function Bubbles({}: BubblesProps) {
 	const pathname = usePathname();
@@ -85,10 +30,10 @@ export default function Bubbles({}: BubblesProps) {
 		return () => window.removeEventListener("resize", handleResize);
 	}, []);
 
-	useLayoutEffect(() => {
+	useEffect(() => {
 		if (!dimensions) return;
 
-		const { items } = generatePositions(10, dimensions, 30);
+		const { items } = generatePositions(1000, dimensions, bubbleSize * bubbleScale);
 
 		setBubbles(
 			bubbles.map((b, i) => ({
@@ -169,22 +114,45 @@ function Bubble({
 		<div
 			id={id}
 			className={cn(s.bubble, hover && s.hover)}
-			style={{ left: position.left, top: position.top }}
+			onClick={handleClick}
+			style={
+				{
+					"--size": bubbleSizeScaled,
+					"--scale": bubbleScale,
+					width: bubbleSizeScaled,
+					height: bubbleSizeScaled,
+					left: position.left,
+					top: position.top,
+				} as any
+			}
 		>
-			<img
+			<svg
 				className={s.image}
-				src='/images/bubble-small.svg'
-				alt='bubble'
-				onClick={handleClick}
+				width={bubbleSizeScaled}
+				height={bubbleSizeScaled}
+				fill='none'
+				xmlns='http://www.w3.org/2000/svg'
 				onMouseEnter={() => setHover(true)}
 				onMouseLeave={() => !playing && setHover(false)}
-			/>
+			>
+				<path
+					d='M25.8056 33.1282L25.518 33.035L25.2461 33.1673C22.9833 34.2691 20.4579 34.9021 17.7668 34.9021C8.32833 34.9021 0.75 27.3021 0.75 17.8261C0.75 8.35002 8.32833 0.75 17.7668 0.75C27.2052 0.75 34.7835 8.35002 34.7835 17.8261C34.7835 22.5833 32.8883 26.8502 29.7986 29.9336L29.5271 30.2046L29.5879 30.5833L30.2264 34.5608L25.8056 33.1282Z'
+					stroke='#FFFCE4'
+					stroke-width='1.5'
+					transform-origin='center'
+					vector-effect='non-scaling-stroke'
+					transform={
+						hover
+							? `scale(${bubbleScale}) translate(${bubbleSize / 2} ${bubbleSize / 2})`
+							: `scale(1) translate(${bubbleSize / 2} ${bubbleSize / 2})`
+					}
+				/>
+			</svg>
+
+			<div className={cn(s.icon, hover && s.show)}>
+				{!playing ? <IoPlaySharp size={bubbleSize} /> : <IoPauseSharp size={bubbleSize} />}
+			</div>
 			<div className={s.text}>{text}</div>
-			{!playing ? (
-				<IoPlaySharp className={cn(s.icon, hover && s.show)} />
-			) : (
-				<IoPauseSharp className={cn(s.icon, hover && s.show)} />
-			)}
 			<audio
 				ref={audio}
 				src={file.url}
@@ -195,18 +163,15 @@ function Bubble({
 	);
 }
 
-const nodesToArray = (elements) => {
-	elements = Array.isArray(elements) || elements instanceof NodeList ? elements : [elements];
-	return Array.prototype.slice.call(elements, 0);
-};
-
 const generatePositions = (
 	totalRetries = 0,
 	dimensions: { width: number; height: number } = { width: 0, height: 0 },
-	size = 30
+	size = bubbleSize
 ) => {
-	const targets = document.querySelectorAll(`[id^='audio-bubble-']`);
-	const elements = nodesToArray(targets);
+	const elements = Array.prototype.slice.call(
+		document.querySelectorAll<HTMLDivElement>(`[id^='audio-bubble-']`),
+		0
+	);
 	const maxRetries = 10000;
 	const symbolsPerPage = Math.floor(
 		(Math.floor(dimensions.height / size) * Math.floor(dimensions.width / size)) / 2
@@ -222,7 +187,7 @@ const generatePositions = (
 	const minY = 0;
 	const maxY = dimensions.height - size * 2;
 
-	const isOverlapping = (area) => {
+	const isOverlapping = (area: { top: number; left: number; width: number; height: number }) => {
 		for (let i = 0; i < positions.items.length; i++) {
 			const checkArea = positions.items[i];
 			const rect1VerticalReach = area.top + area.height;
@@ -244,6 +209,7 @@ const generatePositions = (
 
 	for (let i = 0, page = 0; i < elements.length; i++) {
 		const el = elements[i];
+
 		let randX = 0;
 		let randY = 0;
 		let retries = 0;
@@ -264,15 +230,15 @@ const generatePositions = (
 			);
 			area = {
 				id: el.id,
-				eventId: parseInt(el.getAttribute("eventid")),
 				left: randX,
 				top: randY,
-				width: el.height,
-				height: el.width,
+				width: el.getBoundingClientRect().width,
+				height: el.getBoundingClientRect().height,
 			};
 		} while (isOverlapping(area) && ++retries < maxRetries);
 
-		if (retries >= maxRetries && totalRetries < 10) return generatePositions(++totalRetries);
+		if (retries >= maxRetries && totalRetries < 10)
+			return generatePositions(++totalRetries, dimensions, size);
 
 		page = Math.floor((i + 1) / symbolsPerPage);
 
@@ -283,3 +249,61 @@ const generatePositions = (
 	if (totalRetries >= 10) console.log("failed to randomly position");
 	return positions;
 };
+
+const mockBubbles: any[] = [
+	{
+		id: "audio-bubble-1",
+		file: {
+			url: "https://www.datocms-assets.com/150385/1737726329-05-zum-wohl.mp3",
+		} as FileField,
+		text: "Bubbles",
+		position: {
+			left: 0,
+			top: 0,
+		},
+	},
+	{
+		id: "audio-bubble-2",
+		file: {
+			url: "https://www.datocms-assets.com/150385/1737726329-05-zum-wohl.mp3",
+		} as FileField,
+		text: "Bubbles 2",
+		position: {
+			left: 0,
+			top: 0,
+		},
+	},
+	{
+		id: "audio-bubble-3",
+		file: {
+			url: "https://www.datocms-assets.com/150385/1737726329-05-zum-wohl.mp3",
+		} as FileField,
+		text: "Bubbles 3",
+		position: {
+			left: 0,
+			top: 0,
+		},
+	},
+	{
+		id: "audio-bubble-4",
+		file: {
+			url: "https://www.datocms-assets.com/150385/1737726329-05-zum-wohl.mp3",
+		} as FileField,
+		text: "Bubbles 4",
+		position: {
+			left: 0,
+			top: 0,
+		},
+	},
+	{
+		id: "audio-bubble-5",
+		file: {
+			url: "https://www.datocms-assets.com/150385/1737726329-05-zum-wohl.mp3",
+		} as FileField,
+		text: "Bubbles 5",
+		position: {
+			left: 0,
+			top: 0,
+		},
+	},
+];
