@@ -138,15 +138,7 @@ declare module '*/news.gql' {
 export const News: DocumentNode;
 export const NewsFragment: DocumentNode;
 export const NewsLightFragment: DocumentNode;
-
-  export default defaultDocument;
-}
-    
-
-declare module '*/press.gql' {
-  import { DocumentNode } from 'graphql';
-  const defaultDocument: DocumentNode;
-  export const AllPresses: DocumentNode;
+export const AllPresses: DocumentNode;
 export const Press: DocumentNode;
 export const PressFragment: DocumentNode;
 export const PressLightFragment: DocumentNode;
