@@ -1,17 +1,17 @@
-import s from "./page.module.scss";
-import cn from "classnames";
-import { apiQuery } from "next-dato-utils/api";
-import { AllResearchesDocument } from "@/graphql";
-import Link from "next/link";
-import { Image } from "react-datocms";
-import Content from "@/components/common/Content";
-import FilterBar from "@/components/common/FilterBar";
-import { parseAsString } from "nuqs/server";
-import { DraftMode } from "next-dato-utils/components";
-import Article from "../../components/common/Article";
-import { format } from "date-fns";
+import s from './page.module.scss';
+import cn from 'classnames';
+import { apiQuery } from 'next-dato-utils/api';
+import { AllResearchesDocument } from '@/graphql';
+import Link from 'next/link';
+import { Image } from 'react-datocms';
+import Content from '@/components/common/Content';
+import FilterBar from '@/components/common/FilterBar';
+import { parseAsString } from 'nuqs/server';
+import { DraftMode } from 'next-dato-utils/components';
+import Article from '../../components/common/Article';
+import { format } from 'date-fns';
 
-const filterParser = parseAsString.withDefault("all");
+const filterParser = parseAsString.withDefault('all');
 
 export default async function ResearchsPage({ searchParams }) {
 	const filter = filterParser.parseServerSide((await searchParams).filter);
@@ -23,19 +23,16 @@ export default async function ResearchsPage({ searchParams }) {
 	});
 
 	const researchs = allResearches.filter(
-		({ category }) => filter === "all" || category?.slug === filter
+		({ category }) => filter === 'all' || category?.slug === filter
 	);
 
 	return (
 		<>
-			<Article
-				title='Forskning'
-				className={s.research}
-			>
+			<Article title='Forskning' className={s.research}>
 				<FilterBar
 					href='/forskning'
 					value={filter}
-					options={[{ id: "all", label: "Alla" }].concat(
+					options={[{ id: 'all', label: 'Alla' }].concat(
 						allResearchCategories.map(({ slug, plural }) => ({ id: slug, label: plural }))
 					)}
 				/>
@@ -43,18 +40,16 @@ export default async function ResearchsPage({ searchParams }) {
 				<ul className={s.list}>
 					{researchs.map(({ id, title, file, url, slug, text, _firstPublishedAt }) => (
 						<li key={id}>
-							<span className="meta">{format(new Date(_firstPublishedAt), "MM/dd yyyy")}</span>
+							<span className='meta'>{format(new Date(_firstPublishedAt), 'MM/dd yyyy')}</span>
 							<h2>{title}</h2>
-							<Content
-								content={text}
-								className={s.intro}
-							/>
-							{url && <Link className="shortcut" href={url}>Läs mer</Link>}
+							<Content content={text} className={s.intro} />
+							{url && (
+								<Link className='shortcut' href={url}>
+									Läs mer
+								</Link>
+							)}
 							{file && (
-								<a
-									href={file.url}
-									download
-								>
+								<a href={file.url} download>
 									Ladda ner
 								</a>
 							)}
@@ -62,7 +57,7 @@ export default async function ResearchsPage({ searchParams }) {
 					))}
 				</ul>
 			</Article>
-			<DraftMode url={draftUrl} />
+			<DraftMode url={draftUrl} path='/forskning' />
 		</>
 	);
 }

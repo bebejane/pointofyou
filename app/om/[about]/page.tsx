@@ -1,8 +1,8 @@
-import { apiQuery } from "next-dato-utils/api";
-import { AboutDocument, AllAboutsDocument } from "@/graphql";
-import { notFound } from "@node_modules/next/navigation";
-import Article from "@/components/common/Article";
-import { DraftMode } from "next-dato-utils/components";
+import { apiQuery } from 'next-dato-utils/api';
+import { AboutDocument, AllAboutsDocument } from '@/graphql';
+import { notFound } from '@node_modules/next/navigation';
+import Article from '@/components/common/Article';
+import { DraftMode } from 'next-dato-utils/components';
 
 export type AboutProps = {
 	params: Promise<{ about: string }>;
@@ -29,7 +29,7 @@ export default async function AboutPage({ params }: AboutProps) {
 				content={contentWrapper.content}
 				light={contentWrapper.headerLight}
 			/>
-			<DraftMode url={draftUrl} />
+			<DraftMode url={draftUrl} path={`/om/${slug}`} />
 		</>
 	);
 }

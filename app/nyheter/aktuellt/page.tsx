@@ -1,15 +1,15 @@
-import { apiQuery } from "next-dato-utils/api";
-import { AllNewsDocument } from "@/graphql";
-import s from "./page.module.scss";
-import cn from "classnames";
-import Link from "next/link";
-import { Image } from "react-datocms";
-import Content from "@/components/common/Content";
-import FilterBar from "@/components/common/FilterBar";
-import { parseAsString } from "nuqs/server";
-import { DraftMode } from "next-dato-utils/components";
-import Article from "@/components/common/Article";
-import { format } from "date-fns";
+import { apiQuery } from 'next-dato-utils/api';
+import { AllNewsDocument } from '@/graphql';
+import s from './page.module.scss';
+import cn from 'classnames';
+import Link from 'next/link';
+import { Image } from 'react-datocms';
+import Content from '@/components/common/Content';
+import FilterBar from '@/components/common/FilterBar';
+import { parseAsString } from 'nuqs/server';
+import { DraftMode } from 'next-dato-utils/components';
+import Article from '@/components/common/Article';
+import { format } from 'date-fns';
 
 export default async function NewsPage() {
 	const { allNews, draftUrl } = await apiQuery<AllNewsQuery, AllNewsQueryVariables>(
@@ -19,15 +19,12 @@ export default async function NewsPage() {
 
 	return (
 		<>
-			<Article
-				title='Aktuellt'
-				className={s.news}
-			>
+			<Article title='Aktuellt' className={s.news}>
 				<ul>
 					{allNews.map(({ id, title, slug, image, intro, _firstPublishedAt }) => (
 						<li key={id}>
 							<div>
-								<span className='meta'>{format(new Date(_firstPublishedAt), "MM/dd yyyy")}</span>
+								<span className='meta'>{format(new Date(_firstPublishedAt), 'MM/dd yyyy')}</span>
 								<Link href={`/nyheter/aktuellt/${slug}`}>
 									<h2>{title}</h2>
 									<Content content={intro} />
@@ -38,7 +35,7 @@ export default async function NewsPage() {
 					))}
 				</ul>
 			</Article>
-			<DraftMode url={draftUrl} />
+			<DraftMode url={draftUrl} path='/nyheter/aktuellt' />
 		</>
 	);
 }

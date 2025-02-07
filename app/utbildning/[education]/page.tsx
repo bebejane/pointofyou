@@ -1,8 +1,8 @@
-import { apiQuery } from "next-dato-utils/api";
-import { AllEducationsDocument, EducationDocument } from "@/graphql";
-import { notFound } from "@node_modules/next/navigation";
-import Article from "@/components/common/Article";
-import { DraftMode } from "next-dato-utils/components";
+import { apiQuery } from 'next-dato-utils/api';
+import { AllEducationsDocument, EducationDocument } from '@/graphql';
+import { notFound } from '@node_modules/next/navigation';
+import Article from '@/components/common/Article';
+import { DraftMode } from 'next-dato-utils/components';
 
 export type EducationProps = {
 	params: Promise<{ education: string }>;
@@ -32,7 +32,7 @@ export default async function EducationPage({ params }: EducationProps) {
 				content={contentWrapper.content}
 				light={contentWrapper.headerLight}
 			/>
-			<DraftMode url={draftUrl} />
+			<DraftMode url={draftUrl} path={`/utbildning/${slug}`} />
 		</>
 	);
 }

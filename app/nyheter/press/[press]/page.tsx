@@ -1,8 +1,8 @@
-import { apiQuery } from "next-dato-utils/api";
-import { PressDocument } from "@/graphql";
-import { notFound } from "@node_modules/next/navigation";
-import Article from "@/components/common/Article";
-import { DraftMode } from "next-dato-utils/components";
+import { apiQuery } from 'next-dato-utils/api';
+import { PressDocument } from '@/graphql';
+import { notFound } from '@node_modules/next/navigation';
+import Article from '@/components/common/Article';
+import { DraftMode } from 'next-dato-utils/components';
 
 export type PressProps = {
 	params: Promise<{ press: string }>;
@@ -29,11 +29,11 @@ export default async function PressPage({ params }: PressProps) {
 				content={contentWrapper.content}
 				light={contentWrapper.headerLight}
 				link={{
-					href: "/nyheter/press",
-					text: "Visa alla",
+					href: '/nyheter/press',
+					text: 'Visa alla',
 				}}
 			/>
-			<DraftMode url={draftUrl} />
+			<DraftMode url={draftUrl} path={`/nyheter/press/${slug}`} />
 		</>
 	);
 }

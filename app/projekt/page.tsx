@@ -1,28 +1,28 @@
-import { apiQuery } from "next-dato-utils/api";
-import { AllProjectsDocument } from "@/graphql";
-import s from "./page.module.scss";
-import Link from "next/link";
-import { Image } from "react-datocms";
-import Content from "@/components/common/Content";
-import FilterBar from "@/components/common/FilterBar";
-import { parseAsString } from "nuqs/server";
-import { DraftMode } from "next-dato-utils/components";
-import classNames from "classnames";
+import { apiQuery } from 'next-dato-utils/api';
+import { AllProjectsDocument } from '@/graphql';
+import s from './page.module.scss';
+import Link from 'next/link';
+import { Image } from 'react-datocms';
+import Content from '@/components/common/Content';
+import FilterBar from '@/components/common/FilterBar';
+import { parseAsString } from 'nuqs/server';
+import { DraftMode } from 'next-dato-utils/components';
+import classNames from 'classnames';
 
-const filterParser = parseAsString.withDefault("all");
+const filterParser = parseAsString.withDefault('all');
 
 export default async function ProjectsPage({ searchParams }) {
 	const filter = filterParser.parseServerSide((await searchParams).filter);
 	const { allProjects, draftUrl } = await apiQuery<AllProjectsQuery, AllProjectsQueryVariables>(
 		AllProjectsDocument,
-		{ all: true, tags: ["project"] }
+		{ all: true, tags: ['project'] }
 	);
 
 	const projects = allProjects.filter(
 		({ active }) =>
-			filter === "all" || (filter === "active" && active) || (filter === "finished" && !active)
+			filter === 'all' || (filter === 'active' && active) || (filter === 'finished' && !active)
 	);
-	console.log("filter", filter);
+	console.log('filter', filter);
 
 	return (
 		<>
@@ -34,9 +34,9 @@ export default async function ProjectsPage({ searchParams }) {
 							href='/projekt'
 							value={filter}
 							options={[
-								{ id: "all", label: "Alla" },
-								{ id: "active", label: "Pågående" },
-								{ id: "finished", label: "Avslutade" },
+								{ id: 'all', label: 'Alla' },
+								{ id: 'active', label: 'Pågående' },
+								{ id: 'finished', label: 'Avslutade' },
 							]}
 						/>
 					</div>
@@ -46,20 +46,14 @@ export default async function ProjectsPage({ searchParams }) {
 						<li key={id}>
 							<Link href={`/projekt/${slug}`}>
 								<figure>
-									<Image
-										data={image.responsiveImage}
-										pictureClassName={s.picture}
-									/>
+									<Image data={image.responsiveImage} pictureClassName={s.picture} />
 
 									<figcaption>
 										<h2>{title}</h2>
 										<div className={s.fade}></div>
 										<div>
-											<span className={s.status}>{active ? "Pågående" : "Avslutad"}</span>
-											<Content
-												content={intro}
-												className={classNames(s.intro, "small", "sans")}
-											/>
+											<span className={s.status}>{active ? 'Pågående' : 'Avslutad'}</span>
+											<Content content={intro} className={classNames(s.intro, 'small', 'sans')} />
 										</div>
 									</figcaption>
 									<div className={s.fade}></div>
@@ -69,7 +63,7 @@ export default async function ProjectsPage({ searchParams }) {
 					))}
 				</ul>
 			</article>
-			<DraftMode url={draftUrl} />
+			<DraftMode url={draftUrl} path='/projekt' />
 		</>
 	);
 }

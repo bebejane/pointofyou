@@ -9,7 +9,10 @@ import Article from '@/components/common/Article';
 import { format } from 'date-fns';
 
 export default async function PressPage() {
-	const { allPresses, draftUrl } = await apiQuery<AllPressesQuery, AllPressesQueryVariables>(AllPressesDocument, { all: true });
+	const { allPresses, draftUrl } = await apiQuery<AllPressesQuery, AllPressesQueryVariables>(
+		AllPressesDocument,
+		{ all: true }
+	);
 
 	return (
 		<>
@@ -29,7 +32,7 @@ export default async function PressPage() {
 					))}
 				</ul>
 			</Article>
-			<DraftMode url={draftUrl} />
+			<DraftMode url={draftUrl} path='/nyheter/press' />
 		</>
 	);
 }

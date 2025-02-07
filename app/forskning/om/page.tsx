@@ -1,8 +1,8 @@
-import { apiQuery } from "next-dato-utils/api";
-import { ResearchAboutDocument } from "@/graphql";
-import { notFound } from "@node_modules/next/navigation";
-import Article from "@/components/common/Article";
-import { DraftMode } from "next-dato-utils/components";
+import { apiQuery } from 'next-dato-utils/api';
+import { ResearchAboutDocument } from '@/graphql';
+import { notFound } from '@node_modules/next/navigation';
+import Article from '@/components/common/Article';
+import { DraftMode } from 'next-dato-utils/components';
 
 export type ResearchAboutProps = {};
 
@@ -24,11 +24,11 @@ export default async function AboutResearchPage() {
 				content={contentWrapper.content}
 				light={contentWrapper.headerLight}
 				link={{
-					href: "/nyheter/aktuellt",
-					text: "Visa alla nyheter",
+					href: '/nyheter/aktuellt',
+					text: 'Visa alla nyheter',
 				}}
 			/>
-			<DraftMode url={draftUrl} />
+			<DraftMode url={draftUrl} path='/forskning/om' />
 		</>
 	);
 }

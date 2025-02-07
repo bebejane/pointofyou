@@ -1,8 +1,8 @@
-import { apiQuery } from "next-dato-utils/api";
-import { AllProjectsDocument, ProjectDocument } from "@/graphql";
-import { notFound } from "@node_modules/next/navigation";
-import Article from "@/components/common/Article";
-import { DraftMode } from "next-dato-utils/components";
+import { apiQuery } from 'next-dato-utils/api';
+import { AllProjectsDocument, ProjectDocument } from '@/graphql';
+import { notFound } from '@node_modules/next/navigation';
+import Article from '@/components/common/Article';
+import { DraftMode } from 'next-dato-utils/components';
 
 export type ProjectProps = {
 	params: Promise<{ project: string }>;
@@ -32,11 +32,11 @@ export default async function ProjectPage({ params }: ProjectProps) {
 				content={contentWrapper.content}
 				light={contentWrapper.headerLight}
 				link={{
-					href: "/projekt",
-					text: "Visa alla projekt",
+					href: '/projekt',
+					text: 'Visa alla projekt',
 				}}
 			/>
-			<DraftMode url={draftUrl} />
+			<DraftMode url={draftUrl} path={`/projekt/${slug}`} />
 		</>
 	);
 }
