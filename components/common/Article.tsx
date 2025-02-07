@@ -55,7 +55,7 @@ export default function Article({
 			{children}
 			{link && (
 				<Link href={link.href}>
-					<button className='shortcut'>{link.text}</button>
+					<button className='medium-weight shortcut'>{link.text}</button>
 				</Link>
 			)}
 		</article>

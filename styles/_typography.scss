@@ -46,6 +46,7 @@ h3 {
   font-size: 1rem;
   font-family: var(--label-font);
   margin-bottom: 0.5em;
+  line-height: var(--line-height);
 }
 
 p {
@@ -177,6 +178,10 @@ i {
 
 .sans {
   font-family: var(--sans-font);
+}
+
+.medium-weight {
+  font-family: var(--label-font) !important;
 }
 
 .shortcut {

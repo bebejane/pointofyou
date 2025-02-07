@@ -20,17 +20,17 @@
 
   svg,
   svg * {
-    transform-box: 'fill-box';
+    transform-box: "fill-box";
     transform-origin: center;
-    transition: all .2s ease-in-out;
+    transition: all 0.2s ease-in-out;
   }
 
   .image {
-    transform-box: 'fill-box';
+    transform-box: "fill-box";
     width: var(--size);
     height: var(--size);
     transition: transform 0.2s ease-in-out;
-    transform-origin: 'center';
+    transform-origin: "center";
     cursor: pointer;
   }
 
@@ -47,10 +47,11 @@
     opacity: 0;
     user-select: none;
     transition: opacity 0.2s ease-in-out;
+    font-family: var(--sans-font);
+    font-size: 0.6rem;
   }
 
   &.hover {
-
     .text {
       opacity: 1;
     }

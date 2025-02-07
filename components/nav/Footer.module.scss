@@ -28,7 +28,7 @@
       list-style: none;
     }
 
-    >ul {
+    > ul {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
@@ -63,7 +63,7 @@
 
     @include mq($from: desktop) {
       position: sticky;
-      top: calc(100vh - var(--navbar-height) + var(--outer-margin));
+      top: calc(100vh - var(--navbar-height) + var(--outer-margin) - 1rem);
       z-index: 10000;
     }
 
@@ -85,7 +85,6 @@
       justify-content: flex-end;
       flex: 1 1 auto;
       white-space: nowrap;
-
       @include mq($until: desktop) {
         flex-direction: column;
         align-items: center;

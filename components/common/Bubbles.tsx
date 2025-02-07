@@ -8,11 +8,11 @@ import { usePathname } from "next/navigation";
 
 export type BubblesProps = {};
 
-const bubbleSize = 36;
+const bubbleSize = 42;
 const bubbleScale = 2;
 const bubbleSizeScaled = bubbleSize * bubbleScale;
 
-export default function Bubbles({}: BubblesProps) {
+export default function Bubbles({ }: BubblesProps) {
 	const pathname = usePathname();
 	const [dimensions, setDimensions] = useState<{ width: number; height: number } | null>(null);
 	const [bubbles, setBubbles] = useState(mockBubbles);
@@ -221,12 +221,12 @@ const generatePositions = (
 			randX = Math.round(minX + (maxX - minX) * (Math.random() % 1));
 			randY = Math.round(
 				minY +
-					pageMargin +
-					(maxY +
-						pageMargin -
-						(page + 1 === totalPages ? overflowSpace : 0) -
-						(minY + pageMargin)) *
-						Math.random()
+				pageMargin +
+				(maxY +
+					pageMargin -
+					(page + 1 === totalPages ? overflowSpace : 0) -
+					(minY + pageMargin)) *
+				Math.random()
 			);
 			area = {
 				id: el.id,

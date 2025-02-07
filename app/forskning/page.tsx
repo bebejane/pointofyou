@@ -39,7 +39,7 @@ export default async function ResearchsPage({ searchParams }) {
 						allResearchCategories.map(({ slug, plural }) => ({ id: slug, label: plural }))
 					)}
 				/>
-				{researchs.length === 0 && <p className={s.empty}>Det finns inga fartiklar ännu.</p>}
+				{researchs.length === 0 && <p className={s.empty}>Det finns inga poster här än.</p>}
 				<ul className={s.list}>
 					{researchs.map(({ id, title, file, url, slug, text, _firstPublishedAt }) => (
 						<li key={id}>
