@@ -6,6 +6,13 @@
   flex: 1 1 auto;
   font-family: var(--label-font);
   cursor: pointer;
+  padding-top: 0.5rem;
+
+  .title {
+    line-height: 1;
+    padding-bottom: 0.25em;
+    padding-top: 0.25em;
+  }
 
   .wrap {
     position: relative;

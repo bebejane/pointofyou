@@ -21,14 +21,15 @@ export default function SupportBubble({ support }: SupportBubbleProps) {
 					onClick={() => setShowPopup(true)}
 				>
 					<div className={s.text}>
-						<span>{support.title}</span>
+						<span className={s.title}>Stöd oss<br />—<br />och dig!</span>
+						<span className="very-small">Läs mer</span>
 					</div>
 					<img
 						src='/images/bubble.svg'
 						alt='bubble'
 					/>
 				</div>
-			</div>
+			</div >
 			{showPopup && (
 				<Modal>
 					<div className={s.popup}>
@@ -38,7 +39,8 @@ export default function SupportBubble({ support }: SupportBubbleProps) {
 						</div>
 					</div>
 				</Modal>
-			)}
+			)
+			}
 		</>
 	);
 }
