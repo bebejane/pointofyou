@@ -6,16 +6,29 @@ import cn from "classnames";
 import { IoPlaySharp, IoPauseSharp } from "react-icons/io5";
 import { usePathname } from "next/navigation";
 
-export type BubblesProps = {};
+export type BubblesProps = {
+	sounds: AllSoundsQuery["allSounds"];
+};
 
 const bubbleSize = 36;
 const bubbleScale = 2;
 const bubbleSizeScaled = bubbleSize * bubbleScale;
 
-export default function Bubbles({}: BubblesProps) {
+export default function Bubbles({ sounds }: BubblesProps) {
 	const pathname = usePathname();
 	const [dimensions, setDimensions] = useState<{ width: number; height: number } | null>(null);
-	const [bubbles, setBubbles] = useState(mockBubbles);
+	const [bubbles, setBubbles] = useState(
+		sounds.map((sound, i) => ({
+			id: `audio-bubble-${i}`,
+			file: sound.file,
+			text: sound.text,
+			position: {
+				left: 0,
+				top: 0,
+			},
+			index: i,
+		}))
+	);
 
 	useEffect(() => {
 		const handleResize = () => {
@@ -34,7 +47,7 @@ export default function Bubbles({}: BubblesProps) {
 		if (!dimensions) return;
 
 		const { items } = generatePositions(1000, dimensions, bubbleSize * bubbleScale);
-
+		console.log(items);
 		setBubbles(
 			bubbles.map((b, i) => ({
 				...b,
@@ -48,11 +61,14 @@ export default function Bubbles({}: BubblesProps) {
 
 	return (
 		<section className={s.bubbles}>
-			{bubbles.map((b, i) => (
+			{bubbles.map(({ id, file, text, position, index }, i) => (
 				<Bubble
-					key={b.id}
-					index={i}
-					{...b}
+					key={i}
+					id={id}
+					index={index}
+					file={file as FileField}
+					text={text}
+					position={position}
 				/>
 			))}
 		</section>
@@ -142,9 +158,10 @@ function Bubble({
 				<path
 					d='M25.8056 33.1282L25.518 33.035L25.2461 33.1673C22.9833 34.2691 20.4579 34.9021 17.7668 34.9021C8.32833 34.9021 0.75 27.3021 0.75 17.8261C0.75 8.35002 8.32833 0.75 17.7668 0.75C27.2052 0.75 34.7835 8.35002 34.7835 17.8261C34.7835 22.5833 32.8883 26.8502 29.7986 29.9336L29.5271 30.2046L29.5879 30.5833L30.2264 34.5608L25.8056 33.1282Z'
 					stroke='#FFFCE4'
-					stroke-width='1.5'
-					transform-origin='center'
-					vector-effect='non-scaling-stroke'
+					strokeWidth='1.5'
+					//@ts-ignore
+					transformOrigin='center'
+					vectorEffect='non-scaling-stroke'
 					transform={
 						hover
 							? `scale(${bubbleScale}) translate(${bubbleSize / 2} ${bubbleSize / 2})`
@@ -154,7 +171,10 @@ function Bubble({
 			</svg>
 
 			<div className={cn(s.icon, hover && s.show)}>
-				{!playing ? <IoPlaySharp size={bubbleSize} /> : <IoPauseSharp size={bubbleSize} />}
+				<img
+					src={!playing ? "/images/play.svg" : "/images/pause.svg"}
+					alt=''
+				/>
 			</div>
 			<div className={s.text}>{text}</div>
 			<audio

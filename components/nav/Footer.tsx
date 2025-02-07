@@ -2,12 +2,13 @@ import { Menu } from "@/lib/menu";
 import s from "./Footer.module.scss";
 import Link from "next/link";
 import Bubbles from "@/components/common/Bubbles";
-import { SupportDocument } from "../../graphql";
+import { SupportDocument, AllSoundsDocument } from "../../graphql";
 import { apiQuery } from "next-dato-utils/api";
 import SupportBubble from "./SupportBubble";
 
 export default async function Footer({ menu }: { menu: Menu }) {
 	const { support } = await apiQuery<SupportQuery, SupportQueryVariables>(SupportDocument);
+	const { allSounds } = await apiQuery<AllSoundsQuery, AllSoundsQueryVariables>(AllSoundsDocument);
 
 	return (
 		<>
@@ -49,7 +50,7 @@ export default async function Footer({ menu }: { menu: Menu }) {
 						</figure>
 					</span>
 				</div>
-				<Bubbles />
+				<Bubbles sounds={allSounds} />
 			</footer>
 		</>
 	);

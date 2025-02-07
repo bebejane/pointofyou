@@ -1,5 +1,4 @@
 import s from "./ShortcutImage.module.scss";
-import cn from "classnames";
 import { Image } from "react-datocms";
 import Content from "@/components/common/Content";
 import DatoLink from "@/components/nav/DatoLink";
@@ -14,9 +13,9 @@ export default async function ShortcutImage({ data: { id, images } }: Props) {
 			id={id}
 			className={s.container}
 		>
-			{images.map(({ id, image, link, title, text }) => (
+			{images.map(({ id, image, link, title, text }, i) => (
 				<DatoLink
-					key={id}
+					key={i}
 					link={link}
 				>
 					<figure>
@@ -30,12 +29,14 @@ export default async function ShortcutImage({ data: { id, images } }: Props) {
 						)}
 						<div className={s.figcaption}>
 							<h2>{title}</h2>
-							<Content content={text} className="small sans" />
+							<Content
+								content={text}
+								className='small sans'
+							/>
 						</div>
 					</figure>
 				</DatoLink>
-			))
-			}
-		</section >
+			))}
+		</section>
 	);
 }
