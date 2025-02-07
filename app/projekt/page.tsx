@@ -53,6 +53,7 @@ export default async function ProjectsPage({ searchParams }) {
 
 									<figcaption>
 										<h2>{title}</h2>
+										<div className={s.fade}></div>
 										<div>
 											<span className={s.status}>{active ? "Pågående" : "Avslutad"}</span>
 											<Content

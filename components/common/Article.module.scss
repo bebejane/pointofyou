@@ -30,7 +30,11 @@
       }
     }
 
-    &.light {}
+    &.light {
+      h1 {
+        color: var(--white);
+      }
+    }
   }
 
   button {
