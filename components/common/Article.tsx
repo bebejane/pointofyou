@@ -9,6 +9,7 @@ export type ArticleProps = {
 	image?: FileField;
 	intro?: any;
 	content?: any;
+	light?: boolean;
 	link?: {
 		href: string;
 		text: string;
@@ -22,13 +23,14 @@ export default function Article({
 	image,
 	intro,
 	content,
+	light = false,
 	link,
 	className,
 	children,
 }: ArticleProps) {
 	return (
 		<article className={cn(s.article, className)}>
-			<header className={!image ? s.noImage : undefined}>
+			<header className={cn(!image && s.noImage, light && s.light)}>
 				<h1>{title}</h1>
 				{image && (
 					<figure>

@@ -27,6 +27,7 @@ fragment AboutFragment on AboutRecord {
 	slug
 	contentWrapper {
 		id
+		headerLight
 		content {
 			__typename
 			blocks {

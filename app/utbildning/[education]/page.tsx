@@ -30,6 +30,7 @@ export default async function EducationPage({ params }: EducationProps) {
 				intro={intro}
 				image={image as FileField}
 				content={contentWrapper.content}
+				light={contentWrapper.headerLight}
 			/>
 			<DraftMode url={draftUrl} />
 		</>

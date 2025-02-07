@@ -28,6 +28,7 @@ fragment ProjectFragment on ProjectRecord {
 	}
 	contentWrapper {
 		id
+		headerLight
 		content {
 			__typename
 			blocks {

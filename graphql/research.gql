@@ -35,6 +35,7 @@ fragment ResearchAboutFragment on ResearchAboutRecord {
 	}
 	contentWrapper {
 		id
+		headerLight
 		content {
 			__typename
 			blocks {

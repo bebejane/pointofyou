@@ -27,6 +27,7 @@ fragment EducationFragment on EducationRecord {
 	}
 	contentWrapper {
 		id
+		headerLight
 		content {
 			__typename
 			blocks {

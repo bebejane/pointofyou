@@ -27,6 +27,7 @@ export default async function AboutPage({ params }: AboutProps) {
 				image={image as FileField}
 				intro={intro}
 				content={contentWrapper.content}
+				light={contentWrapper.headerLight}
 			/>
 			<DraftMode url={draftUrl} />
 		</>

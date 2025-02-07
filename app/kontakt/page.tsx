@@ -22,6 +22,7 @@ export default async function ContactPage({ searchParams }) {
 			<Article
 				title={title}
 				content={contentWrapper.content}
+				light={contentWrapper.headerLight}
 			/>
 			<DraftMode url={draftUrl} />
 		</>

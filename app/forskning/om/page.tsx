@@ -22,6 +22,7 @@ export default async function AboutResearchPage() {
 				title={title}
 				intro={intro}
 				content={contentWrapper.content}
+				light={contentWrapper.headerLight}
 				link={{
 					href: "/nyheter/aktuellt",
 					text: "Visa alla nyheter",

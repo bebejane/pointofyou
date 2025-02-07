@@ -17,6 +17,7 @@ export default async function EnglishPage({ searchParams }) {
 			<Article
 				title={title}
 				content={contentWrapper.content}
+				light={contentWrapper.headerLight}
 				intro={intro}
 			/>
 			<DraftMode url={draftUrl} />

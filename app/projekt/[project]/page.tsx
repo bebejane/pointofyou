@@ -30,6 +30,7 @@ export default async function ProjectPage({ params }: ProjectProps) {
 				image={image as FileField}
 				intro={intro}
 				content={contentWrapper.content}
+				light={contentWrapper.headerLight}
 				link={{
 					href: "/projekt",
 					text: "Visa alla projekt",

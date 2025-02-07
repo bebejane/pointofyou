@@ -9,6 +9,7 @@ fragment ContactFragment on ContactRecord {
 	title
 	contentWrapper {
 		id
+		headerLight
 		content {
 			__typename
 			blocks {
