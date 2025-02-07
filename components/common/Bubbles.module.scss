@@ -1,10 +1,8 @@
 .bubbles {
   position: relative;
   height: calc(100vh - var(--navbar-height));
-  width: 100%;
   background-color: var(--blue);
   width: 100%;
-  overflow: hidden;
 }
 
 .bubble {
@@ -13,10 +11,27 @@
   line-height: 0;
   top: 0;
   left: 0;
-
   display: flex;
   align-items: center;
   justify-content: center;
+  animation-name: show;
+  animation-delay: 0s;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  opacity: 0;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+
+  @keyframes show {
+    0% {
+      opacity: 0;
+      transform: scale(0);
+    }
+
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
 
   svg,
   svg * {

@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import s from "./Bubbles.module.scss";
-import cn from "classnames";
-import { IoPlaySharp, IoPauseSharp } from "react-icons/io5";
-import { usePathname } from "next/navigation";
+import { useEffect, useRef, useState } from 'react';
+import s from './Bubbles.module.scss';
+import cn from 'classnames';
+import { usePathname } from 'next/navigation';
+import { useInViewRef } from 'rooks';
 
 export type BubblesProps = {
-	sounds: AllSoundsQuery["allSounds"];
+	sounds: AllSoundsQuery['allSounds'];
 };
 
 const bubbleSize = 36;
@@ -29,6 +29,7 @@ export default function Bubbles({ sounds }: BubblesProps) {
 			index: i,
 		}))
 	);
+	const [ref, inView] = useInViewRef();
 
 	useEffect(() => {
 		const handleResize = () => {
@@ -38,16 +39,16 @@ export default function Bubbles({ sounds }: BubblesProps) {
 			});
 		};
 
-		window.addEventListener("resize", handleResize);
+		window.addEventListener('resize', handleResize);
 		handleResize();
-		return () => window.removeEventListener("resize", handleResize);
+		return () => window.removeEventListener('resize', handleResize);
 	}, []);
 
 	useEffect(() => {
-		if (!dimensions) return;
+		if (!dimensions || !inView) return;
 
 		const { items } = generatePositions(1000, dimensions, bubbleSize * bubbleScale);
-		console.log(items);
+
 		setBubbles(
 			bubbles.map((b, i) => ({
 				...b,
@@ -57,21 +58,14 @@ export default function Bubbles({ sounds }: BubblesProps) {
 				},
 			}))
 		);
-	}, [dimensions, pathname]);
+	}, [inView, dimensions, pathname]);
 
 	return (
-		<section className={s.bubbles}>
+		<div className={s.bubbles} ref={ref}>
 			{bubbles.map(({ id, file, text, position, index }, i) => (
-				<Bubble
-					key={i}
-					id={id}
-					index={index}
-					file={file as FileField}
-					text={text}
-					position={position}
-				/>
+				<Bubble key={`${id}-${inView}`} id={id} index={index} file={file as FileField} text={text} position={position} />
 			))}
-		</section>
+		</div>
 	);
 }
 
@@ -95,11 +89,9 @@ function Bubble({
 
 	function handleClick() {
 		if (!audio.current) return;
-		const allSounds = document.querySelectorAll<HTMLDivElement>(
-			`[id^='audio-bubble-']:not([id='${id}'])`
-		);
+		const allSounds = document.querySelectorAll<HTMLDivElement>(`[id^='audio-bubble-']:not([id='${id}'])`);
 		allSounds.forEach((el) => {
-			const a = el.querySelector<HTMLAudioElement>("audio");
+			const a = el.querySelector<HTMLAudioElement>('audio');
 			a.pause();
 		});
 
@@ -119,13 +111,13 @@ function Bubble({
 			setHover(false);
 		};
 
-		a.addEventListener("ended", handleEnded);
-		a.addEventListener("playing", handlePlaying);
-		a.addEventListener("pause", handlePause);
+		a.addEventListener('ended', handleEnded);
+		a.addEventListener('playing', handlePlaying);
+		a.addEventListener('pause', handlePause);
 		return () => {
-			a.removeEventListener("ended", handleEnded);
-			a.removeEventListener("playing", handlePlaying);
-			a.removeEventListener("pause", handlePause);
+			a.removeEventListener('ended', handleEnded);
+			a.removeEventListener('playing', handlePlaying);
+			a.removeEventListener('pause', handlePause);
 		};
 	}, [hover]);
 
@@ -136,12 +128,13 @@ function Bubble({
 			onClick={handleClick}
 			style={
 				{
-					"--size": bubbleSizeScaled,
-					"--scale": bubbleScale,
+					'--size': bubbleSizeScaled,
+					'--scale': bubbleScale,
 					width: bubbleSizeScaled,
 					height: bubbleSizeScaled,
 					left: position.left,
 					top: position.top,
+					animationDelay: `${Math.random() * 1}s`,
 				} as any
 			}
 		>
@@ -171,18 +164,10 @@ function Bubble({
 			</svg>
 
 			<div className={cn(s.icon, hover && s.show)}>
-				<img
-					src={!playing ? "/images/play.svg" : "/images/pause.svg"}
-					alt=''
-				/>
+				<img src={!playing ? '/images/play.svg' : '/images/pause.svg'} alt='' />
 			</div>
 			<div className={s.text}>{text}</div>
-			<audio
-				ref={audio}
-				src={file.url}
-				controls={false}
-				autoPlay={false}
-			/>
+			<audio ref={audio} src={file.url} controls={false} autoPlay={false} />
 		</div>
 	);
 }
@@ -192,24 +177,15 @@ const generatePositions = (
 	dimensions: { width: number; height: number } = { width: 0, height: 0 },
 	size = bubbleSize
 ) => {
-	const elements = Array.prototype.slice.call(
-		document.querySelectorAll<HTMLDivElement>(`[id^='audio-bubble-']`),
-		0
-	);
+	const elements = Array.prototype.slice.call(document.querySelectorAll<HTMLDivElement>(`[id^='audio-bubble-']`), 0);
 	const maxRetries = 10000;
-	const symbolsPerPage = Math.floor(
-		(Math.floor(dimensions.height / size) * Math.floor(dimensions.width / size)) / 2
-	);
-	const totalPages = Math.ceil(elements.length / symbolsPerPage);
-	const maxCols = Math.floor(dimensions.width / size);
-	const maxRows = symbolsPerPage / maxCols;
-	const overflowSpace =
-		(maxRows - (elements.length - symbolsPerPage * (totalPages - 1)) / maxCols) * size;
+	const symbolsPerPage = Math.floor((Math.floor(dimensions.height / size) * Math.floor(dimensions.width / size)) / 2);
 	const positions = { dimensions, items: [], totalHeight: 0 };
+	const padding = size * bubbleScale;
 	const minX = 0;
-	const maxX = dimensions.width - size * 2;
+	const maxX = dimensions.width - size * bubbleScale - padding;
 	const minY = 0;
-	const maxY = dimensions.height - size * 2;
+	const maxY = dimensions.height - size * bubbleScale - padding;
 
 	const isOverlapping = (area: { top: number; left: number; width: number; height: number }) => {
 		for (let i = 0; i < positions.items.length; i++) {
@@ -243,15 +219,7 @@ const generatePositions = (
 
 		do {
 			randX = Math.round(minX + (maxX - minX) * (Math.random() % 1));
-			randY = Math.round(
-				minY +
-					pageMargin +
-					(maxY +
-						pageMargin -
-						(page + 1 === totalPages ? overflowSpace : 0) -
-						(minY + pageMargin)) *
-						Math.random()
-			);
+			randY = Math.round(minY + pageMargin + (maxY + pageMargin - (minY + pageMargin)) * Math.random());
 			area = {
 				id: el.id,
 				left: randX,
@@ -261,73 +229,13 @@ const generatePositions = (
 			};
 		} while (isOverlapping(area) && ++retries < maxRetries);
 
-		if (retries >= maxRetries && totalRetries < 10)
-			return generatePositions(++totalRetries, dimensions, size);
+		if (retries >= maxRetries && totalRetries < 10) return generatePositions(++totalRetries, dimensions, size);
 
 		page = Math.floor((i + 1) / symbolsPerPage);
 
 		positions.items.push(area);
-		positions.totalHeight =
-			positions.totalHeight < area.top + size ? area.top + size : positions.totalHeight;
+		positions.totalHeight = positions.totalHeight < area.top + size ? area.top + size : positions.totalHeight;
 	}
-	if (totalRetries >= 10) console.log("failed to randomly position");
+	if (totalRetries >= 10) console.log('failed to randomly position');
 	return positions;
 };
-
-const mockBubbles: any[] = [
-	{
-		id: "audio-bubble-1",
-		file: {
-			url: "https://www.datocms-assets.com/150385/1737726329-05-zum-wohl.mp3",
-		} as FileField,
-		text: "Bubbles",
-		position: {
-			left: 0,
-			top: 0,
-		},
-	},
-	{
-		id: "audio-bubble-2",
-		file: {
-			url: "https://www.datocms-assets.com/150385/1737726329-05-zum-wohl.mp3",
-		} as FileField,
-		text: "Bubbles 2",
-		position: {
-			left: 0,
-			top: 0,
-		},
-	},
-	{
-		id: "audio-bubble-3",
-		file: {
-			url: "https://www.datocms-assets.com/150385/1737726329-05-zum-wohl.mp3",
-		} as FileField,
-		text: "Bubbles 3",
-		position: {
-			left: 0,
-			top: 0,
-		},
-	},
-	{
-		id: "audio-bubble-4",
-		file: {
-			url: "https://www.datocms-assets.com/150385/1737726329-05-zum-wohl.mp3",
-		} as FileField,
-		text: "Bubbles 4",
-		position: {
-			left: 0,
-			top: 0,
-		},
-	},
-	{
-		id: "audio-bubble-5",
-		file: {
-			url: "https://www.datocms-assets.com/150385/1737726329-05-zum-wohl.mp3",
-		} as FileField,
-		text: "Bubbles 5",
-		position: {
-			left: 0,
-			top: 0,
-		},
-	},
-];
