@@ -31,6 +31,7 @@
     li {
       cursor: pointer;
       padding-right: 1.5rem;
+      position: relative;
 
       &:last-child {
         padding-right: 0;
@@ -47,6 +48,11 @@
   }
 
   .menu {
+    span {
+      position: relative;
+      padding-right: 0.2em;
+    }
+
     .item {
       &::after {
         position: absolute;
@@ -56,7 +62,9 @@
 
       &.dropdown:hover {
         &::after {
-          content: "▾";
+          content: "›";
+          transform: rotate(90deg);
+          padding-left: 0.1em;
         }
       }
 
