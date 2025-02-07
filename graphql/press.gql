@@ -25,6 +25,64 @@ fragment PressFragment on PressRecord {
 		links
 		value
 	}
+	contentWrapper {
+		id
+		headerLight
+		content {
+			__typename
+			blocks {
+				__typename
+				... on ButtonRecord {
+					id
+					text
+					url
+				}
+				... on ExpandableListRecord {
+					id
+					items {
+						__typename
+						... on ExpandableListItemRecord {
+							id
+							title
+							text {
+								blocks
+								links
+								value
+							}
+						}
+					}
+				}
+				... on ImageRecord {
+					id
+					image {
+						...ImageFragment
+					}
+				}
+				... on VideoExternalRecord {
+					id
+					caption
+					video {
+						height
+						width
+						url
+						provider
+						providerUid
+						title
+						thumbnailUrl
+					}
+				}
+				... on VideoInternalRecord {
+					id
+					file {
+						...VideoFragment
+					}
+					caption
+				}
+			}
+			links
+			value
+		}
+	}
 	_firstPublishedAt
 }
 

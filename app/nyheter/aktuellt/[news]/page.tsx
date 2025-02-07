@@ -18,7 +18,7 @@ export default async function NewsPage({ params }: NewsProps) {
 
 	if (!news) return notFound();
 
-	const { title, intro, image } = news;
+	const { title, intro, image, contentWrapper } = news;
 
 	return (
 		<>
@@ -26,6 +26,8 @@ export default async function NewsPage({ params }: NewsProps) {
 				title={title}
 				image={image as FileField}
 				intro={intro}
+				content={contentWrapper.content}
+				light={contentWrapper.headerLight}
 				link={{
 					href: "/nyheter/aktuellt",
 					text: "Visa alla nyheter",

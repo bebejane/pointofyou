@@ -18,7 +18,7 @@ export default async function PressPage({ params }: PressProps) {
 
 	if (!press) return notFound();
 
-	const { title, intro, image } = press;
+	const { title, intro, image, contentWrapper } = press;
 
 	return (
 		<>
@@ -26,6 +26,8 @@ export default async function PressPage({ params }: PressProps) {
 				title={title}
 				image={image as FileField}
 				intro={intro}
+				content={contentWrapper.content}
+				light={contentWrapper.headerLight}
 				link={{
 					href: "/nyheter/press",
 					text: "Visa alla",
