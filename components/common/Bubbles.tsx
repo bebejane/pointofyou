@@ -8,11 +8,11 @@ import { usePathname } from "next/navigation";
 
 export type BubblesProps = {};
 
-const bubbleSize = 42;
+const bubbleSize = 36;
 const bubbleScale = 2;
 const bubbleSizeScaled = bubbleSize * bubbleScale;
 
-export default function Bubbles({ }: BubblesProps) {
+export default function Bubbles({}: BubblesProps) {
 	const pathname = usePathname();
 	const [dimensions, setDimensions] = useState<{ width: number; height: number } | null>(null);
 	const [bubbles, setBubbles] = useState(mockBubbles);
@@ -76,7 +76,6 @@ function Bubble({
 	const [hover, setHover] = useState(false);
 	const [playing, setPlaying] = useState(false);
 	const [loaded, setLoaded] = useState(false);
-	const isOdd = index % 2 === 1;
 
 	function handleClick() {
 		if (!audio.current) return;
@@ -135,10 +134,10 @@ function Bubble({
 				width={bubbleSizeScaled}
 				height={bubbleSizeScaled}
 				fill='none'
+				transform={index % 2 === 0 ? `rotate(90)` : undefined}
 				xmlns='http://www.w3.org/2000/svg'
 				onMouseEnter={() => setHover(true)}
 				onMouseLeave={() => !playing && setHover(false)}
-				transform={isOdd ? "rotate(90)" : undefined}
 			>
 				<path
 					d='M25.8056 33.1282L25.518 33.035L25.2461 33.1673C22.9833 34.2691 20.4579 34.9021 17.7668 34.9021C8.32833 34.9021 0.75 27.3021 0.75 17.8261C0.75 8.35002 8.32833 0.75 17.7668 0.75C27.2052 0.75 34.7835 8.35002 34.7835 17.8261C34.7835 22.5833 32.8883 26.8502 29.7986 29.9336L29.5271 30.2046L29.5879 30.5833L30.2264 34.5608L25.8056 33.1282Z'
@@ -226,12 +225,12 @@ const generatePositions = (
 			randX = Math.round(minX + (maxX - minX) * (Math.random() % 1));
 			randY = Math.round(
 				minY +
-				pageMargin +
-				(maxY +
-					pageMargin -
-					(page + 1 === totalPages ? overflowSpace : 0) -
-					(minY + pageMargin)) *
-				Math.random()
+					pageMargin +
+					(maxY +
+						pageMargin -
+						(page + 1 === totalPages ? overflowSpace : 0) -
+						(minY + pageMargin)) *
+						Math.random()
 			);
 			area = {
 				id: el.id,
