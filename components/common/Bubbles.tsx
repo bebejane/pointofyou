@@ -63,7 +63,14 @@ export default function Bubbles({ sounds }: BubblesProps) {
 	return (
 		<div className={s.bubbles} ref={ref}>
 			{bubbles.map(({ id, file, text, position, index }, i) => (
-				<Bubble key={`${id}-${inView}`} id={id} index={index} file={file as FileField} text={text} position={position} />
+				<Bubble
+					key={`${id}-${inView}`}
+					id={id}
+					index={index}
+					file={file as FileField}
+					text={text}
+					position={position}
+				/>
 			))}
 		</div>
 	);
@@ -89,7 +96,9 @@ function Bubble({
 
 	function handleClick() {
 		if (!audio.current) return;
-		const allSounds = document.querySelectorAll<HTMLDivElement>(`[id^='audio-bubble-']:not([id='${id}'])`);
+		const allSounds = document.querySelectorAll<HTMLDivElement>(
+			`[id^='audio-bubble-']:not([id='${id}'])`
+		);
 		allSounds.forEach((el) => {
 			const a = el.querySelector<HTMLAudioElement>('audio');
 			a.pause();
@@ -177,9 +186,14 @@ const generatePositions = (
 	dimensions: { width: number; height: number } = { width: 0, height: 0 },
 	size = bubbleSize
 ) => {
-	const elements = Array.prototype.slice.call(document.querySelectorAll<HTMLDivElement>(`[id^='audio-bubble-']`), 0);
+	const elements = Array.prototype.slice.call(
+		document.querySelectorAll<HTMLDivElement>(`[id^='audio-bubble-']`),
+		0
+	);
 	const maxRetries = 10000;
-	const symbolsPerPage = Math.floor((Math.floor(dimensions.height / size) * Math.floor(dimensions.width / size)) / 2);
+	const symbolsPerPage = Math.floor(
+		(Math.floor(dimensions.height / size) * Math.floor(dimensions.width / size)) / 2
+	);
 	const positions = { dimensions, items: [], totalHeight: 0 };
 	const padding = size * bubbleScale;
 	const minX = 0;
@@ -215,11 +229,13 @@ const generatePositions = (
 		let retries = 0;
 		let pageMargin = page * dimensions.height;
 
-		let area;
+		let area: { id: string; left: number; top: number; width: number; height: number };
 
 		do {
 			randX = Math.round(minX + (maxX - minX) * (Math.random() % 1));
-			randY = Math.round(minY + pageMargin + (maxY + pageMargin - (minY + pageMargin)) * Math.random());
+			randY = Math.round(
+				minY + pageMargin + (maxY + pageMargin - (minY + pageMargin)) * Math.random()
+			);
 			area = {
 				id: el.id,
 				left: randX,
@@ -229,12 +245,14 @@ const generatePositions = (
 			};
 		} while (isOverlapping(area) && ++retries < maxRetries);
 
-		if (retries >= maxRetries && totalRetries < 10) return generatePositions(++totalRetries, dimensions, size);
+		if (retries >= maxRetries && totalRetries < 10)
+			return generatePositions(++totalRetries, dimensions, size);
 
 		page = Math.floor((i + 1) / symbolsPerPage);
 
 		positions.items.push(area);
-		positions.totalHeight = positions.totalHeight < area.top + size ? area.top + size : positions.totalHeight;
+		positions.totalHeight =
+			positions.totalHeight < area.top + size ? area.top + size : positions.totalHeight;
 	}
 	if (totalRetries >= 10) console.log('failed to randomly position');
 	return positions;
