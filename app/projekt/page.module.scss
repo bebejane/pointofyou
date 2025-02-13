@@ -1,11 +1,14 @@
 .projects {
   header {
-    display: flex;
     flex-direction: row;
     align-items: center;
     position: relative;
     margin-right: var(--full-bleed-margin);
     margin-left: var(--full-bleed-margin);
+
+    @include mq($from: desktop) {
+      display: flex;
+    }
 
     h1 {
       padding-left: calc(-1 * var(--full-bleed-margin));
@@ -15,11 +18,19 @@
 
     .filter {
       display: flex;
-      justify-content: flex-end;
       align-items: center;
       flex: 0 1 auto;
-      //padding-bottom: var(--space-big);
-      margin-right: var(--outer-margin);
+      margin-right: 1rem;
+
+      @include mq($from: desktop) {
+        justify-content: flex-end;
+        margin-right: var(--outer-margin);
+      }
+
+      @include mq($until: desktop) {
+        margin-left: var(--outer-margin);
+        margin-bottom: var(--space);
+      }
 
       button {
         margin: 0;

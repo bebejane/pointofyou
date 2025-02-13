@@ -3,7 +3,7 @@
 
 html,
 body {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: normal;
 
   @include mq($from: tablet) {
@@ -30,10 +30,14 @@ h5 {
 }
 
 h1 {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: bold;
   padding-bottom: var(--space);
   line-height: 1.25;
+
+  @include mq($from: desktop) {
+    font-size: 2.5rem;
+  }
 }
 
 h2 {
@@ -62,26 +66,17 @@ p.intro,
   line-height: var(--line-height);
 }
 
-.thumb-intro,
-.small-body {
-  font-size: 0.75rem;
-
-  strong {
-    font-weight: bold !important;
-  }
-
-  > p {
-    padding: 0;
-  }
-}
-
 .small,
 .small p,
 footer,
 footer nav,
 figcaption,
 .caption label {
-  font-size: 0.8rem;
+  font-size: 0.85rem;
+
+  @include mq($from: desktop) {
+    font-size: 0.8rem;
+  }
 }
 
 .very-small {
@@ -124,6 +119,11 @@ article {
 
     & li:last-child p {
       margin-bottom: 1em;
+    }
+
+    li {
+      padding-left: 0.5 em;
+      margin-left: 1em;
     }
   }
 

@@ -8,6 +8,10 @@
   cursor: pointer;
   padding-top: 0.5rem;
 
+  @include mq($until: desktop) {
+    display: none;
+  }
+
   .title {
     line-height: 1;
     padding-bottom: 0.25em;

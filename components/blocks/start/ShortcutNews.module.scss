@@ -1,9 +1,14 @@
 .container {
   display: flex;
   flex-direction: column;
-  margin-left: var(--full-margin);
-  margin-right: var(--full-margin);
+  margin-left: 0;
+  margin-right: 0;
   margin-top: var(--space-big);
+
+  @include mq($from: desktop) {
+    margin-left: var(--full-margin);
+    margin-right: var(--full-margin);
+  }
 
   .header {
     display: flex;
@@ -28,7 +33,14 @@
 
     a {
       flex: 0 0 33.3%;
-      padding-right: 2rem;
+      @include mq($from: desktop) {
+        padding-right: 2rem;
+      }
+      @include mq($until: desktop) {
+        &:not(:last-child) {
+          padding-bottom: 1.5rem;
+        }
+      }
     }
 
     .content {

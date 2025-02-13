@@ -42,7 +42,7 @@
   width: 100%;
   background-color: var(--blue);
   padding: var(--outer-margin);
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: var(--white);
   padding-top: calc(var(--navbar-height) + var(--space));
   z-index: var(--z-navbar);
@@ -61,9 +61,16 @@
     list-style: none;
 
     li {
+      padding-bottom: 1em;
+      padding-top: 1em;
+
+      &:first-child {
+        padding-top: 0;
+      }
+
       &.active {
         > a {
-          color: pink;
+          color: var(--blue-light);
         }
       }
     }
@@ -95,7 +102,13 @@
       > ul {
         display: flex;
         flex-direction: column;
-        margin-left: 0.5rem;
+        margin-left: 1em;
+        margin-top: 0.5em;
+
+        li {
+          padding-top: 0.5em;
+          padding-bottom: 0.5em;
+        }
       }
     }
   }

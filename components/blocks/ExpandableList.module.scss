@@ -23,6 +23,11 @@
 
       p {
         margin: 0;
+        padding-right: 1em;
+      }
+
+      .icon p {
+        padding-right: 0em;
       }
 
       .title {
@@ -37,6 +42,7 @@
       &.open {
         display: block;
         padding-top: 0.5em;
+        padding-bottom: 0.2em;
       }
     }
   }

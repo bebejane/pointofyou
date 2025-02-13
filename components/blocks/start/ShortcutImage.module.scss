@@ -21,9 +21,14 @@
       position: relative;
 
       img {
-        height: 60vh;
-        width: 50vw;
+        height: 40vh;
+        width: 100vw;
         object-fit: cover;
+
+        @include mq($from: desktop) {
+          height: 60vh;
+          width: 50vw;
+        }
       }
 
       .figcaption {

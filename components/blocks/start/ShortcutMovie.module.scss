@@ -2,10 +2,14 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 60vh;
   margin-left: var(--full-bleed-margin);
   margin-right: var(--full-bleed-margin);
   margin-top: var(--space-big);
+
+  @include mq($from: desktop) {
+    height: 100vh;
+  }
 
   .content {
     position: absolute;
@@ -26,8 +30,12 @@
   }
 
   .video {
-    height: 100vh;
+    height: 60vh;
     width: 100%;
     object-fit: cover;
+
+    @include mq($from: desktop) {
+      height: 100vh;
+    }
   }
 }

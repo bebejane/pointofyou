@@ -42,7 +42,8 @@ export default function NavbarMobile({ menu }: NavbarMobileProps) {
 						toggled={open}
 						color={open ? "white" : "black"}
 						size={36}
-						onToggle={(state) => setOpen(state)}
+						onToggle={(state) => setOpen(state)
+						}
 					/>
 				</div>
 			</div>

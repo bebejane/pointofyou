@@ -41,8 +41,10 @@
 	--sans-font: "Jazz", Arial, Sans-serif;
 
 	@include mq($until: desktop) {
+		--outer-margin: 1.5rem;
 		--margin: var(--outer-margin);
 		--navbar-height: calc(48px + var(--outer-margin));
+		--full-bleed-margin: calc(calc(-1 * var(--margin)));
 	}
 }
 
@@ -69,10 +71,10 @@ main {
 }
 
 article {
-	//@include mq($from: desktop) {
-	margin-right: var(--margin);
-	margin-left: var(--margin);
-	//}
+	@include mq($from: desktop) {
+		margin-right: var(--margin);
+		margin-left: var(--margin);
+	}
 
 	hr {
 		margin-top: var(--space-big);
@@ -136,11 +138,13 @@ button {
 	}
 }
 
-hr {}
+hr {
+}
 
 input,
 textarea,
-select {}
+select {
+}
 
 select {
 	-webkit-appearance: none;

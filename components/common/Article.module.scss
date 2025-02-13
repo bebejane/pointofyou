@@ -18,9 +18,13 @@
       margin-bottom: var(--space);
 
       img {
-        height: calc(100vh - var(--navbar-height));
+        height: calc(60vh - var(--navbar-height));
         width: 100%;
         object-fit: cover;
+
+        @include mq($from: desktop) {
+          height: calc(100vh - var(--navbar-height));
+        }
       }
     }
 
