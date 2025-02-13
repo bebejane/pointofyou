@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import s from "./ImageGallery.module.scss";
-import cn from "classnames";
-import React, { useState, useRef, useEffect } from "react";
-import { Swiper as SwiperReact, SwiperSlide } from "swiper/react";
-import type { Swiper } from "swiper";
-import { Image } from "react-datocms";
+import s from './ImageGallery.module.scss';
+import cn from 'classnames';
+import React, { useState, useRef, useEffect } from 'react';
+import { Swiper as SwiperReact, SwiperSlide } from 'swiper/react';
+import type { Swiper } from 'swiper';
+import { Image } from 'react-datocms';
 
 export type ImageGalleryBlockProps = {
 	id: string;
@@ -30,10 +30,7 @@ export default function ImageGallery({
 	}, [images, index]);
 
 	return (
-		<div
-			className={s.gallery}
-			ref={containerRef}
-		>
+		<div className={s.gallery} ref={containerRef}>
 			<figcaption className={s.caption}>{caption}</figcaption>
 			<SwiperReact
 				id={`${id}-swiper-wrap`}
@@ -41,27 +38,21 @@ export default function ImageGallery({
 				loop={true}
 				noSwiping={false}
 				simulateTouch={true}
-				slidesPerView={"auto"}
+				slidesPerView={'auto'}
 				autoHeight={true}
 				initialSlide={index}
 				onSlideChange={({ realIndex }) => setIndex(realIndex)}
 				onSwiper={(swiper) => (swiperRef.current = swiper)}
 			>
 				{images.map((item, idx) => (
-					<SwiperSlide
-						key={idx}
-						className={cn(s.slide, item.height > item.width && s.portrait)}
-					>
-						<figure
-							id={`${id}-${item.id}`}
-							onClick={() => onClick?.(item.id)}
-						>
+					<SwiperSlide key={idx} className={cn(s.slide, item.height > item.width && s.portrait)}>
+						<figure id={`${id}-${item.id}`} onClick={() => onClick?.(item.id)}>
 							<Image
 								data={item.responsiveImage}
 								className={s.image}
 								pictureClassName={s.picture}
 								placeholderClassName={s.picture}
-								objectFit={"cover"}
+								objectFit={'cover'}
 								intersectionMargin='0px 0px 200% 0px'
 							/>
 						</figure>

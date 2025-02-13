@@ -3,6 +3,7 @@
   margin-right: var(--full-bleed-margin);
   margin-bottom: calc(1.5 * var(--space-big));
   margin-top: var(--space);
+
   @include mq($from: desktop) {
     margin-bottom: var(--space-big);
   }
@@ -34,7 +35,7 @@
     user-select: none;
     cursor: pointer;
 
-    > div {
+    >div {
       display: flex;
       flex-direction: row;
       align-items: flex-end;
@@ -49,13 +50,17 @@
           height: 60vh;
         }
 
-        > figure {
+        >figure {
           position: relative;
           display: flex;
           flex-direction: column;
           align-items: flex-start;
           justify-content: flex-start;
           cursor: pointer;
+
+          @include mq($until: desktop) {
+            width: calc(100vw - calc(2 * var(--outer-margin)));
+          }
 
           img {
             width: 100%;
@@ -64,12 +69,19 @@
             @include mq($from: desktop) {
               height: 60vh;
             }
+
             object-fit: cover;
           }
         }
 
         &.portrait {
-          flex: 0 1;
+          flex: 0 1 auto;
+
+          >figure {
+            @include mq($until: desktop) {
+              width: auto;
+            }
+          }
 
           img {
             object-fit: contain !important;
