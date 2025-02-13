@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { CSSProperties, useEffect, useRef, useState } from 'react';
 import s from './Bubbles.module.scss';
 import cn from 'classnames';
 import { usePathname } from 'next/navigation';
@@ -93,6 +93,7 @@ function Bubble({
 	const [hover, setHover] = useState(false);
 	const [playing, setPlaying] = useState(false);
 	const [loaded, setLoaded] = useState(false);
+	const [bubbleStyle, setBubbleStyle] = useState<any | null>(null);
 
 	function handleClick() {
 		if (!audio.current) return;
@@ -130,22 +131,24 @@ function Bubble({
 		};
 	}, [hover]);
 
+	useEffect(() => {
+		setBubbleStyle({
+			'--size': bubbleSizeScaled,
+			'--scale': bubbleScale,
+			width: bubbleSizeScaled,
+			height: bubbleSizeScaled,
+			left: position.left,
+			top: position.top,
+			animationDelay: `${Math.random() * 1}s`,
+		});
+	}, [position]);
+
 	return (
 		<div
 			id={id}
 			className={cn(s.bubble, hover && s.hover)}
 			onClick={handleClick}
-			style={
-				{
-					'--size': bubbleSizeScaled,
-					'--scale': bubbleScale,
-					width: bubbleSizeScaled,
-					height: bubbleSizeScaled,
-					left: position.left,
-					top: position.top,
-					animationDelay: `${Math.random() * 1}s`,
-				} as any
-			}
+			style={bubbleStyle}
 		>
 			<svg
 				className={s.image}
@@ -190,16 +193,16 @@ const generatePositions = (
 		document.querySelectorAll<HTMLDivElement>(`[id^='audio-bubble-']`),
 		0
 	);
-	const maxRetries = 10000;
+	const maxRetries = 100000;
 	const symbolsPerPage = Math.floor(
 		(Math.floor(dimensions.height / size) * Math.floor(dimensions.width / size)) / 2
 	);
 	const positions = { dimensions, items: [], totalHeight: 0 };
-	const padding = size * bubbleScale;
+	const padding = 100;
 	const minX = 0;
-	const maxX = dimensions.width - size * bubbleScale - padding;
+	const maxX = dimensions.width - bubbleSizeScaled - padding;
 	const minY = 0;
-	const maxY = dimensions.height - size * bubbleScale - padding;
+	const maxY = dimensions.height - bubbleSizeScaled - padding;
 
 	const isOverlapping = (area: { top: number; left: number; width: number; height: number }) => {
 		for (let i = 0; i < positions.items.length; i++) {
@@ -240,12 +243,12 @@ const generatePositions = (
 				id: el.id,
 				left: randX,
 				top: randY,
-				width: el.getBoundingClientRect().width,
-				height: el.getBoundingClientRect().height,
+				width: bubbleSizeScaled,
+				height: bubbleSizeScaled,
 			};
 		} while (isOverlapping(area) && ++retries < maxRetries);
 
-		if (retries >= maxRetries && totalRetries < 10)
+		if (retries >= maxRetries && totalRetries < 10000)
 			return generatePositions(++totalRetries, dimensions, size);
 
 		page = Math.floor((i + 1) / symbolsPerPage);
@@ -254,6 +257,6 @@ const generatePositions = (
 		positions.totalHeight =
 			positions.totalHeight < area.top + size ? area.top + size : positions.totalHeight;
 	}
-	if (totalRetries >= 10) console.log('failed to randomly position');
+	if (totalRetries >= 10000) console.log('failed to randomly position');
 	return positions;
 };

@@ -38,7 +38,7 @@
     }
   }
 
-  > ul {
+  >ul {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -52,6 +52,7 @@
 
     li {
       position: relative;
+      margin: 0;
       flex: 0 0 50%;
 
       @include mq($until: desktop) {
@@ -122,6 +123,7 @@
             color: var(--white);
           }
         }
+
         .fade {
           position: absolute;
           bottom: 0;

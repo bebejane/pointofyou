@@ -7,6 +7,7 @@ export type MenuItem = {
   slug?: string,
   href?: string,
   sub?: MenuItem[],
+  hideInDesktop?: boolean,
   hideSub?: boolean
 }
 
@@ -36,15 +37,22 @@ export const buildMenu = async (): Promise<Menu> => {
     title: 'Projekt',
     slug: '/projekt',
     hideSub: true,
-    sub: [{
-      id: 'active',
-      title: 'Pågående',
-      slug: `/projekt?filter=active`,
-    }, {
-      id: 'finished',
-      title: 'Avslutade',
-      slug: `/projekt?filter=finished`,
-    }],
+    sub: [
+      {
+        id: 'all',
+        title: 'Alla',
+        slug: `/projekt`,
+        hideInDesktop: true,
+      },
+      {
+        id: 'active',
+        title: 'Pågående',
+        slug: `/projekt?filter=active`,
+      }, {
+        id: 'finished',
+        title: 'Avslutade',
+        slug: `/projekt?filter=finished`,
+      }],
   }, {
     id: 'education',
     title: 'Utbildning',
