@@ -32,7 +32,7 @@
       list-style: none;
     }
 
-    > ul {
+    >ul {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
@@ -65,12 +65,9 @@
     width: 100%;
     font-size: 0.7rem;
     margin-top: var(--space-big);
-
-    @include mq($from: desktop) {
-      position: sticky;
-      top: calc(100vh - var(--navbar-height) + var(--outer-margin) - 1rem);
-      z-index: 10000;
-    }
+    position: sticky;
+    top: calc(100vh - var(--navbar-height) + var(--outer-margin) - 1rem);
+    z-index: var(--z-copyright);
 
     .text {
       flex: 0 0 70%;

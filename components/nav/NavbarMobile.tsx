@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import s from "./NavbarMobile.module.scss";
-import cn from "classnames";
-import { usePathname, useSearchParams } from "next/navigation";
-import Link from "next/link";
-import { useEffect, useState } from "react";
-import { Menu, getSelectedMenuItem } from "@/lib/menu";
-import Hamburger from "hamburger-react";
+import s from './NavbarMobile.module.scss';
+import cn from 'classnames';
+import { usePathname, useSearchParams } from 'next/navigation';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import { Menu, getSelectedMenuItem } from '@/lib/menu';
+import Hamburger from './Hamburger';
 
 export type NavbarMobileProps = {
 	menu: Menu;
@@ -15,7 +15,7 @@ export type NavbarMobileProps = {
 export default function NavbarMobile({ menu }: NavbarMobileProps) {
 	const path = usePathname();
 	const qs = useSearchParams().toString();
-	const pathname = `${path}${qs.length > 0 ? `?${qs}` : ""}`;
+	const pathname = `${path}${qs.length > 0 ? `?${qs}` : ''}`;
 	const [selected, setSelected] = useState<string | null>(
 		getSelectedMenuItem(menu, path, qs)?.id ?? null
 	);
@@ -30,20 +30,16 @@ export default function NavbarMobile({ menu }: NavbarMobileProps) {
 		<>
 			<div className={cn(s.topbar, open && s.open)}>
 				<figure className={s.logo}>
-					<Link href={"/"}>
-						<img
-							src={open ? "/images/logo-white.svg" : "/images/logo.svg"}
-							alt='Logo'
-						/>
+					<Link href={'/'}>
+						<img src={open ? '/images/logo-white.svg' : '/images/logo.svg'} alt='Logo' />
 					</Link>
 				</figure>
 				<div className={s.hamburger}>
 					<Hamburger
 						toggled={open}
-						color={open ? "white" : "black"}
+						color={open ? 'white' : 'black'}
 						size={36}
-						onToggle={(state) => setOpen(state)
-						}
+						onToggle={(state) => setOpen(state)}
 					/>
 				</div>
 			</div>
@@ -61,10 +57,7 @@ export default function NavbarMobile({ menu }: NavbarMobileProps) {
 									{selected === id && (
 										<ul onClick={(e) => e.stopPropagation()}>
 											{sub.map(({ id, title, href, slug }) => (
-												<li
-													key={id}
-													className={cn(pathname === slug && s.active)}
-												>
+												<li key={id} className={cn(pathname === slug && s.active)}>
 													<Link href={slug ?? href}>{title}</Link>
 												</li>
 											))}
@@ -75,8 +68,8 @@ export default function NavbarMobile({ menu }: NavbarMobileProps) {
 							{!sub && <Link href={slug ?? href}>{title}</Link>}
 						</li>
 					))}
-					<li className={cn(pathname === "/english" && s.active)}>
-						<Link href={"/english"}>EN</Link>
+					<li className={cn(pathname === '/english' && s.active)}>
+						<Link href={'/english'}>EN</Link>
 					</li>
 				</ul>
 			</nav>

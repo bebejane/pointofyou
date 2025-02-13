@@ -1,7 +1,7 @@
-import { StructuredContent } from "next-dato-utils/components";
-import * as Blocks from "../blocks/index";
-import s from "./Content.module.scss";
-
+import { StructuredContent } from 'next-dato-utils/components';
+import * as Blocks from '../blocks/index';
+import s from './Content.module.scss';
+import cn from 'classnames';
 
 export type Props = {
 	id?: string;
@@ -17,7 +17,7 @@ export default function Content({ id, content, styles, blocks, className }: Prop
 	return (
 		<StructuredContent
 			blocks={{ ...Blocks, ...blocks }}
-			className={className}
+			className={cn(s.content, className)}
 			styles={{
 				...styles,
 			}}

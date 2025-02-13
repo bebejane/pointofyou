@@ -193,16 +193,16 @@ const generatePositions = (
 		document.querySelectorAll<HTMLDivElement>(`[id^='audio-bubble-']`),
 		0
 	);
-	const maxRetries = 100000;
+	const maxRetries = 10000;
 	const symbolsPerPage = Math.floor(
 		(Math.floor(dimensions.height / size) * Math.floor(dimensions.width / size)) / 2
 	);
 	const positions = { dimensions, items: [], totalHeight: 0 };
-	const padding = 100;
+	const padding = 10;
 	const minX = 0;
 	const maxX = dimensions.width - bubbleSizeScaled - padding;
 	const minY = 0;
-	const maxY = dimensions.height - bubbleSizeScaled - padding;
+	const maxY = dimensions.height - bubbleSizeScaled - padding - 100;
 
 	const isOverlapping = (area: { top: number; left: number; width: number; height: number }) => {
 		for (let i = 0; i < positions.items.length; i++) {

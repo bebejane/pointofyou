@@ -30,7 +30,9 @@
 	--z-navbar: 1000;
 	--z-logo: 1100;
 	--z-hamburger: 1200;
+	--z-copyright: 1300;
 	--z-modal: 2000;
+	--z-copyright: 1300;
 
 	--gradient: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.6));
 	--gradient-light: linear-gradient(0deg, transparent, #ffffe487);
@@ -138,13 +140,11 @@ button {
 	}
 }
 
-hr {
-}
+hr {}
 
 input,
 textarea,
-select {
-}
+select {}
 
 select {
 	-webkit-appearance: none;
