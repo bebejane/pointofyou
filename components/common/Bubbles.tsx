@@ -198,11 +198,11 @@ const generatePositions = (
 		(Math.floor(dimensions.height / size) * Math.floor(dimensions.width / size)) / 2
 	);
 	const positions = { dimensions, items: [], totalHeight: 0 };
-	const padding = 10;
+	const padding = 100;
 	const minX = 0;
 	const maxX = dimensions.width - bubbleSizeScaled - padding;
 	const minY = 0;
-	const maxY = dimensions.height - bubbleSizeScaled - padding - 100;
+	const maxY = dimensions.height - bubbleSizeScaled - padding;
 
 	const isOverlapping = (area: { top: number; left: number; width: number; height: number }) => {
 		for (let i = 0; i < positions.items.length; i++) {
