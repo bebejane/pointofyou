@@ -124,6 +124,10 @@ article {
 
   a:hover {
     color: var(--blue);
+
+    p {
+      color: var(--black);
+    }
   }
 
   p a {
