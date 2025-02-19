@@ -39,6 +39,10 @@ const routes: Routes = {
     typeName: "ResearchAboutRecord",
     path: (item) => `/forskning`
   },
+  "research_category": {
+    typeName: "ResearchCategoryRecord",
+    path: (item) => `/forskning`
+  },
   "press": {
     typeName: "PressRecord",
     path: (item) => `/nyheter/press/${item.slug}`
@@ -54,7 +58,15 @@ const routes: Routes = {
   "english": {
     typeName: "EnglishRecord",
     path: (item) => `/english`
-  }
+  },
+  "sound": {
+    typeName: "SoundRecord",
+    path: (item) => `/`
+  },
+  "support": {
+    typeName: "SupportRecord",
+    path: (item) => `/`
+  },
 }
 
 export const buildRoute = (model: string, item?: any): string => {
