@@ -15,13 +15,15 @@ export default function Content({ id, content, styles, blocks, className }: Prop
 	if (!content) return null;
 
 	return (
-		<StructuredContent
-			blocks={{ ...Blocks, ...blocks }}
-			className={cn(s.content, className)}
-			styles={{
-				...styles,
-			}}
-			content={content}
-		/>
+		<div className={s.content}>
+			<StructuredContent
+				blocks={{ ...Blocks, ...blocks }}
+				className={cn(className)}
+				styles={{
+					...styles,
+				}}
+				content={content}
+			/>
+		</div>
 	);
 }
