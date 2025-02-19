@@ -6,7 +6,7 @@ import Content from '@/components/common/Content';
 import FilterBar from '@/components/common/FilterBar';
 import { parseAsString } from 'nuqs/server';
 import { DraftMode } from 'next-dato-utils/components';
-import Article from '../../components/common/Article';
+import Article from '@/components/common/Article';
 import { format } from 'date-fns';
 import { Metadata } from 'next';
 
@@ -29,7 +29,7 @@ export default async function ResearchsPage({ searchParams }) {
 		<>
 			<Article title='Kunskapsbanken' className={s.research}>
 				<FilterBar
-					href='/forskning'
+					href='/forskning/kunskapsbank'
 					value={filter}
 					options={[{ id: 'all', label: 'Alla' }].concat(
 						allResearchCategories.map(({ slug, plural }) => ({ id: slug, label: plural }))

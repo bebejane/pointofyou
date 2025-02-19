@@ -60,7 +60,10 @@ export default function Navbar({ menu }: NavbarProps) {
 					{sub
 						?.filter(({ hideInDesktop }) => !hideInDesktop)
 						.map(({ id, title, href, slug }) => (
-							<li key={id} className={cn(slug === pathname && s.active)}>
+							<li
+								key={id}
+								className={cn((slug === pathname || pathname.startsWith(slug)) && s.active)}
+							>
 								<Link href={slug ?? href} onClick={() => setSelected(null)}>
 									{title}
 								</Link>
