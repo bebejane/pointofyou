@@ -73,7 +73,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }) {
 	const { slug, category } = await params;
 	const { post } = await getPost(category, slug);
-	console.log(category, slug);
+
 	return {
 		title: post?.title,
 	} as Metadata;

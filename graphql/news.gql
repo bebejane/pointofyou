@@ -11,6 +11,11 @@ query AllNews($first: IntType = 100, $skip: IntType = 0) {
 	_allPressesMeta {
 		count
 	}
+	presskit {
+		zip {
+			url
+		}
+	}
 }
 
 query News($slug: String) {
@@ -267,4 +272,12 @@ fragment PressLightFragment on PressRecord {
 		value
 	}
 	_firstPublishedAt
+}
+
+query PressKit {
+	presskit {
+		zip {
+			url
+		}
+	}
 }

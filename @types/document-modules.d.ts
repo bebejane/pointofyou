@@ -142,6 +142,7 @@ export const AllPresses: DocumentNode;
 export const Press: DocumentNode;
 export const PressFragment: DocumentNode;
 export const PressLightFragment: DocumentNode;
+export const PressKit: DocumentNode;
 
   export default defaultDocument;
 }

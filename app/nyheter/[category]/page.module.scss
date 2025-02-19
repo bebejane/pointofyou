@@ -1,9 +1,12 @@
 .news {
+  position: relative;
+
   ul {
     list-style: none;
     margin-right: calc(var(--full-bleed-margin) + var(--outer-margin));
 
     li {
+      position: relative;
       display: flex;
       flex-direction: row;
       border-top: 1px solid var(--blue);
@@ -25,6 +28,16 @@
 
         img {
           object-fit: cover;
+        }
+      }
+
+      aside {
+        position: absolute;
+        top: 0px;
+        left: calc(var(--full-bleed-margin) + var(--outer-margin));
+
+        @include mq($until: desktop) {
+          display: none;
         }
       }
 

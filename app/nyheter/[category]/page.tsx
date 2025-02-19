@@ -17,10 +17,10 @@ export type Props = {
 
 export default async function NewsPage({ params }) {
 	const { category } = await params;
-	const { allNews, allPresses, draftUrl } = await apiQuery<AllNewsQuery, AllNewsQueryVariables>(
-		AllNewsDocument,
-		{ all: true }
-	);
+	const { allNews, allPresses, presskit, draftUrl } = await apiQuery<
+		AllNewsQuery,
+		AllNewsQueryVariables
+	>(AllNewsDocument, { all: true });
 
 	const news: any[] = category === 'aktuellt' ? allNews : allPresses;
 	const title = category === 'aktuellt' ? 'Aktuellt' : 'Press';
@@ -30,7 +30,7 @@ export default async function NewsPage({ params }) {
 		<>
 			<Article title={title} className={s.news}>
 				<ul>
-					{news.map(({ id, title, slug, image, intro, _firstPublishedAt }) => (
+					{news.map(({ id, title, slug, image, intro, _firstPublishedAt }, idx) => (
 						<li key={id}>
 							<div>
 								<span className='meta'>{format(new Date(_firstPublishedAt), 'MM/dd yyyy')}</span>
@@ -40,6 +40,15 @@ export default async function NewsPage({ params }) {
 								</Link>
 							</div>
 							<figure>{image && <Image data={image.responsiveImage} />}</figure>
+							{idx === 0 && (
+								<aside>
+									<a href={presskit.zip?.url} download>
+										Ladda ner presskit
+									</a>
+									<br />
+									<Link href={'/kontakt'}>Kontakta oss</Link>
+								</aside>
+							)}
 						</li>
 					))}
 				</ul>
