@@ -33,15 +33,15 @@ const routes: Routes = {
   },
   "research": {
     typeName: "ResearchRecord",
-    path: (item) => `/forskning`
+    path: (item) => `/forskning/kunskapsbank`
   },
   "research_about": {
     typeName: "ResearchAboutRecord",
-    path: (item) => `/forskning`
+    path: (item) => `/forskning/om`
   },
   "research_category": {
     typeName: "ResearchCategoryRecord",
-    path: (item) => `/forskning`
+    path: (item) => `/forskning/kunskapsbank`
   },
   "press": {
     typeName: "PressRecord",

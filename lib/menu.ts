@@ -73,7 +73,7 @@ export const buildMenu = async (): Promise<Menu> => {
     }, {
       id: 'knowledge-bank',
       title: 'Kunskapsbanken',
-      slug: `/forskning`,
+      slug: `/forskning/kunskapsbank`,
     }],
   }, {
     id: 'news',
