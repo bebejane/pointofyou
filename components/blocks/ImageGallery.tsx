@@ -45,7 +45,11 @@ export default function ImageGallery({
 				onSwiper={(swiper) => (swiperRef.current = swiper)}
 			>
 				{images.map((item, idx) => (
-					<SwiperSlide key={idx} className={cn(s.slide, item.height > item.width && s.portrait)}>
+					<SwiperSlide
+						key={idx}
+						onClick={() => swiperRef.current?.slideNext()}
+						className={cn(s.slide, item.height > item.width && s.portrait)}
+					>
 						<figure id={`${id}-${item.id}`} onClick={() => onClick?.(item.id)}>
 							<Image
 								data={item.responsiveImage}
