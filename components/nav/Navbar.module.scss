@@ -53,6 +53,10 @@
       padding-right: 0.2em;
     }
 
+    a:hover {
+      color: var(--blue);
+    }
+
     .item {
       &::after {
         position: absolute;
@@ -70,7 +74,7 @@
 
       &:hover,
       &.active {
-        color: var(--blue);
+        color: var(--blue) !important;
       }
     }
   }

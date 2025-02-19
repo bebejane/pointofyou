@@ -5,6 +5,10 @@
   overflow: hidden;
   margin-top: var(--space-big);
 
+  a:hover p {
+    color: var(--white) !important;
+  }
+
   header {
     display: flex;
     flex-direction: row;
@@ -88,7 +92,8 @@
             left: 0;
             color: var(--white);
             padding: var(--outer-margin);
-
+            background-image: var(--gradient);
+            width: 100%;
             p {
               margin: 0;
             }

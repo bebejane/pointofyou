@@ -13,8 +13,10 @@
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
-    margin-bottom: 0.5rem;
     padding-right: var(--outer-margin);
+    position: absolute;
+    bottom: -3.5rem;
+    right: 0;
 
     @include mq($until: desktop) {
       display: none;
@@ -28,13 +30,15 @@
       all: unset;
       cursor: pointer;
       padding-left: 0.5rem;
+      background-color: --white;
     }
 
     .back {
       transform: rotate(180deg);
     }
 
-    .forward {}
+    .forward {
+    }
   }
 
   figcaption {
@@ -64,7 +68,7 @@
     user-select: none;
     cursor: pointer;
 
-    >div {
+    > div {
       display: flex;
       flex-direction: row;
       align-items: flex-end;
@@ -79,7 +83,7 @@
           height: 60vh;
         }
 
-        >figure {
+        > figure {
           position: relative;
           display: flex;
           flex-direction: column;
@@ -99,14 +103,13 @@
             @include mq($from: desktop) {
               height: 60vh;
             }
-
           }
         }
 
         &.portrait {
           flex: 0 1 auto;
 
-          >figure {
+          > figure {
             @include mq($until: desktop) {
               width: auto;
             }
