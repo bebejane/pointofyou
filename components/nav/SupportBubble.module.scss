@@ -61,7 +61,7 @@
   width: 100%;
   height: 100%;
   z-index: var(--z-modal);
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(15px);
 
   .box {
     position: relative;
