@@ -106,8 +106,10 @@ b {
 // För Article
 article {
   blockquote {
+    margin-left: calc(1 * var(--outer-margin));
     font-family: var(--label-font);
     color: var(--blue);
+    margin-bottom: 1.5em;
     p {
       padding-top: 0.5em;
       margin-bottom: 0.5em;
