@@ -23,6 +23,7 @@ h5 {
   font-family: var(--headline-font);
   color: var(--blue);
   line-height: 1;
+  font-weight: normal;
 
   strong {
     //font-weight: normal;
@@ -31,7 +32,6 @@ h5 {
 
 h1 {
   font-size: 2rem;
-  font-weight: bold;
   padding-bottom: var(--space);
   line-height: 1.25;
 

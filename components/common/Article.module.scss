@@ -10,6 +10,9 @@
       left: 0;
       z-index: 1;
       padding-top: 1.2em;
+      @include mq($until: desktop) {
+        color: var(--white);
+      }
     }
 
     figure {
@@ -31,6 +34,9 @@
     &.noImage {
       h1 {
         position: relative;
+        @include mq($until: desktop) {
+          color: var(--blue);
+        }
       }
     }
 

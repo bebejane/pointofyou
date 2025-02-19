@@ -29,6 +29,10 @@
         img {
           object-fit: cover;
         }
+
+        @include mq($until: desktop) {
+          display: none;
+        }
       }
 
       aside {
