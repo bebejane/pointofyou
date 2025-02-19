@@ -2,7 +2,7 @@
 @use "mediaqueries";
 
 :root {
-	--black: #161616;
+	--black: #1e1e1e;
 	--white: #ffffe4;
 	--red: #bf0000;
 	--blue: #2b1e9b;
@@ -140,11 +140,13 @@ button {
 	}
 }
 
-hr {}
+hr {
+}
 
 input,
 textarea,
-select {}
+select {
+}
 
 select {
 	-webkit-appearance: none;

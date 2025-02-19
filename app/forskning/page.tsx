@@ -48,8 +48,8 @@ export default async function ResearchsPage({ searchParams }) {
 								</Link>
 							)}
 							{file && (
-								<a href={file.url} download>
-									Ladda ner
+								<a className="shortcut" href={file.url} download>
+									• Ladda ner
 								</a>
 							)}
 						</li>

@@ -105,6 +105,25 @@ b {
 
 // För Article
 article {
+  blockquote {
+    font-family: var(--label-font);
+    color: var(--blue);
+    p {
+      padding-top: 0.5em;
+      margin-bottom: 0.5em;
+    }
+
+    footer {
+      color: var(--black);
+      font-family: var(--sans-font);
+      font-size: 0.7rem;
+    }
+  }
+
+  a:hover {
+    color: var(--blue);
+  }
+
   p a {
     text-decoration: underline;
     text-underline-offset: 0.25em;
@@ -182,4 +201,8 @@ i {
 .shortcut {
   font-family: var(--sans-font);
   font-size: 0.9rem;
+
+  &:hover {
+    //  color: var(--blue);
+  }
 }

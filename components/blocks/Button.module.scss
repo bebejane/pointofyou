@@ -4,6 +4,9 @@
   button {
     font-size: 0.9rem !important;
     margin-bottom: var(--space);
+    &:hover {
+      color: white !important;
+    }
   }
 
   a {
