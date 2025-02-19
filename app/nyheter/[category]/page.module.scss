@@ -33,8 +33,9 @@
 
       aside {
         position: absolute;
-        top: 0px;
+        top: calc(1.5 * var(--space-small));
         left: calc(var(--full-bleed-margin) + var(--outer-margin));
+        line-height: 2;
 
         @include mq($until: desktop) {
           display: none;

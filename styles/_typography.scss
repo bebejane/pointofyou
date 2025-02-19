@@ -106,10 +106,11 @@ b {
 // För Article
 article {
   blockquote {
-    margin-left: calc(1 * var(--outer-margin));
+    margin-left: 0;
     font-family: var(--label-font);
     color: var(--blue);
     margin-bottom: 1.5em;
+    position: relative;
     p {
       padding-top: 0.5em;
       margin-bottom: 0.5em;
@@ -119,6 +120,24 @@ article {
       color: var(--black);
       font-family: var(--sans-font);
       font-size: 0.7rem;
+    }
+    &::before {
+      @include mq($from: desktop) {
+        content: "’’";
+        position: absolute;
+        left: -7rem;
+        top: 4rem;
+        font-family: var(--headline-font);
+        font-size: 8rem;
+        color: var(--white);
+        --line-tickness: 0.06rem;
+        -webkit-text-stroke: var(--line-tickness) var(--blue);
+        /* text-shadow:
+          var(--line-tickness) var(--line-tickness) 0 var(--blue),
+          calc(-1 * var(--line-tickness)) var(--line-tickness) 0 var(--blue),
+          calc(-1 * var(--line-tickness)) calc(-1 * var(--line-tickness)) 0 var(--blue),
+          var(--line-tickness) calc(-1 * var(--line-tickness)) 0 var(--blue); */
+      }
     }
   }
 

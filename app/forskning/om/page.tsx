@@ -25,8 +25,8 @@ export default async function AboutResearchPage() {
 				content={contentWrapper.content}
 				light={contentWrapper.headerLight}
 				link={{
-					href: '/nyheter/aktuellt',
-					text: 'Visa alla nyheter',
+					href: '/forskning?filter=all',
+					text: 'Läs mer i kunskapsbanken',
 				}}
 			/>
 			<DraftMode url={draftUrl} path='/forskning/om' />
