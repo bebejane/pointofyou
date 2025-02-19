@@ -3,6 +3,7 @@ import { AllProjectsDocument, ProjectDocument } from '@/graphql';
 import { notFound } from '@node_modules/next/navigation';
 import Article from '@/components/common/Article';
 import { DraftMode } from 'next-dato-utils/components';
+import { Metadata } from 'next';
 
 export type ProjectProps = {
 	params: Promise<{ project: string }>;
@@ -50,4 +51,17 @@ export async function generateStaticParams() {
 	);
 
 	return allProjects.map(({ slug }) => ({ slug }));
+}
+
+export async function generateMetadata({ params }) {
+	const { project: slug } = await params;
+	const { project } = await apiQuery<ProjectQuery, ProjectQueryVariables>(ProjectDocument, {
+		variables: {
+			slug,
+		},
+	});
+
+	return {
+		title: project.title,
+	} as Metadata;
 }

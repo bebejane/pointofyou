@@ -3,6 +3,7 @@ import { ResearchAboutDocument } from '@/graphql';
 import { notFound } from '@node_modules/next/navigation';
 import Article from '@/components/common/Article';
 import { DraftMode } from 'next-dato-utils/components';
+import { Metadata } from 'next';
 
 export type ResearchAboutProps = {};
 
@@ -31,4 +32,14 @@ export default async function AboutResearchPage() {
 			<DraftMode url={draftUrl} path='/forskning/om' />
 		</>
 	);
+}
+
+export async function generateMetadata({ params }) {
+	const { researchAbout } = await apiQuery<ResearchAboutQuery, ResearchAboutQueryVariables>(
+		ResearchAboutDocument
+	);
+
+	return {
+		title: researchAbout?.title,
+	} as Metadata;
 }

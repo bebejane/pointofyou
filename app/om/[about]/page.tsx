@@ -3,6 +3,7 @@ import { AboutDocument, AllAboutsDocument } from '@/graphql';
 import { notFound } from '@node_modules/next/navigation';
 import Article from '@/components/common/Article';
 import { DraftMode } from 'next-dato-utils/components';
+import { Metadata } from 'next';
 
 export type AboutProps = {
 	params: Promise<{ about: string }>;
@@ -40,4 +41,17 @@ export async function generateStaticParams() {
 	});
 
 	return allAbouts.map(({ slug }) => ({ slug }));
+}
+
+export async function generateMetadata({ params }) {
+	const { about: slug } = await params;
+	const { about } = await apiQuery<AboutQuery, AboutQueryVariables>(AboutDocument, {
+		variables: {
+			slug,
+		},
+	});
+
+	return {
+		title: about.title,
+	} as Metadata;
 }

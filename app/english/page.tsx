@@ -3,6 +3,7 @@ import { EnglishDocument } from '@/graphql';
 import { DraftMode } from 'next-dato-utils/components';
 import { notFound } from '@node_modules/next/navigation';
 import Article from '@/components/common/Article';
+import { Metadata } from 'next';
 
 export default async function EnglishPage({ searchParams }) {
 	const { english, draftUrl } = await apiQuery<EnglishQuery, EnglishQueryVariables>(
@@ -24,4 +25,10 @@ export default async function EnglishPage({ searchParams }) {
 			<DraftMode url={draftUrl} path='/english' />
 		</>
 	);
+}
+
+export async function generateMetadata({ params }) {
+	return {
+		title: 'English',
+	} as Metadata;
 }

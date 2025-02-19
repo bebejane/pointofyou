@@ -3,6 +3,7 @@ import { AllNewsDocument, NewsDocument, PressDocument } from '@/graphql';
 import { notFound } from '@node_modules/next/navigation';
 import Article from '@/components/common/Article';
 import { DraftMode } from 'next-dato-utils/components';
+import { Metadata } from 'next';
 
 export type NewsProps = {
 	params: Promise<{ category: 'aktuellt' | 'press'; slug: string }>;
@@ -10,27 +11,7 @@ export type NewsProps = {
 
 export default async function NewsPage({ params }: NewsProps) {
 	const { slug, category } = await params;
-	let post: NewsQuery['news'] | PressQuery['press'];
-	let url: string;
-
-	if (category === 'aktuellt') {
-		let { news, draftUrl } = await apiQuery<NewsQuery, NewsQueryVariables>(NewsDocument, {
-			variables: {
-				slug,
-			},
-		});
-		post = news;
-		url = draftUrl;
-	} else {
-		let { press, draftUrl } = await apiQuery<PressQuery, PressQueryVariables>(PressDocument, {
-			variables: {
-				slug,
-			},
-		});
-		post = press;
-		url = draftUrl;
-	}
-
+	const { post, draftUrl } = await getPost(category, slug);
 	if (!post) return notFound();
 
 	const { title, intro, image, contentWrapper } = post;
@@ -48,9 +29,30 @@ export default async function NewsPage({ params }: NewsProps) {
 					text: `Visa alla ${category}`,
 				}}
 			/>
-			<DraftMode url={url} path={`/nyheter/${category}/${slug}`} />
+			<DraftMode url={draftUrl} path={`/nyheter/${category}/${slug}`} />
 		</>
 	);
+}
+
+export async function getPost(
+	category: 'aktuellt' | 'press',
+	slug: string
+): Promise<{ post: NewsQuery['news'] | PressQuery['press']; draftUrl: string }> {
+	if (category === 'aktuellt') {
+		const { news, draftUrl } = await apiQuery<NewsQuery, NewsQueryVariables>(NewsDocument, {
+			variables: {
+				slug,
+			},
+		});
+		return { post: news, draftUrl };
+	} else {
+		let { press, draftUrl } = await apiQuery<PressQuery, PressQueryVariables>(PressDocument, {
+			variables: {
+				slug,
+			},
+		});
+		return { post: press, draftUrl };
+	}
 }
 
 export async function generateStaticParams() {
@@ -65,4 +67,13 @@ export async function generateStaticParams() {
 		category: __typename === 'NewsRecord' ? 'aktuellt' : 'press',
 		slug,
 	}));
+}
+
+export async function generateMetadata({ params }) {
+	const { slug, category } = await params;
+	const { post } = await getPost(category, slug);
+
+	return {
+		title: post.title,
+	} as Metadata;
 }

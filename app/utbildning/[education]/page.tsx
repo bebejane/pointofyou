@@ -3,6 +3,7 @@ import { AllEducationsDocument, EducationDocument } from '@/graphql';
 import { notFound } from '@node_modules/next/navigation';
 import Article from '@/components/common/Article';
 import { DraftMode } from 'next-dato-utils/components';
+import { Metadata } from 'next';
 
 export type EducationProps = {
 	params: Promise<{ education: string }>;
@@ -46,4 +47,20 @@ export async function generateStaticParams() {
 	);
 
 	return allEducations.map(({ slug }) => ({ slug }));
+}
+
+export async function generateMetadata({ params }) {
+	const { education: slug } = await params;
+	const { education, draftUrl } = await apiQuery<EducationQuery, EducationQueryVariables>(
+		EducationDocument,
+		{
+			variables: {
+				slug,
+			},
+		}
+	);
+
+	return {
+		title: education.title,
+	} as Metadata;
 }

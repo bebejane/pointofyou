@@ -1,15 +1,14 @@
 import s from './page.module.scss';
-import cn from 'classnames';
 import { apiQuery } from 'next-dato-utils/api';
 import { AllResearchesDocument } from '@/graphql';
 import Link from 'next/link';
-import { Image } from 'react-datocms';
 import Content from '@/components/common/Content';
 import FilterBar from '@/components/common/FilterBar';
 import { parseAsString } from 'nuqs/server';
 import { DraftMode } from 'next-dato-utils/components';
 import Article from '../../components/common/Article';
 import { format } from 'date-fns';
+import { Metadata } from 'next';
 
 const filterParser = parseAsString.withDefault('all');
 
@@ -60,4 +59,10 @@ export default async function ResearchsPage({ searchParams }) {
 			<DraftMode url={draftUrl} path='/forskning' />
 		</>
 	);
+}
+
+export async function generateMetadata({ params }) {
+	return {
+		title: 'Forskning',
+	} as Metadata;
 }

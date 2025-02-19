@@ -8,6 +8,7 @@ import FilterBar from '@/components/common/FilterBar';
 import { parseAsString } from 'nuqs/server';
 import { DraftMode } from 'next-dato-utils/components';
 import classNames from 'classnames';
+import { Metadata } from 'next';
 
 const filterParser = parseAsString.withDefault('all');
 
@@ -66,4 +67,10 @@ export default async function ProjectsPage({ searchParams }) {
 			<DraftMode url={draftUrl} path='/projekt' />
 		</>
 	);
+}
+
+export async function generateMetadata({ params }) {
+	return {
+		title: 'Projekt',
+	} as Metadata;
 }

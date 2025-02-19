@@ -7,6 +7,7 @@ import Content from '@/components/common/Content';
 import { DraftMode } from 'next-dato-utils/components';
 import Article from '@/components/common/Article';
 import { format } from 'date-fns';
+import { Metadata } from 'next';
 
 export type Props = {
 	params: Promise<{
@@ -53,4 +54,11 @@ export async function getStaticPaths() {
 		paths: ['aktuellt', 'press'].map((category) => ({ params: { category } })),
 		fallback: false,
 	};
+}
+
+export async function generateMetadata({ params }) {
+	const { category } = await params;
+	return {
+		title: category === 'aktuellt' ? 'Aktuellt' : 'Press',
+	} as Metadata;
 }
