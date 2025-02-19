@@ -31,6 +31,14 @@ export default function ImageGallery({
 
 	return (
 		<div className={s.gallery} ref={containerRef}>
+			<div className={s.nav}>
+				<button onClick={() => swiperRef.current?.slidePrev()}>
+					<img className={cn(s.arrow, s.back)} src='/images/arrow.svg' alt='arrow' />
+				</button>
+				<button onClick={() => swiperRef.current?.slideNext()}>
+					<img className={cn(s.arrow, s.forward)} src='/images/arrow.svg' alt='arrow' />
+				</button>
+			</div>
 			<figcaption className={s.caption}>{caption}</figcaption>
 			<SwiperReact
 				id={`${id}-swiper-wrap`}
