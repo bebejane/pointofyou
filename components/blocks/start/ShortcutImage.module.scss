@@ -50,6 +50,9 @@
         p {
           padding: var(--outer-margin);
           margin: 0;
+          @include mq($until: desktop) {
+            color: var(--white);
+          }
         }
 
         p {
