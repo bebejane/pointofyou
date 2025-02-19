@@ -36,11 +36,11 @@ export default async function NewsPage({ params }) {
 								<span className='meta'>{format(new Date(_firstPublishedAt), 'MM/dd yyyy')}</span>
 								<Link href={`${basePath}/${slug}`}>
 									<h2>{title}</h2>
-									<Content content={intro} />
 								</Link>
+								<Content content={intro} />
 							</div>
 							<figure>{image && <Image data={image.responsiveImage} />}</figure>
-							{idx === 0 && (
+							{idx === 0 && category === 'press' && (
 								<aside>
 									<a href={presskit.zip?.url} download>
 										Ladda ner presskit
