@@ -40,8 +40,8 @@ export default async function NewsPage({ params }) {
 								<Content content={intro} />
 							</div>
 							<figure>{image && <Image data={image.responsiveImage} />}</figure>
-							{idx === 0 && (
-								<aside className="small">
+							{idx === 0 && category === 'press' && (
+								<aside className='small'>
 									<a href={presskit.zip?.url} download>
 										Ladda ner presskit
 									</a>
