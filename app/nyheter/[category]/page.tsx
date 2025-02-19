@@ -49,6 +49,10 @@ export default async function NewsPage({ params }) {
 	);
 }
 
+export async function generateStaticParams() {
+	return ['aktuellt', 'press'].map((category) => ({ category }));
+}
+
 export async function getStaticPaths() {
 	return {
 		paths: ['aktuellt', 'press'].map((category) => ({ params: { category } })),

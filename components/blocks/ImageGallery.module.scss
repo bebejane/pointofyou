@@ -42,7 +42,7 @@
 
       .slide {
         position: relative;
-        flex: 0 0 var(--content-width);
+        flex: 1 0 auto;
         padding-right: var(--gutter);
         height: 40vh;
 
@@ -70,7 +70,7 @@
               height: 60vh;
             }
 
-            object-fit: cover;
+            object-fit: contain;
           }
         }
 

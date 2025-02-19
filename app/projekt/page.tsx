@@ -23,7 +23,6 @@ export default async function ProjectsPage({ searchParams }) {
 		({ active }) =>
 			filter === 'all' || (filter === 'active' && active) || (filter === 'finished' && !active)
 	);
-	console.log('filter', filter);
 
 	return (
 		<>

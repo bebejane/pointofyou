@@ -46,11 +46,12 @@ export async function getPost(
 		});
 		return { post: news, draftUrl };
 	} else {
-		let { press, draftUrl } = await apiQuery<PressQuery, PressQueryVariables>(PressDocument, {
+		const { press, draftUrl } = await apiQuery<PressQuery, PressQueryVariables>(PressDocument, {
 			variables: {
 				slug,
 			},
 		});
+
 		return { post: press, draftUrl };
 	}
 }
@@ -72,8 +73,8 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }) {
 	const { slug, category } = await params;
 	const { post } = await getPost(category, slug);
-
+	console.log(category, slug);
 	return {
-		title: post.title,
+		title: post?.title,
 	} as Metadata;
 }
