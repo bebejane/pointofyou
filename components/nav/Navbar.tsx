@@ -17,7 +17,8 @@ export default function Navbar({ menu }: NavbarProps) {
 	const pathname = `${path}${qs.length > 0 ? `?${qs}` : ''}`;
 	const [selected, setSelected] = useState<string | null>(null);
 
-	const sub = menu.find(({ id }) => id === selected)?.sub;
+	const parent = menu.find(({ id }) => id === selected);
+	const sub = parent?.sub;
 	const contact = menu.find(({ id }) => id === 'contact');
 
 	return (
@@ -40,7 +41,7 @@ export default function Navbar({ menu }: NavbarProps) {
 									sub && !hideSub && s.dropdown,
 									pathname.startsWith(slug) && s.active
 								)}
-								onMouseEnter={() => sub && !hideSub && setSelected(id)}
+								onMouseEnter={() => sub && setSelected(id)}
 							>
 								{sub && !hideSub ? <span>{title}</span> : <Link href={slug ?? href}>{title}</Link>}
 							</li>
@@ -55,7 +56,10 @@ export default function Navbar({ menu }: NavbarProps) {
 					</li>
 				</ul>
 			</nav>
-			<nav className={cn(s.sub, sub && s.open)} onMouseLeave={() => setSelected(null)}>
+			<nav
+				className={cn(s.sub, !parent?.hideSub && sub && s.open)}
+				onMouseLeave={() => setSelected(null)}
+			>
 				<ul>
 					{sub
 						?.filter(({ hideInDesktop }) => !hideInDesktop)
