@@ -36,7 +36,7 @@ export default async function Footer({ menu }: { menu: Menu }) {
 				</nav>
 				<SupportBubble support={support} />
 				<div className={s.copyright}>
-					<span className={s.text}>Copyright Point of You 2024.</span>
+					<span className={s.text}>Copyright Point of You {new Date().getFullYear()}.</span>
 					<span className={s.about}>
 						Ett projekt av{' '}
 						<a href='https://www.iffs.se/' target='new'>

@@ -27,7 +27,7 @@ export default async function ResearchsPage({ searchParams }) {
 
 	return (
 		<>
-			<Article title='Forskning' className={s.research}>
+			<Article title='Kunskapsbanken' className={s.research}>
 				<FilterBar
 					href='/forskning'
 					value={filter}
@@ -48,7 +48,7 @@ export default async function ResearchsPage({ searchParams }) {
 								</Link>
 							)}
 							{file && (
-								<a className="shortcut" href={file.url} download>
+								<a className='shortcut' href={file.url} download>
 									• Ladda ner
 								</a>
 							)}
@@ -63,6 +63,6 @@ export default async function ResearchsPage({ searchParams }) {
 
 export async function generateMetadata({ params }) {
 	return {
-		title: 'Forskning',
+		title: 'Kunskapsbanken',
 	} as Metadata;
 }
