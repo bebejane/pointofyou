@@ -1,6 +1,5 @@
-import s from './loading.module.scss'
-import { ImSpinner8 } from 'react-icons/im'
+import s from './loading.module.scss';
 
 export default function Loading() {
-  return <div className={s.loading}><ImSpinner8 /></div>
+	return <div className={s.loading}></div>;
 }

@@ -1,15 +1,15 @@
-import "@styles/index.scss";
-import s from "./layout.module.scss";
-import { apiQuery } from "next-dato-utils/api";
-import { GlobalDocument } from "@graphql";
-import { Metadata } from "next";
-import { Icon } from "next/dist/lib/metadata/types/metadata-types";
-import Footer from "../components/nav/Footer";
-import { buildMenu } from "../lib/menu";
-import Navbar from "../components/nav/Navbar";
-import NavbarMobile from "../components/nav/NavbarMobile";
-import { Suspense } from "react";
-import { NuqsAdapter } from "nuqs/adapters/next/app";
+import '@styles/index.scss';
+import s from './layout.module.scss';
+import { apiQuery } from 'next-dato-utils/api';
+import { GlobalDocument } from '@graphql';
+import { Metadata } from 'next';
+import { Icon } from 'next/dist/lib/metadata/types/metadata-types';
+import Footer from '../components/nav/Footer';
+import { buildMenu } from '../lib/menu';
+import Navbar from '../components/nav/Navbar';
+import NavbarMobile from '../components/nav/NavbarMobile';
+import { Suspense } from 'react';
+import { NuqsAdapter } from 'nuqs/adapters/next/app';
 
 export type LayoutProps = {
 	children: React.ReactNode;
@@ -25,11 +25,12 @@ export default async function RootLayout({ children }: LayoutProps) {
 					<Suspense fallback={null}>
 						<Navbar menu={menu} />
 						<NavbarMobile menu={menu} />
+
+						<main className={s.main}>
+							<NuqsAdapter>{children}</NuqsAdapter>
+						</main>
+						<Footer menu={menu} />
 					</Suspense>
-					<main className={s.main}>
-						<NuqsAdapter>{children}</NuqsAdapter>
-					</main>
-					<Footer menu={menu} />
 				</body>
 			</html>
 		</>
@@ -83,8 +84,8 @@ export async function generateMetadata() {
 					alt: globalSeo?.siteName,
 				},
 			],
-			locale: "en_US",
-			type: "website",
+			locale: 'en_US',
+			type: 'website',
 		},
 	} as Metadata;
 }
