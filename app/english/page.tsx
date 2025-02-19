@@ -10,7 +10,7 @@ export default async function EnglishPage({ searchParams }) {
 	);
 
 	if (!english) return notFound();
-	const { title, contentWrapper, intro } = english;
+	const { title, contentWrapper, intro, image } = english;
 
 	return (
 		<>
@@ -18,6 +18,7 @@ export default async function EnglishPage({ searchParams }) {
 				title={title}
 				content={contentWrapper.content}
 				light={contentWrapper.headerLight}
+				image={image as FileField}
 				intro={intro}
 			/>
 			<DraftMode url={draftUrl} path='/english' />

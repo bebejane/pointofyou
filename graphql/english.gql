@@ -12,6 +12,9 @@ fragment EnglishFragment on EnglishRecord {
 		links
 		value
 	}
+	image {
+		...ImageFragment
+	}
 	contentWrapper {
 		id
 		headerLight
