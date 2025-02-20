@@ -41,6 +41,12 @@ export default async function ProjectsPage({ searchParams }) {
 						/>
 					</div>
 				</header>
+				{!projects?.length && (
+					<p className={s.empty}>
+						Det finns inga {filter === 'finished' ? 'avslutade' : 'pågående'} projekt för
+						närvarande.
+					</p>
+				)}
 				<ul>
 					{projects.map(({ id, title, slug, image, intro, active }) => (
 						<li key={id}>

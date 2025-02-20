@@ -38,7 +38,7 @@
     }
   }
 
-  > ul {
+  >ul {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -90,7 +90,7 @@
             flex: 1 1 auto;
           }
 
-          & > div {
+          &>div {
             background-image: var(--gradient);
             padding: var(--outer-margin);
           }
@@ -131,4 +131,8 @@
       }
     }
   }
+}
+
+.empty {
+  margin-bottom: var(--space-big);
 }
