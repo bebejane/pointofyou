@@ -67,6 +67,10 @@ const routes: Routes = {
     typeName: "SupportRecord",
     path: (item) => `/`
   },
+  "presskit": {
+    typeName: "PresskitRecord",
+    path: (item) => `/nyheter/press`
+  },
 }
 
 export const buildRoute = (model: string, item?: any): string => {
