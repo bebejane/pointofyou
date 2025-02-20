@@ -25,7 +25,7 @@ export default async function AboutResearchPage() {
 				content={contentWrapper.content}
 				light={contentWrapper.headerLight}
 				link={{
-					href: '/forskning?filter=all',
+					href: '/forskning/kunskapsbank',
 					text: 'Läs mer i kunskapsbanken',
 				}}
 			/>

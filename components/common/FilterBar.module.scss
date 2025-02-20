@@ -21,11 +21,10 @@
     list-style: none;
     overflow-x: scroll;
     scrollbar-width: none;
+
     @include mq($until: desktop) {
       padding-right: calc(1 * var(--outer-margin));
     }
-
-    -ms-overflow-style: none;
 
     &::-webkit-scrollbar {
       display: none;
