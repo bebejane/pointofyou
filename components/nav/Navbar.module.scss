@@ -32,6 +32,7 @@
       cursor: pointer;
       padding-right: 1.5rem;
       position: relative;
+      transition: var(--color-transtion);
 
       &:last-child {
         padding-right: 0;
@@ -58,6 +59,8 @@
     }
 
     .item {
+      transition: var(--color-transtion);
+
       &::after {
         position: absolute;
         content: " ";
@@ -86,6 +89,7 @@
   align-items: center;
   justify-content: flex-end;
   flex: 0 0 var(--margin);
+  transition: var(--color-transtion);
 
   a:hover {
     color: var(--blue);

@@ -54,6 +54,10 @@
           white-space: nowrap;
           font-family: var(--sans-font);
           font-size: 0.6rem;
+
+          & a:hover {
+            color: var(--blue-light);
+          }
         }
       }
     }
