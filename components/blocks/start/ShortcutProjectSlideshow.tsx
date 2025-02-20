@@ -22,7 +22,7 @@ export default function ShortcutProjectSlideshow({ projects }: Props) {
 	return (
 		<section className={s.container}>
 			<header>
-				<h2>Aktuella projekt</h2>
+				<h2>Projekt</h2>
 				<div className={s.nav}>
 					<Link href='/projekt' className='shortcut'>
 						Visa alla
