@@ -45,7 +45,7 @@ export default function NavbarMobile({ menu }: NavbarMobileProps) {
 			</div>
 			<nav className={cn(s.navbarMobile, open && s.open)}>
 				<ul className={s.menu}>
-					{menu.map(({ id, title, href, slug, sub }) => (
+					{menu.map(({ id, title, href, slug, sub, hideSub }) => (
 						<li
 							key={id}
 							className={cn(sub && s.dropdown, pathname.startsWith(slug) && s.active)}
@@ -53,8 +53,8 @@ export default function NavbarMobile({ menu }: NavbarMobileProps) {
 						>
 							{sub && (
 								<>
-									<span>{title}</span>
-									{selected === id && (
+									{!hideSub ? <span>{title}</span> : <Link href={slug ?? href}>{title}</Link>}
+									{selected === id && !hideSub && (
 										<ul onClick={(e) => e.stopPropagation()}>
 											{sub.map(({ id, title, href, slug }) => (
 												<li key={id} className={cn(pathname === slug && s.active)}>
@@ -65,7 +65,6 @@ export default function NavbarMobile({ menu }: NavbarMobileProps) {
 									)}
 								</>
 							)}
-							{!sub && <Link href={slug ?? href}>{title}</Link>}
 						</li>
 					))}
 					<li className={cn(pathname === '/english' && s.active)}>
