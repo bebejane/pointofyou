@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import s from "./VideoExternal.module.scss";
-import { useEffect, useRef, useState } from "react";
-import { useWindowSize } from "rooks";
-import Youtube from "react-youtube";
-import Vimeo from "@u-wave/react-vimeo";
-import classNames from "classnames";
+import s from './VideoExternal.module.scss';
+import { useEffect, useRef, useState } from 'react';
+import { useWindowSize } from 'rooks';
+import Youtube from 'react-youtube';
+import Vimeo from '@u-wave/react-vimeo';
+import classNames from 'classnames';
 
 export default function VideoExternal({ data, editable }) {
 	const ref = useRef<HTMLDivElement | null>(null);
@@ -18,16 +18,13 @@ export default function VideoExternal({ data, editable }) {
 
 	if (!data || !data.video) return null;
 
+	const { caption } = data;
 	const { provider, providerUid, title } = data.video;
-	const style = { height: `${height}px`, width: "100%" };
+	const style = { height: `${height}px`, width: '100%' };
 
 	return (
-		<section
-			className={s.video}
-			data-editable={editable}
-			ref={ref}
-		>
-			{provider === "youtube" ? (
+		<section className={s.video} data-editable={editable} ref={ref}>
+			{provider === 'youtube' ? (
 				<Youtube
 					opts={{
 						playerVars: {
@@ -40,16 +37,12 @@ export default function VideoExternal({ data, editable }) {
 					className={s.player}
 					style={style}
 				/>
-			) : provider === "vimeo" ? (
-				<Vimeo
-					video={providerUid}
-					className={s.player}
-					style={style}
-				/>
+			) : provider === 'vimeo' ? (
+				<Vimeo video={providerUid} className={s.player} style={style} />
 			) : null}
-			{title && (
-				<div className={classNames(s.caption, "small", "sans")}>
-					<figcaption>{title}</figcaption>
+			{caption && (
+				<div className={classNames(s.caption, 'small', 'sans')}>
+					<figcaption>{caption}</figcaption>
 				</div>
 			)}
 		</section>
