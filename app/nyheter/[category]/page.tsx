@@ -20,7 +20,7 @@ export default async function NewsPage({ params }) {
 	const { allNews, allPresses, presskit, draftUrl } = await apiQuery<
 		AllNewsQuery,
 		AllNewsQueryVariables
-	>(AllNewsDocument, { all: true });
+	>(AllNewsDocument, { tags: ['news', 'press'], all: true });
 
 	const news: any[] = category === 'aktuellt' ? allNews : allPresses;
 	const title = category === 'aktuellt' ? 'Aktuellt' : 'Press';

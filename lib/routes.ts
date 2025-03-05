@@ -10,75 +10,75 @@ type Routes = {
 }
 
 type Route = {
-  path: ((item?: any) => string | null)
+  path: ((item?: any) => string[] | null)
   typeName: string
 }
 
 const routes: Routes = {
   "home": {
     typeName: "HomeRecord",
-    path: (item) => '/'
+    path: (item) => ['/']
   },
   "about": {
     typeName: "AboutRecord",
-    path: (item) => `/om/${item.slug}`
+    path: (item) => [`/om/${item.slug}`]
   },
   "education": {
     typeName: "EducationRecord",
-    path: (item) => `/utbildning/${item.slug}`
+    path: (item) => [`/utbildning/${item.slug}`]
   },
   "project": {
     typeName: "ProjectRecord",
-    path: (item) => `/projekt/${item.slug}`
+    path: (item) => [`/projekt/${item.slug}`]
   },
   "research": {
     typeName: "ResearchRecord",
-    path: (item) => `/forskning/kunskapsbank`
+    path: (item) => [`/forskning/kunskapsbank`]
   },
   "research_about": {
     typeName: "ResearchAboutRecord",
-    path: (item) => `/forskning/om`
+    path: (item) => [`/forskning/om`]
   },
   "research_category": {
     typeName: "ResearchCategoryRecord",
-    path: (item) => `/forskning/kunskapsbank`
+    path: (item) => [`/forskning/kunskapsbank`]
   },
   "press": {
     typeName: "PressRecord",
-    path: (item) => `/nyheter/press/${item.slug}`
+    path: (item) => [`/nyheter/press/${item.slug}`]
   },
   "news": {
     typeName: "NewsRecord",
-    path: (item) => `/nyheter/aktuellt/${item.slug}`
+    path: (item) => [`/nyheter/aktuellt/${item.slug}`]
   },
   "contact": {
     typeName: "ContactRecord",
-    path: (item) => `/kontakt`
+    path: (item) => [`/kontakt`]
   },
   "english": {
     typeName: "EnglishRecord",
-    path: (item) => `/english`
+    path: (item) => [`/english`]
   },
   "sound": {
     typeName: "SoundRecord",
-    path: (item) => `/`
+    path: (item) => [`/`]
   },
   "support": {
     typeName: "SupportRecord",
-    path: (item) => `/`
+    path: (item) => [`/`]
   },
   "presskit": {
     typeName: "PresskitRecord",
-    path: (item) => `/nyheter/press`
+    path: (item) => [`/nyheter/press`]
   },
 }
 
-export const buildRoute = (model: string, item?: any): string => {
+export const buildRoute = (model: string, item?: any): string[] | null => {
   if (!routes[model]) throw new Error(`Invalid model: ${model}`)
   return routes[model].path(item)
 }
 
-export const recordToRoute = (record: any): string => {
+export const recordToRoute = (record: any): string[] => {
   const { __typename } = record
   const model = Object.keys(routes).find(key => routes[key].typeName === __typename)
   if (!model) throw new Error(`Invalid record: ${__typename}`)
