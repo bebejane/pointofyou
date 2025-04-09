@@ -20,6 +20,10 @@
       margin-right: var(--full-bleed-margin);
       margin-bottom: var(--space);
 
+      & div {
+        max-width: none !important;
+      }
+
       img {
         height: calc(60vh - var(--navbar-height));
         width: 100%;
