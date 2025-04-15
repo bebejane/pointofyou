@@ -95,6 +95,7 @@ export const buildMenu = async (): Promise<Menu> => {
     sub: [
       { id: 'contact-us', title: 'Kontakta oss', slug: '/kontakt' },
       { id: 'instagram', title: 'Instagram', href: 'https://www.instagram.com/pointofyou.se' },
+      { id: 'facebook', title: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61574982284727' },
     ]
   }]
   return menu
