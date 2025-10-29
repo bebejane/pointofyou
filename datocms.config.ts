@@ -21,7 +21,7 @@ export default {
 		presskit: async () => ['/nyheter/press'],
 		internal_link: async ({ id }) => [...(await getItemReferenceRoutes(id))],
 		external_link: async ({ id }) => [...(await getItemReferenceRoutes(id))],
-		upload: async (record, locale) => getUploadReferenceRoutes(record),
+		upload: async ({ id }) => getUploadReferenceRoutes(id),
 	},
 	sitemap: async () => {
 		const { allAbouts, allEducations, allProjects, allNews, allPresses } = await apiQuery(SitemapDocument, {
