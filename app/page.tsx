@@ -6,7 +6,7 @@ import { Block } from '@/components/blocks';
 import * as StartBlocks from '@/components/blocks/start';
 
 export default async function Home() {
-	const { home, draftUrl } = await apiQuery<HomeQuery, HomeQueryVariables>(HomeDocument);
+	const { home, draftUrl } = await apiQuery(HomeDocument);
 
 	return (
 		<>
@@ -15,7 +15,7 @@ export default async function Home() {
 					<figure>
 						<img src='/images/logo-text-blue.svg' alt='Point of You logo' />
 					</figure>
-					{home?.movieStart && <VideoPlayer className={s.video} autoPlay={false} data={home.movieStart} />}
+					{home?.movieStart && <VideoPlayer className={s.video} autoPlay={true} data={home.movieStart} />}
 				</section>
 				{home?.content.map((section, i) => (
 					<Block key={i} data={section} components={StartBlocks} />

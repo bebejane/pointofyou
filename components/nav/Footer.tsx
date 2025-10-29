@@ -7,8 +7,8 @@ import { apiQuery } from 'next-dato-utils/api';
 import SupportBubble from './SupportBubble';
 
 export default async function Footer({ menu }: { menu: Menu }) {
-	const { support } = await apiQuery<SupportQuery, SupportQueryVariables>(SupportDocument);
-	const { allSounds } = await apiQuery<AllSoundsQuery, AllSoundsQueryVariables>(AllSoundsDocument);
+	const { support } = await apiQuery(SupportDocument);
+	const { allSounds } = await apiQuery(AllSoundsDocument);
 
 	return (
 		<>
@@ -38,7 +38,8 @@ export default async function Footer({ menu }: { menu: Menu }) {
 				<div className={s.copyright}>
 					<span className={s.text}>Copyright Point of You {new Date().getFullYear()}.</span>
 					<span className={s.about}>
-						Ett projekt av&nbsp;{' '} <a href='https://www.iffs.se/' target='new'>
+						Ett projekt av&nbsp;{' '}
+						<a href='https://www.iffs.se/' target='new'>
 							Institutet för Framtidsstudier
 						</a>
 						. &nbsp; &nbsp;

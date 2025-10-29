@@ -1,6 +1,6 @@
 import { apiQuery } from 'next-dato-utils/api';
 import { AboutDocument, AllAboutsDocument } from '@/graphql';
-import { notFound } from '@node_modules/next/navigation';
+import { notFound } from 'next/navigation';
 import Article from '@/components/common/Article';
 import { DraftMode } from 'next-dato-utils/components';
 import { Metadata } from 'next';
@@ -11,7 +11,7 @@ export type AboutProps = {
 
 export default async function AboutPage({ params }: AboutProps) {
 	const { about: slug } = await params;
-	const { about, draftUrl } = await apiQuery<AboutQuery, AboutQueryVariables>(AboutDocument, {
+	const { about, draftUrl } = await apiQuery(AboutDocument, {
 		variables: {
 			slug,
 		},
@@ -36,16 +36,16 @@ export default async function AboutPage({ params }: AboutProps) {
 }
 
 export async function generateStaticParams() {
-	const { allAbouts } = await apiQuery<AllAboutsQuery, AllAboutsQueryVariables>(AllAboutsDocument, {
+	const { allAbouts } = await apiQuery(AllAboutsDocument, {
 		all: true,
 	});
 
 	return allAbouts.map(({ slug }) => ({ slug }));
 }
 
-export async function generateMetadata({ params }) {
+export async function generateMetadata({ params }): Promise<Metadata> {
 	const { about: slug } = await params;
-	const { about } = await apiQuery<AboutQuery, AboutQueryVariables>(AboutDocument, {
+	const { about } = await apiQuery(AboutDocument, {
 		variables: {
 			slug,
 		},

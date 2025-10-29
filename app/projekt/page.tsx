@@ -14,14 +14,10 @@ const filterParser = parseAsString.withDefault('all');
 
 export default async function ProjectsPage({ searchParams }) {
 	const filter = filterParser.parseServerSide((await searchParams).filter);
-	const { allProjects, draftUrl } = await apiQuery<AllProjectsQuery, AllProjectsQueryVariables>(
-		AllProjectsDocument,
-		{ all: true, tags: ['project'] }
-	);
+	const { allProjects, draftUrl } = await apiQuery(AllProjectsDocument, { all: true });
 
 	const projects = allProjects.filter(
-		({ active }) =>
-			filter === 'all' || (filter === 'active' && active) || (filter === 'finished' && !active)
+		({ active }) => filter === 'all' || (filter === 'active' && active) || (filter === 'finished' && !active)
 	);
 
 	return (
@@ -43,8 +39,7 @@ export default async function ProjectsPage({ searchParams }) {
 				</header>
 				{!projects?.length && (
 					<p className={s.empty}>
-						Det finns inga {filter === 'finished' ? 'avslutade' : 'pågående'} projekt för
-						närvarande.
+						Det finns inga {filter === 'finished' ? 'avslutade' : 'pågående'} projekt för närvarande.
 					</p>
 				)}
 				<ul>
@@ -74,7 +69,7 @@ export default async function ProjectsPage({ searchParams }) {
 	);
 }
 
-export async function generateMetadata({ params }) {
+export async function generateMetadata({ params }): Promise<Metadata> {
 	return {
 		title: 'Projekt',
 	} as Metadata;

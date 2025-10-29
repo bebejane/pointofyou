@@ -1,6 +1,6 @@
 import { apiQuery } from 'next-dato-utils/api';
 import { AllProjectsDocument, ProjectDocument } from '@/graphql';
-import { notFound } from '@node_modules/next/navigation';
+import { notFound } from 'next/navigation';
 import Article from '@/components/common/Article';
 import { DraftMode } from 'next-dato-utils/components';
 import { Metadata } from 'next';
@@ -11,14 +11,11 @@ export type ProjectProps = {
 
 export default async function ProjectPage({ params }: ProjectProps) {
 	const { project: slug } = await params;
-	const { project, draftUrl } = await apiQuery<ProjectQuery, ProjectQueryVariables>(
-		ProjectDocument,
-		{
-			variables: {
-				slug,
-			},
-		}
-	);
+	const { project, draftUrl } = await apiQuery(ProjectDocument, {
+		variables: {
+			slug,
+		},
+	});
 
 	if (!project) return notFound();
 
@@ -43,19 +40,16 @@ export default async function ProjectPage({ params }: ProjectProps) {
 }
 
 export async function generateStaticParams() {
-	const { allProjects } = await apiQuery<AllProjectsQuery, AllProjectsQueryVariables>(
-		AllProjectsDocument,
-		{
-			all: true,
-		}
-	);
+	const { allProjects } = await apiQuery(AllProjectsDocument, {
+		all: true,
+	});
 
 	return allProjects.map(({ slug }) => ({ slug }));
 }
 
-export async function generateMetadata({ params }) {
+export async function generateMetadata({ params }): Promise<Metadata> {
 	const { project: slug } = await params;
-	const { project } = await apiQuery<ProjectQuery, ProjectQueryVariables>(ProjectDocument, {
+	const { project } = await apiQuery(ProjectDocument, {
 		variables: {
 			slug,
 		},

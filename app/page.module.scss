@@ -1,50 +1,53 @@
 .page {
-  position: relative;
-  display: flex;
-  flex-direction: column;
+	position: relative;
+	display: flex;
+	flex-direction: column;
 
-  @include mq($from: desktop) {
-    margin-top: calc(-1 * var(--navbar-height));
-  }
+	@include mq($from: desktop) {
+		margin-top: calc(-1 * var(--navbar-height));
+	}
 
-  .header {
-    position: relative;
-    margin-left: var(--full-bleed-margin);
-    margin-right: var(--full-bleed-margin);
+	.header {
+		position: relative;
+		margin-left: var(--full-bleed-margin);
+		margin-right: var(--full-bleed-margin);
 
-    figure {
-      position: absolute;
-      z-index: 1;
-      left: 20%;
-      top: 40%;
-      transform: translate(-12.5%, -20%);
-      line-height: 1;
-      text-transform: uppercase;
-      white-space: nowrap;
-      text-align: center;
-      font-size: 100px;
-      overflow: hidden;
+		figure {
+			position: absolute;
+			z-index: 1;
+			left: 20%;
+			top: 40%;
+			transform: translate(-12.5%, -20%);
+			line-height: 1;
+			text-transform: uppercase;
+			white-space: nowrap;
+			text-align: center;
+			font-size: 100px;
+			overflow: hidden;
 
-      @include mq($from: desktop) {
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-      }
+			@include mq($from: desktop) {
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -50%);
+			}
 
-      img {
-        width: 100%;
-      }
-    }
+			img {
+				width: 100%;
+			}
+		}
 
-    .video {
-      position: relative;
-      height: 60vh;
-      width: 100%;
-      object-fit: cover;
+		.video {
+			position: relative;
+			height: 60vh;
+			width: 100%;
+			object-fit: cover;
 
-      @include mq($from: desktop) {
-        height: 100vh;
-      }
-    }
-  }
+			video {
+				width: 100%;
+			}
+			@include mq($from: desktop) {
+				height: 100vh;
+			}
+		}
+	}
 }

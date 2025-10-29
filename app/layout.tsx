@@ -1,13 +1,13 @@
-import '@styles/index.scss';
+import '@/styles/index.scss';
 import s from './layout.module.scss';
 import { apiQuery } from 'next-dato-utils/api';
-import { GlobalDocument } from '@graphql';
+import { GlobalDocument } from '@/graphql';
 import { Metadata } from 'next';
 import { Icon } from 'next/dist/lib/metadata/types/metadata-types';
-import Footer from '../components/nav/Footer';
-import { buildMenu } from '../lib/menu';
-import Navbar from '../components/nav/Navbar';
-import NavbarMobile from '../components/nav/NavbarMobile';
+import Footer from '@/components/nav/Footer';
+import { buildMenu } from '@/lib/menu';
+import Navbar from '@/components/nav/Navbar';
+import NavbarMobile from '@/components/nav/NavbarMobile';
 import { Suspense } from 'react';
 import { NuqsAdapter } from 'nuqs/adapters/next/app';
 
@@ -37,10 +37,10 @@ export default async function RootLayout({ children }: LayoutProps) {
 	);
 }
 
-export async function generateMetadata() {
+export async function generateMetadata(): Promise<Metadata> {
 	const {
 		site: { globalSeo, faviconMetaTags },
-	} = await apiQuery<GlobalQuery, GlobalQueryVariables>(GlobalDocument, {
+	} = await apiQuery(GlobalDocument, {
 		variables: {},
 		revalidate: 60 * 60,
 	});

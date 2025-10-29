@@ -14,16 +14,11 @@ const filterParser = parseAsString.withDefault('all');
 
 export default async function ResearchsPage({ searchParams }) {
 	const filter = filterParser.parseServerSide((await searchParams).filter);
-	const { allResearches, allResearchCategories, draftUrl } = await apiQuery<
-		AllResearchesQuery,
-		AllResearchesQueryVariables
-	>(AllResearchesDocument, {
+	const { allResearches, allResearchCategories, draftUrl } = await apiQuery(AllResearchesDocument, {
 		all: true,
 	});
 
-	const researchs = allResearches.filter(
-		({ category }) => filter === 'all' || category?.slug === filter
-	);
+	const researchs = allResearches.filter(({ category }) => filter === 'all' || category?.slug === filter);
 
 	return (
 		<>
@@ -61,7 +56,7 @@ export default async function ResearchsPage({ searchParams }) {
 	);
 }
 
-export async function generateMetadata({ params }) {
+export async function generateMetadata({ params }): Promise<Metadata> {
 	return {
 		title: 'Kunskapsbank',
 	} as Metadata;

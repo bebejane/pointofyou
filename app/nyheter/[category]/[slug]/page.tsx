@@ -1,6 +1,6 @@
 import { apiQuery } from 'next-dato-utils/api';
 import { AllNewsDocument, NewsDocument, PressDocument } from '@/graphql';
-import { notFound } from '@node_modules/next/navigation';
+import { notFound } from 'next/navigation';
 import Article from '@/components/common/Article';
 import { DraftMode } from 'next-dato-utils/components';
 import { Metadata } from 'next';
@@ -39,14 +39,14 @@ export async function getPost(
 	slug: string
 ): Promise<{ post: NewsQuery['news'] | PressQuery['press']; draftUrl: string }> {
 	if (category === 'aktuellt') {
-		const { news, draftUrl } = await apiQuery<NewsQuery, NewsQueryVariables>(NewsDocument, {
+		const { news, draftUrl } = await apiQuery(NewsDocument, {
 			variables: {
 				slug,
 			},
 		});
 		return { post: news, draftUrl };
 	} else {
-		const { press, draftUrl } = await apiQuery<PressQuery, PressQueryVariables>(PressDocument, {
+		const { press, draftUrl } = await apiQuery(PressDocument, {
 			variables: {
 				slug,
 			},
@@ -57,12 +57,9 @@ export async function getPost(
 }
 
 export async function generateStaticParams() {
-	const { allNews, allPresses } = await apiQuery<AllNewsQuery, AllNewsQueryVariables>(
-		AllNewsDocument,
-		{
-			all: true,
-		}
-	);
+	const { allNews, allPresses } = await apiQuery(AllNewsDocument, {
+		all: true,
+	});
 
 	return allNews.concat(allPresses as any[]).map(({ slug, __typename }) => ({
 		category: __typename === 'NewsRecord' ? 'aktuellt' : 'press',
@@ -70,7 +67,7 @@ export async function generateStaticParams() {
 	}));
 }
 
-export async function generateMetadata({ params }) {
+export async function generateMetadata({ params }): Promise<Metadata> {
 	const { slug, category } = await params;
 	const { post } = await getPost(category, slug);
 

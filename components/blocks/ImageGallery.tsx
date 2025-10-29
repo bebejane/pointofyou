@@ -4,6 +4,7 @@ import s from './ImageGallery.module.scss';
 import cn from 'classnames';
 import React, { useState, useRef, useEffect } from 'react';
 import { Swiper as SwiperReact, SwiperSlide } from 'swiper/react';
+import { Mousewheel } from 'swiper/modules';
 import type { Swiper } from 'swiper';
 import { Image } from 'react-datocms';
 
@@ -11,15 +12,9 @@ export type ImageGalleryBlockProps = {
 	id: string;
 	images: ImageFileField[];
 	onClick?: Function;
-	editable?: boolean;
 };
 
-export default function ImageGallery({
-	id,
-	images,
-	onClick,
-	editable = false,
-}: ImageGalleryBlockProps) {
+export default function ImageGallery({ id, images, onClick }: ImageGalleryBlockProps) {
 	const swiperRef = useRef<Swiper | null>(null);
 	const containerRef = useRef<HTMLDivElement | null>(null);
 	const [caption, setCaption] = useState<string | null>(images[0].title);
@@ -42,6 +37,19 @@ export default function ImageGallery({
 			<figcaption className={s.caption}>{caption}</figcaption>
 			<SwiperReact
 				id={`${id}-swiper-wrap`}
+				modules={[Mousewheel]}
+				direction={'horizontal'}
+				mousewheel={{
+					forceToAxis: true,
+					releaseOnEdges: true,
+					invert: false,
+					sensitivity: 1,
+				}}
+				freeMode={{
+					enabled: true,
+					momentum: true,
+					sticky: false,
+				}}
 				className={s.swiper}
 				loop={true}
 				noSwiping={false}
@@ -65,7 +73,8 @@ export default function ImageGallery({
 								pictureClassName={s.picture}
 								placeholderClassName={s.picture}
 								objectFit={'cover'}
-								intersectionMargin='0px 0px 200% 0px'
+								fadeInDuration={0}
+								intersectionMargin='200% 0px 200% 0px'
 							/>
 						</figure>
 					</SwiperSlide>

@@ -17,10 +17,9 @@ export type Props = {
 
 export default async function NewsPage({ params }) {
 	const { category } = await params;
-	const { allNews, allPresses, presskit, draftUrl } = await apiQuery<
-		AllNewsQuery,
-		AllNewsQueryVariables
-	>(AllNewsDocument, { tags: ['news', 'press'], all: true });
+	const { allNews, allPresses, presskit, draftUrl } = await apiQuery(AllNewsDocument, {
+		all: true,
+	});
 
 	const news: any[] = category === 'aktuellt' ? allNews : allPresses;
 	const title = category === 'aktuellt' ? 'Aktuellt' : 'Press';
@@ -69,7 +68,7 @@ export async function getStaticPaths() {
 	};
 }
 
-export async function generateMetadata({ params }) {
+export async function generateMetadata({ params }): Promise<Metadata> {
 	const { category } = await params;
 	return {
 		title: category === 'aktuellt' ? 'Aktuellt' : 'Press',
