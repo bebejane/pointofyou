@@ -40,10 +40,12 @@
 			position: relative;
 			height: 60vh;
 			width: 100%;
-			object-fit: cover;
+			overflow: hidden;
 
 			video {
 				width: 100%;
+				height: 100%;
+				object-fit: cover;
 			}
 			@include mq($from: desktop) {
 				height: 100vh;
