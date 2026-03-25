@@ -18,7 +18,9 @@ export default async function ResearchsPage({ searchParams }) {
 		all: true,
 	});
 
-	const researchs = allResearches.filter(({ category }) => filter === 'all' || category?.slug === filter);
+	const researchs = allResearches.filter(
+		({ category }) => filter === 'all' || category?.slug === filter,
+	);
 
 	return (
 		<>
@@ -27,7 +29,7 @@ export default async function ResearchsPage({ searchParams }) {
 					href='/forskning/kunskapsbank'
 					value={filter}
 					options={[{ id: 'all', label: 'Alla' }].concat(
-						allResearchCategories.map(({ slug, plural }) => ({ id: slug, label: plural }))
+						allResearchCategories.map(({ slug, plural }) => ({ id: slug, label: plural })),
 					)}
 				/>
 				{researchs.length === 0 && <p className={s.empty}>Det finns inga poster här än.</p>}

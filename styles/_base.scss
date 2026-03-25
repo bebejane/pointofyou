@@ -1,5 +1,5 @@
-@use "fonts";
-@use "mediaqueries";
+@use 'fonts';
+@use 'mediaqueries' as *;
 
 :root {
 	--black: #1e1e1e;
@@ -39,10 +39,10 @@
 	--gradient: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.6));
 	--gradient-light: linear-gradient(0deg, transparent, #ffffe487);
 
-	--body-font: "OceanicText", Times, Serif;
-	--headline-font: "BuzzBlack", Arial, Helvetica, Sans-Serif;
-	--label-font: "Jazz-Medium", Arial, Sans-serif;
-	--sans-font: "Jazz", Arial, Sans-serif;
+	--body-font: 'OceanicText', Times, Serif;
+	--headline-font: 'BuzzBlack', Arial, Helvetica, Sans-Serif;
+	--label-font: 'Jazz-Medium', Arial, Sans-serif;
+	--sans-font: 'Jazz', Arial, Sans-serif;
 
 	@include mq($until: desktop) {
 		--outer-margin: 1.5rem;
@@ -60,7 +60,7 @@ body {
 	background-color: var(--background);
 	font-family: var(--body-font);
 	-webkit-font-smoothing: antialiased;
-	font-feature-settings: "liga", "kern";
+	font-feature-settings: 'liga', 'kern';
 	padding-top: var(--navbar-height);
 }
 
@@ -132,7 +132,7 @@ button {
 	text-decoration: none !important;
 	font-size: 0.7rem;
 
-	&[aria-selected="true"] {
+	&[aria-selected='true'] {
 		color: var(--white);
 		background-color: var(--blue);
 	}
