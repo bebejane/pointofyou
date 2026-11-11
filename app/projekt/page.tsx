@@ -17,7 +17,8 @@ export default async function ProjectsPage({ searchParams }) {
 	const { allProjects, draftUrl } = await apiQuery(AllProjectsDocument, { all: true });
 
 	const projects = allProjects.filter(
-		({ active }) => filter === 'all' || (filter === 'active' && active) || (filter === 'finished' && !active)
+		({ active }) =>
+			filter === 'all' || (filter === 'active' && active) || (filter === 'finished' && !active),
 	);
 
 	return (
@@ -39,7 +40,8 @@ export default async function ProjectsPage({ searchParams }) {
 				</header>
 				{!projects?.length && (
 					<p className={s.empty}>
-						Det finns inga {filter === 'finished' ? 'avslutade' : 'pågående'} projekt för närvarande.
+						Det finns inga {filter === 'finished' ? 'avslutade' : 'pågående'} projekt för
+						närvarande.
 					</p>
 				)}
 				<ul>
@@ -47,11 +49,14 @@ export default async function ProjectsPage({ searchParams }) {
 						<li key={id}>
 							<Link href={`/projekt/${slug}`}>
 								<figure>
-									<Image data={image.responsiveImage} pictureClassName={s.picture} />
-
+									<Image
+										data={image.responsiveImage}
+										pictureClassName={s.picture}
+										className={s.image}
+									/>
 									<figcaption>
 										<h2>{title}</h2>
-										<div className={s.fade}></div>
+										<div className={s.fade} />
 										<div>
 											<span className={s.status}>{active ? 'Pågående' : 'Avslutad'}</span>
 											<Content content={intro} className={classNames(s.intro, 'small', 'sans')} />
